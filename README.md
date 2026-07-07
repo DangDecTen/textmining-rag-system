@@ -1,6 +1,18 @@
 # textmining-rag-system
 Text Mining, build a simple RAG system
 
+## Pipeline
+
+```
+enterprise-attack.json  (MITRE ATT&CK STIX 2.1)
+        │  parse_attack.py
+        ▼
+attack_docs.jsonl        (one doc per technique/mitigation/group/software)
+        │  chunk.py
+        ▼
+chunks.jsonl              (~200-word chunks, ATT&CK-ID tagged)
+```
+
 ## Example Repository Structure
 
 ```
