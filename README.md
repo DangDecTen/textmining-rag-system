@@ -1,19 +1,41 @@
-# textmining-rag-system
+# Textmining RAG System
 Text Mining, build a simple RAG system
 
-## Pipeline
+## Table of Contents
+
+- [RAG Pipeline](#rag-pipeline)
+- [Data Ingestion](#data-ingestion)
+	- [Load Data](#load-data)
+	- [Chunk Document](#chunk-document)
+- [Indexing](#indexing)
+- [Repository Structure](#repository-structure)
+
+## RAG Pipeline
 
 ```
-enterprise-attack.json  (MITRE ATT&CK STIX 2.1)
+enterprise-attack.json (MITRE ATT&CK STIX 2.1)
         │  parse_attack.py
         ▼
-attack_docs.jsonl        (one doc per technique/mitigation/group/software)
+attack_docs.jsonl
         │  chunk.py
         ▼
-chunks.jsonl              (~200-word chunks, ATT&CK-ID tagged)
+chunks.jsonl
+        │  build_index.py
+        ▼
+faiss_index/
+        │
+        ▼
+DenseRetriever  ──►  prompts.py  ──►  Generator
+        │
+        ▼
+FastAPI (/query)  ──►  Streamlit chat UI
 ```
 
-## Load ATT&CK Data
+## Data Ingestion
+
+Load ATT&CK data, parse into retrievable documents, do some document pre-processing, and then try different chunking techniques.
+
+### Load Data
 
 Details in `parse_attack.py` with tunable hyperparamerter.
 
@@ -23,7 +45,22 @@ Details in `parse_attack.py` with tunable hyperparamerter.
 |MITRE_ATTACK_VERSION|Might use a version close to when ATT&CK was created.|
 |MAX_RELATED_PER_LABEL|Tune the size of relationship context. This is to avoid heavily-used technique (e.g. T1059).|
 
-## Example Repository Structure
+### Chunk Document
+
+Details of hyperparameters can be looked into corresponding source file.
+
+|Chunking Technique|Source File|
+|-|-|
+|Recursive + Overlap|`chunk.py`|
+|Sentence-based + Overlap|planning...|
+|Late Chunking (Post-Chunking)|planning...|
+|Hierarchical Chunking|planning...|
+
+## Indexing
+
+Empty...
+
+## Repository Structure
 
 ```
 attackqa-rag/
