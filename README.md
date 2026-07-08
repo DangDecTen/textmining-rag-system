@@ -13,6 +13,16 @@ attack_docs.jsonl        (one doc per technique/mitigation/group/software)
 chunks.jsonl              (~200-word chunks, ATT&CK-ID tagged)
 ```
 
+## Load ATT&CK Data
+
+Details in `parse_attack.py` with tunable hyperparamerter.
+
+|Hyperparameter|Description|
+|-|-|
+|MITRE_ATTACK_DOMAIN|Data from enterprise, mobile, or ICS. Feature to load data from all domains is incomplete.|
+|MITRE_ATTACK_VERSION|Might use a version close to when ATT&CK was created.|
+|MAX_RELATED_PER_LABEL|Tune the size of relationship context. This is to avoid heavily-used technique (e.g. T1059).|
+
 ## Example Repository Structure
 
 ```
