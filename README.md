@@ -51,6 +51,7 @@ Details of hyperparameters can be looked into corresponding source file.
 
 |Chunking Technique|Source File|
 |-|-|
+|No Chunking|`parse_attack.py`|
 |Recursive + Overlap|`chunk.py`|
 |Sentence-based + Overlap|planning...|
 |Late Chunking (Post-Chunking)|planning...|
