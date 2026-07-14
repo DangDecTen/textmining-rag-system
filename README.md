@@ -59,7 +59,45 @@ Details of hyperparameters can be looked into corresponding source file.
 
 ## Indexing
 
-Empty...
+The indexing stage is implemented with FAISS and a basic dense retriever.
+
+### What it does
+
+- Reads `data/processed/chunks.jsonl`
+- Embeds each chunk with `BAAI/bge-small-en-v1.5`
+- L2-normalizes the embeddings and stores them in a FAISS `IndexFlatIP`
+- Writes the index and chunk metadata into `data/index/faiss_index/`
+
+### Build the index
+
+```bash
+python -m src.indexing.build_index --chunks data/processed/chunks.jsonl --out-dir data/index/faiss_index
+```
+
+### Query the index
+
+```python
+from src.retrieval.retriever import DenseRetriever
+
+retriever = DenseRetriever("data/index/faiss_index")
+hits = retriever.search("mitigations for command and control", k=5)
+```
+
+Each hit includes the original chunk metadata plus a similarity `score`.
+
+### Test the system
+
+Start the API server:
+
+```bash
+uvicorn src.api:app --reload
+```
+
+Then query it:
+
+```bash
+curl -X POST http://127.0.0.1:8000/query -H "Content-Type: application/json" -d "{\"query\": \"mitigations for command and control\", \"k\": 5}"
+```
 
 ## Repository Structure
 
