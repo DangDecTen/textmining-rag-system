@@ -11,6 +11,7 @@ import json
 from itertools import chain
 from pathlib import Path
 from typing import Optional
+from ..data_models.parsed_document import ParsedDocument
 
 import requests
 from stix2 import Filter, MemoryStore
@@ -95,7 +96,7 @@ def _get_tactics(obj) -> Optional[list]:
     return [p["phase_name"] for p in phases if p.get("kill_chain_name") == "mitre-attack"]
 
 
-def parse_object_into_document(obj) -> Optional[dict]:
+def parse_object_into_document(obj) -> ParsedDocument | None:
     """Turn a single stix2 object into a flat document dict.
 
     Returns None for objects we should skip: revoked/deprecated entries,
@@ -122,18 +123,18 @@ def parse_object_into_document(obj) -> Optional[dict]:
     description = getattr(obj, "description", "")
     domain = obj.x_mitre_domains[0] if getattr(obj, "x_mitre_domains", None) else MITRE_ATTACK_DOMAIN
 
-    return {
-        "stix_id": obj.id,
-        "attack_id": attack_id,
-        "domain": domain,
-        "stix_type": stix_type,
-        "attack_type": attack_type,
-        "name": name,
-        "description": description,
-        "text": f"{name}\n\n{description}",   # what gets embedded downstream
-        "url": _get_url(obj),
-        "tactics": _get_tactics(obj),
-    }
+    return ParsedDocument(
+        stix_id=obj.id,
+        attack_id=attack_id,
+        domain=domain,
+        stix_type=stix_type,
+        attack_type=attack_type,
+        name=name,
+        description=description,
+        text=f"{name}\n\n{description}",
+        url=_get_url(obj),
+        tactics=_get_tactics(obj),
+    )
 
 
 # --- Relationship enrichment -------------------------------------------
@@ -176,10 +177,10 @@ def _build_relationship_index(thesrc: MemoryStore) -> tuple[dict, dict]:
     return outgoing, incoming
 
 
-def _enrichment_lines(doc: dict, outgoing: dict, incoming: dict, name_lookup: dict) -> list[str]:
+def _enrichment_lines(doc: ParsedDocument, outgoing: dict, incoming: dict, name_lookup: dict) -> list[str]:
     lines = []
-    directions = [("outgoing", outgoing.get(doc["stix_id"], [])),
-                  ("incoming", incoming.get(doc["stix_id"], []))]
+    directions = [("outgoing", outgoing.get(doc.stix_id, [])),
+                  ("incoming", incoming.get(doc.stix_id, []))]
 
     # group by label so e.g. multiple "uses" edges become one "Uses: a, b, c" line
     grouped: dict[str, list[str]] = {}
@@ -203,7 +204,7 @@ def _enrichment_lines(doc: dict, outgoing: dict, incoming: dict, name_lookup: di
     return lines
 
 
-def enrich_with_relationships(thesrc: MemoryStore, docs: list[dict]) -> list[dict]:
+def enrich_with_relationships(thesrc: MemoryStore, docs: list[ParsedDocument]) -> list[ParsedDocument]:
     """Append relationship-derived context to each doc's `text` field."""
     name_lookup = _build_name_lookup(thesrc)
     outgoing, incoming = _build_relationship_index(thesrc)
@@ -211,15 +212,15 @@ def enrich_with_relationships(thesrc: MemoryStore, docs: list[dict]) -> list[dic
     for doc in docs:
         lines = _enrichment_lines(doc, outgoing, incoming, name_lookup)
         if lines:
-            doc["related_context"] = lines
-            doc["text"] = doc["text"] + "\n\n" + "\n".join(lines)
+            doc.related_context = lines
+            doc.text = doc.text + "\n\n" + "\n".join(lines)
         else:
-            doc["related_context"] = []
+            doc.related_context = []
 
     return docs
 
 
-def parse_all(thesrc: MemoryStore) -> list[dict]:
+def parse_all(thesrc: MemoryStore) -> list[ParsedDocument]:
     objects = get_all_objects(thesrc)
     docs = [parse_object_into_document(obj) for obj in objects]
     docs = [d for d in docs if d is not None]
@@ -227,7 +228,7 @@ def parse_all(thesrc: MemoryStore) -> list[dict]:
     return docs
 
 
-def save_docs(docs: list[dict], out_path: str):
+def save_docs(docs: list[ParsedDocument], out_path: str):
     Path(out_path).parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
         for d in docs:

@@ -32,6 +32,7 @@ Relationship enrichment handling:
 import json
 from dataclasses import asdict, dataclass
 from pathlib import Path
+from ..data_models.chunk import Chunk
 
 from transformers import AutoTokenizer
 
@@ -51,17 +52,6 @@ MAX_RELATED_BLOCK_TOKENS = 200  # hard cap on the enrichment block itself;
 SEPARATORS = ["\n\n", "\n", ". ", " ", ""]   # tried in order, coarse -> fine
 
 _tokenizer = AutoTokenizer.from_pretrained(EMBED_MODEL_NAME)
-
-
-@dataclass
-class Chunk:
-    chunk_id: str
-    doc_id: str
-    attack_domain: str
-    attack_type: str
-    name: str
-    text: str
-    url: str | None = None
 
 
 def _token_len(text: str) -> int:
