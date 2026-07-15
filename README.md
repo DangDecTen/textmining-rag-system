@@ -98,6 +98,31 @@ Then query it:
 ```bash
 curl -X POST http://127.0.0.1:8000/query -H "Content-Type: application/json" -d "{\"query\": \"mitigations for command and control\", \"k\": 5}"
 ```
+## Streamlit App
+
+### Test Retriever + Generator
+
+```bash
+python test_rag.py
+```
+
+Enter a query when prompted. 
+
+The script will retrieve the top-5 relevant chunks and generate an answer using them.
+
+### Run the app
+
+Start the API server:
+
+```bash
+python -m uvicorn src.full_api:app --reload
+```
+
+Open another terminal and run the streamlit app
+
+```bash
+python -m streamlit run app.py
+```
 
 ## Repository Structure
 
