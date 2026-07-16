@@ -1,0 +1,41 @@
+{
+  "doc_count": 1482,
+  "chunk_count": 2518,
+  "domains": {
+    "enterprise-attack": 1477,
+    "ics-attack": 3,
+    "mobile-attack": 2
+  },
+  "attack_types": {
+    "sub-technique": 424,
+    "technique": 201,
+    "group": 142,
+    "campaign": 23,
+    "mitigation": 43,
+    "software": 649
+  },
+  "chunk_counts_per_doc": {
+    "min": 1.0,
+    "median": 1.0,
+    "mean": 1.699055330634278,
+    "max": 10.0
+  },
+  "description_length": {
+    "min": 53.0,
+    "median": 522.5,
+    "mean": 771.7651821862348,
+    "max": 4680.0
+  },
+  "chunk_text_length": {
+    "min": 60.0,
+    "median": 752.0,
+    "mean": 746.813343923749,
+    "max": 1530.0
+  },
+  "related_context_lines": {
+    "min": 1.0,
+    "median": 2.0,
+    "mean": 2.169579030976966,
+    "max": 3.0
+  }
+}
