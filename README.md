@@ -13,49 +13,21 @@ Text Mining, build a simple RAG system
 ## RAG Pipeline
 
 ```
-enterprise-attack.json (MITRE ATT&CK STIX 2.1)
-        │  parse_attack.py
+attackqa.parquet
+        │  run_ingestion.py
         ▼
-attack_docs.jsonl
-        │  chunk.py
-        ▼
-chunks.jsonl
-        │  build_index.py
-        ▼
-faiss_index/
+corpus + QA pairs (train/dev/test)
         │
         ▼
-DenseRetriever  ──►  prompts.py  ──►  Generator
+Index
         │
         ▼
-FastAPI (/query)  ──►  Streamlit chat UI
+Retriever
 ```
 
 ## Data Ingestion
 
-Load ATT&CK data, parse into retrievable documents, do some document pre-processing, and then try different chunking techniques.
-
-### Load Data
-
-Details in `parse_attack.py` with tunable hyperparamerter.
-
-|Hyperparameter|Description|
-|-|-|
-|MITRE_ATTACK_DOMAIN|Data from enterprise, mobile, or ICS. Feature to load data from all domains is incomplete.|
-|MITRE_ATTACK_VERSION|Might use a version close to when ATT&CK was created.|
-|MAX_RELATED_PER_LABEL|Tune the size of relationship context. This is to avoid heavily-used technique (e.g. T1059).|
-
-### Chunk Document
-
-Details of hyperparameters can be looked into corresponding source file.
-
-|Chunking Technique|Source File|
-|-|-|
-|No Chunking|`parse_attack.py`|
-|Recursive + Overlap|`chunk.py`|
-|Sentence-based + Overlap|planning...|
-|Late Chunking (Post-Chunking)|planning...|
-|Hierarchical Chunking|planning...|
+This includes loading the corpus for indexing, splitting QA pairs into train/dev/test for evaluation, and no chunking. AttackQA has done most of the chunking.
 
 ## Indexing
 
