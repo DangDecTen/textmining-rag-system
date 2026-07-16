@@ -32,7 +32,7 @@ Relationship enrichment handling:
 import json
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from ..data_models.chunk import Chunk
+from src.data_models.chunk import Chunk
 
 from transformers import AutoTokenizer
 

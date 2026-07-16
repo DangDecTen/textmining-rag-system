@@ -11,7 +11,7 @@ import json
 from itertools import chain
 from pathlib import Path
 from typing import Optional
-from ..data_models.parsed_document import ParsedDocument
+from src.data_models.parsed_document import ParsedDocument
 
 import requests
 from stix2 import Filter, MemoryStore
