@@ -137,3 +137,4 @@ The chunk sizes are reasonably consistent, which suggests the recursive chunking
 This corpus is best described as an enterprise ATT&CK knowledge base with a strong skew toward software, sub-techniques, and techniques. The data is structurally rich, long-form, and relationship-heavy, which makes it a good fit for RAG. The current preprocessing pipeline is also sensible: it keeps most records whole, splits only long documents, and attaches enough cross-reference context to improve retrieval quality.
 
 For the next iteration, the most valuable additions would be token-based EDA, retrieval evaluation by attack type, and a comparison of different chunk sizes or embedding models.
+        
