@@ -5,8 +5,6 @@ Text Mining, build a simple RAG system
 
 - [RAG Pipeline](#rag-pipeline)
 - [Data Ingestion](#data-ingestion)
-	- [Load Data](#load-data)
-	- [Chunk Document](#chunk-document)
 - [Indexing](#indexing)
 - [Repository Structure](#repository-structure)
 
@@ -28,6 +26,8 @@ Retriever
 ## Data Ingestion
 
 This includes loading the corpus for indexing, splitting QA pairs into train/dev/test for evaluation, and no chunking. AttackQA has done most of the chunking.
+
+Look at `src/ingestion/README.md` for further instructions.
 
 ## Indexing
 
