@@ -39,3 +39,9 @@ class QAExample(BaseModel):
     source: str
     human_question: bool = False
     human_answer: bool = False
+ 
+
+class RetrievalResult(BaseModel):
+    doc_id: str
+    score: float
+    document: Document | None = None

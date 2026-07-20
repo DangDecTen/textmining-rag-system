@@ -10,4 +10,4 @@ streamlit>=1.37
 requests>=2.32
 pydantic>=2.7
 numpy>=1.26
-stix2>=3.0
+bm25s
