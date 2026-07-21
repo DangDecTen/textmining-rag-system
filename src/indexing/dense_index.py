@@ -19,7 +19,13 @@ from pathlib import Path
 import faiss
 from sentence_transformers import SentenceTransformer
 from src.indexing.base import Index
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
+
+if hf_token := os.getenv("HF_TOKEN"):
+    os.environ["HF_TOKEN"] = hf_token
 
 QUERY_INSTRUCTION_PREFIX = "Represent this sentence for searching relevant passages: "
 

@@ -14,7 +14,7 @@ from src.indexing.bm25_index import BM25Index
 from src.retrieval.bm25_retriever import BM25Retriever
 from src.data_models.data_models import Document
 from src.eval.retrieval_eval import evaluate_retriever, print_report
-from src.indexing.dense_index import
+
 
 INDEX_DIR = "data/index/bm25"
 
@@ -42,10 +42,14 @@ def build_index(corpus: list[Document], rebuild: bool = False) -> BM25Index:
 
 def main(rebuild_index: bool, split: Literal['train', 'dev', 'test']) -> None:
     corpus_lookup = load_corpus_lookup()
+    qa_examples = load_qa_examples(split=split)
+    print(f"Loaded {len(corpus_lookup)} documents, {len(qa_examples)} QA examples ({split})")
+    print()
+
     index = build_index(corpus=list(corpus_lookup.values()), rebuild=rebuild_index)
     retriever = BM25Retriever(index=index, corpus_lookup=corpus_lookup)
+    print()
 
-    qa_examples = load_qa_examples(split=split)
     report = evaluate_retriever(retriever, qa_examples, k_values=(1, 5, 10))
     print_report(report)
 

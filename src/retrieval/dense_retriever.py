@@ -1,3 +1,10 @@
+"""
+Dense Retriever built on Dense Index.
+- Embed question using class Embedder
+- Search for top-k using class DenseIndex
+"""
+
+
 from __future__ import annotations
 
 from src.data_models.data_models import Document, RetrievalResult
