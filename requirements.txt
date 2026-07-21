@@ -10,4 +10,7 @@ streamlit>=1.37
 requests>=2.32
 pydantic>=2.7
 numpy>=1.26
+stix2>=3.0
+python-dotenv>=1.1
+groq>=0.31
 bm25s

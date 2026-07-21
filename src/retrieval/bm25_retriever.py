@@ -1,3 +1,9 @@
+"""
+BM25 Retriever built on the `bm25s` library.
+- Tokenize question using BM25 Index's Tokenizer
+- Search for top-k
+"""
+
 from __future__ import annotations
 
 from src.data_models.data_models import Document, RetrievalResult
