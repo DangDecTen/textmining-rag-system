@@ -2,7 +2,7 @@ from functools import lru_cache
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
-from src.generator import Generator
+from generation.generator import Generator
 from src.retrieval.retriever_factory import RetrieverFactory
 
 DEFAULT_INDEX_DIR = Path("data/index/faiss_index")

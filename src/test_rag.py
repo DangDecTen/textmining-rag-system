@@ -1,5 +1,5 @@
 from src.retrieval.retriever_factory import RetrieverFactory
-from src.generator import Generator
+from generation.generator import Generator
 
 def main():
     query = input("Enter query: ").strip()
