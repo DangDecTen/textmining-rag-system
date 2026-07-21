@@ -2,10 +2,12 @@
 BM25 index built on the `bm25s` library.
 - Tokenize document
 - Index scoring artifacts (sparse score matrix)
-- Store the Index (with `doc_id`, not full `text`), and Tokenizer
+- Store the Index (with `doc_id`, not full `text`), and Tokenizer in local
 
-We use bm25s's `Tokenizer` class with OUR OWN splitter function
+Components:
+- We use bm25s's `Tokenizer` class with OUR OWN splitter function
 (`simple_tokenize`) rather than bm25s's built-in tokenizer.
+- BM25Index with abstract class Index
 """
 
 from __future__ import annotations

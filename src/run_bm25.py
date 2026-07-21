@@ -14,7 +14,7 @@ from src.indexing.bm25_index import BM25Index
 from src.retrieval.bm25_retriever import BM25Retriever
 from src.data_models.data_models import Document
 from src.eval.retrieval_eval import evaluate_retriever, print_report
-
+from src.indexing.dense_index import
 
 INDEX_DIR = "data/index/bm25"
 
