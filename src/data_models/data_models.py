@@ -44,4 +44,8 @@ class QAExample(BaseModel):
 class RetrievalResult(BaseModel):
     doc_id: str
     score: float
+<<<<<<< HEAD
     document: Document | None = None
+=======
+    document: Document | None = None
+>>>>>>> main
