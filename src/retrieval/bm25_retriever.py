@@ -31,9 +31,9 @@ class BM25Retriever(Retriever):
 
         return [
             RetrievalResult(
-                doc_id=doc_id['text'],
+                doc_id=doc_id if isinstance(doc_id, str) else doc_id.get("doc_id", doc_id.get("text", "")),
                 score=float(score),
-                document=self.corpus_lookup.get(doc_id['text']),
+                document=self.corpus_lookup.get(doc_id if isinstance(doc_id, str) else doc_id.get("doc_id", doc_id.get("text", ""))),
             )
             for doc_id, score in zip(doc_ids_row, scores_row)
         ]

@@ -1,0 +1,358 @@
+{
+  "corpus_size": 17760,
+  "qa_size": 25335,
+  "split_counts": {
+    "train": 20268,
+    "dev": 2533,
+    "test": 2534
+  },
+  "corpus_source_counts": {
+    "relationships_detects": 1618,
+    "relationships_campaigns_for_technique": 224,
+    "relationships_uses_software": 8534,
+    "relationships_mitigations": 1131,
+    "techniques": 618,
+    "techniques_parent": 435,
+    "software": 676,
+    "relationships_detections_summaries": 597,
+    "relationships_mitigations_summaries": 544,
+    "relationships_software_for_group": 136,
+    "relationships_groups_for_technique": 421,
+    "tactics": 13,
+    "relationships_campaigns_for_software": 85,
+    "relationships_groups_for_software": 498,
+    "relationships_software_for_technique": 428,
+    "relationships_techniques_for_campaign": 27,
+    "relationships_campaigns_for_group": 8,
+    "relationships_groups_for_campaign": 12,
+    "groups": 148,
+    "relationships_techniques_for_group": 143,
+    "campaigns": 28,
+    "techniques_tactics": 637,
+    "relationships_techniques_for_software": 677,
+    "relationships_software_for_campaign": 28,
+    "techniques_sub": 94
+  },
+  "corpus_subject_type_counts": {
+    "techniques": 6653,
+    "T1055": 225,
+    "T1559": 53,
+    "T1546": 185,
+    "T1547": 242,
+    "T1137": 81,
+    "T1574": 211,
+    "T1560": 93,
+    "T1053": 169,
+    "T1059": 604,
+    "T1036": 251,
+    "T1218": 265,
+    "T1070": 378,
+    "T1069": 71,
+    "T1027": 445,
+    "T1552": 125,
+    "T1561": 37,
+    "T1021": 164,
+    "T1087": 116,
+    "T1136": 52,
+    "T1562": 199,
+    "T1480": 15,
+    "T1052": 19,
+    "T1056": 172,
+    "T1553": 90,
+    "T1564": 154,
+    "T1204": 133,
+    "T1566": 123,
+    "T1071": 401,
+    "T1003": 165,
+    "T1505": 79,
+    "T1543": 164,
+    "T1484": 29,
+    "T1583": 60,
+    "T1584": 60,
+    "T1608": 46,
+    "T1587": 25,
+    "T1588": 49,
+    "T1567": 55,
+    "T1074": 93,
+    "T1102": 84,
+    "T1048": 68,
+    "T1001": 66,
+    "T1573": 220,
+    "T1098": 70,
+    "T1078": 65,
+    "T1578": 39,
+    "T1589": 23,
+    "T1213": 37,
+    "T1598": 44,
+    "T1090": 92,
+    "T1595": 27,
+    "T1127": 11,
+    "T1518": 100,
+    "T1497": 118,
+    "T1585": 21,
+    "T1114": 48,
+    "T1550": 63,
+    "T1110": 60,
+    "T1591": 24,
+    "T1593": 20,
+    "T1614": 32,
+    "T1548": 109,
+    "T1569": 61,
+    "T1016": 30,
+    "T1558": 56,
+    "T1555": 137,
+    "T1195": 33,
+    "T1606": 27,
+    "T1132": 122,
+    "T1222": 42,
+    "T1491": 27,
+    "T1568": 47,
+    "T1556": 109,
+    "T1563": 32,
+    "T1542": 60,
+    "T1565": 35,
+    "T1037": 57,
+    "T1597": 11,
+    "T1596": 25,
+    "T1216": 15,
+    "T1205": 23,
+    "T1134": 67,
+    "T1557": 43,
+    "T1020": 9,
+    "T1586": 20,
+    "T1602": 26,
+    "T1499": 38,
+    "T1011": 14,
+    "T1592": 28,
+    "T1590": 35,
+    "T1601": 23,
+    "T1599": 12,
+    "T1498": 16,
+    "T1600": 9,
+    "software": 1936,
+    "groups": 435,
+    "tactics": 13,
+    "campaigns": 95
+  },
+  "corpus_length_stats": {
+    "min": 59.0,
+    "median": 181.0,
+    "mean": 274.58384009009006,
+    "max": 6786.0
+  },
+  "corpus_length_quantiles": {
+    "q33": 159.0,
+    "q67": 222.0
+  },
+  "question_category_counts": {
+    "relation_or_detection": 16511,
+    "direct_lookup": 6731,
+    "rewrite_or_summarize": 1417,
+    "reasoning_translation": 654,
+    "other": 22
+  },
+  "doc_bucket_counts": {
+    "medium": 7569,
+    "long": 10723,
+    "short": 7043
+  },
+  "doc_bucket_thresholds": {
+    "short_cutoff": 159.0,
+    "long_cutoff": 222.0
+  },
+  "answer_style_counts": {
+    "semi_extractive": 5771,
+    "extractive": 19141,
+    "abstractive": 423
+  },
+  "answer_overlap_stats": {
+    "doc": {
+      "min": 0.0,
+      "median": 0.9259259259259259,
+      "mean": 0.8734027364248343,
+      "max": 1.0
+    },
+    "question": {
+      "min": 0.0,
+      "median": 0.2777777777777778,
+      "mean": 0.3228466329807657,
+      "max": 0.9545454545454546
+    },
+    "thought": {
+      "min": 0.0,
+      "median": 0.3125,
+      "mean": 0.35174196036151617,
+      "max": 1.0
+    }
+  },
+  "exact_match_rates": {
+    "document": 0.3514110913755674,
+    "question": 0.0,
+    "thought": 0.004854943753700414
+  },
+  "dominant_overlap_field_counts": {
+    "document": 24504,
+    "question": 595,
+    "thought": 236
+  },
+  "top_question_prefixes": [
+    [
+      "how",
+      12822
+    ],
+    [
+      "what",
+      9508
+    ],
+    [
+      "describe",
+      1431
+    ],
+    [
+      "which",
+      657
+    ],
+    [
+      "who",
+      296
+    ],
+    [
+      "when",
+      290
+    ],
+    [
+      "why",
+      217
+    ],
+    [
+      "where",
+      58
+    ],
+    [
+      "is",
+      23
+    ],
+    [
+      "in",
+      12
+    ],
+    [
+      "can",
+      8
+    ],
+    [
+      "are",
+      3
+    ],
+    [
+      "against",
+      3
+    ],
+    [
+      "has",
+      3
+    ],
+    [
+      "at",
+      2
+    ]
+  ],
+  "short_doc_top_question_categories": {
+    "relation_or_detection": 4369,
+    "direct_lookup": 2448,
+    "rewrite_or_summarize": 213,
+    "reasoning_translation": 11,
+    "other": 2
+  },
+  "long_doc_top_question_categories": {
+    "relation_or_detection": 5788,
+    "direct_lookup": 3322,
+    "rewrite_or_summarize": 1006,
+    "reasoning_translation": 591,
+    "other": 16
+  },
+  "short_doc_top_sources": [
+    [
+      "relationships_uses_software",
+      3181
+    ],
+    [
+      "software",
+      807
+    ],
+    [
+      "techniques_tactics",
+      632
+    ],
+    [
+      "relationships_groups_for_software",
+      470
+    ],
+    [
+      "relationships_mitigations_summaries",
+      466
+    ],
+    [
+      "relationships_detections_summaries",
+      324
+    ],
+    [
+      "relationships_groups_for_technique",
+      250
+    ],
+    [
+      "techniques_parent",
+      222
+    ],
+    [
+      "relationships_software_for_technique",
+      189
+    ],
+    [
+      "relationships_campaigns_for_technique",
+      162
+    ]
+  ],
+  "long_doc_top_sources": [
+    [
+      "relationships_detects",
+      2206
+    ],
+    [
+      "techniques",
+      2139
+    ],
+    [
+      "relationships_mitigations",
+      1731
+    ],
+    [
+      "relationships_uses_software",
+      1106
+    ],
+    [
+      "software",
+      1095
+    ],
+    [
+      "relationships_techniques_for_software",
+      537
+    ],
+    [
+      "groups",
+      487
+    ],
+    [
+      "relationships_mitigations_summaries",
+      338
+    ],
+    [
+      "relationships_detections_summaries",
+      301
+    ],
+    [
+      "relationships_software_for_technique",
+      184
+    ]
+  ]
+}
