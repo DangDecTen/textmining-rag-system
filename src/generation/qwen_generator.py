@@ -1,23 +1,26 @@
 """
-Generator implementation using Qwen2.5-1.5B-Instruct via raw `transformers`
-(no inference framework like vLLM/TGI -- overkill for a single free-tier GPU,
-and consistent with using lower-level components elsewhere in this project).
-
-Greedy decoding (do_sample=False): for closed-domain factoid QA with a strict
-output format, we want deterministic, reproducible output, not diversity.
+Generator with "Qwen2.5-1.5B-Instruct" via raw `transformers`
+- input: `list[RetrievalResult]`
+- output: GenerationResult
 """
 from __future__ import annotations
 
+import os
 import time
-
+from dotenv import load_dotenv
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from src.data_models.data_models import GenerationResult
+from src.data_models.data_models import RetrievalResult, GenerationResult
 from src.generation.base import Generator
 from src.generation.context_builder import ContextBuilder
 from src.generation.output_parser import parse_structured_output
 from src.generation.prompt import SYSTEM_PROMPT, build_user_message
+
+
+load_dotenv()
+if hf_token := os.getenv("HF_TOKEN"):
+    os.environ["HF_TOKEN"] = hf_token
 
 
 class QwenGenerator(Generator):
@@ -41,7 +44,7 @@ class QwenGenerator(Generator):
 
         self.context_builder = ContextBuilder(self.tokenizer, max_context_tokens=max_context_tokens)
 
-    def generate(self, question: str, contexts: list) -> GenerationResult:
+    def generate(self, question: str, contexts: list[RetrievalResult]) -> GenerationResult:
         start = time.time()
 
         context_block = self.context_builder.build(contexts)

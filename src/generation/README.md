@@ -1,0 +1,68 @@
+# Stage 03/04 — Generation
+
+Closed-domain, factoid, short-answer QA with structured abstention.
+
+## Pipeline (logical, not 1:1 with classes)
+
+```
+RetrievalResult(s) → [ContextBuilder, internal to Generator] → Generator → GenerationResult → ResponseBuilder → Answer
+```
+
+`ContextBuilder` is a plain utility composed inside `Generator` (same
+architectural role as `Embedder`/tokenizer elsewhere), not a separate stage
+in the `Generator.generate(question, contexts)` interface — that interface
+takes raw `list[RetrievalResult]`, so any intermediate formatting has to
+happen inside the implementation, not before it.
+
+## Design decisions (confirmed)
+
+- **Model**: `Qwen/Qwen2.5-1.5B-Instruct`, raw `transformers` (no vLLM/TGI —
+  consistent with using lower-level components elsewhere), greedy decoding
+  (`do_sample=False`) for reproducible output on a strict-format task.
+- **Abstention signal**: structured JSON (`{"answer": ..., "found": bool}`),
+  not a canonical refusal phrase. Parsed by `output_parser.py`, which is
+  deliberately fail-safe: any parse failure (malformed JSON, no JSON found,
+  missing/null fields) is treated as `found=False`, never as a best-guess
+  answer. In a cybersecurity QA tool, an incorrect abstention is a much
+  cheaper mistake than a confident wrong answer — verified this fail-safe
+  path explicitly in testing (see below).
+- **`GenerationResult` gained a `found: bool` field** beyond what you
+  originally specified — flagging this explicitly since I changed your
+  schema rather than silently going around it. Rationale: the model already
+  signals abstention structurally; collapsing that back into string-matching
+  on `answer` downstream would throw the signal away.
+- **`ContextBuilder`** dedupes by `doc_id`, sorts by score, and enforces a
+  token budget (`max_context_tokens`, default 1500) using the *same*
+  tokenizer the generator will use — not an approximate token count.
+
+## Evaluation angle worth using (stage04)
+
+AttackQA has no native "unanswerable" examples — every question was
+generated from an existing document, so every question is answerable *if*
+the right document is retrieved. The only realistic way to evaluate
+abstention is to use **retrieval failures as a natural unanswerable set**:
+for dev questions where the retriever's top-k did NOT include the
+ground-truth doc_id, correct behavior is to abstain, so abstention rate
+conditioned on retrieval failure is effectively a hallucination-rate metric.
+For questions where retrieval succeeded, evaluate normally (EM/F1 against
+the short reference `answer`). This connects stage01's retrieval eval
+directly to stage04's generation eval — worth building the eval script this
+way when we get there, and worth a slide in the presentation.
+
+## Known limitation / next check
+
+No network here to install `torch`/`transformers`, so `QwenGenerator` was
+tested against hand-written stand-ins for `AutoTokenizer`/
+`AutoModelForCausalLM`/`generate()`. This verified: prompt construction
+(system + user messages via `apply_chat_template`), accurate token counting,
+and — most importantly — all three generator outcomes end-to-end through
+`ResponseBuilder`: a valid `found=true` JSON response, an explicit
+`found=false` response, and a malformed/unparseable response, confirming the
+fail-safe-to-abstain path actually works rather than just existing in code.
+**Not tested**: real Qwen2.5-1.5B-Instruct output quality or actual JSON-format
+adherence rate — that's the real open question once you run this for real.
+Small instruct models don't always follow strict-JSON instructions reliably;
+if you see a meaningful fraction of dev questions falling into the
+fail-safe-abstain path due to malformed output (not genuine "not found"), that's
+worth flagging back to me — the fix is probably a stronger worked example in
+the prompt, not a bigger model.

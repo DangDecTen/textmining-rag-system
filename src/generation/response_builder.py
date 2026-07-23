@@ -6,7 +6,7 @@ ABSTAIN_MESSAGE = "I don't have enough information in the knowledge base to answ
 class ResponseBuilder:
     def build(self, generation_result: GenerationResult) -> Answer:
         if not generation_result.found:
-            return Answer(text=ABSTAIN_MESSAGE, citations=[], abstained=True)
+            return Answer(text=ABSTAIN_MESSAGE, abstained=True, citations=[])
 
         citations = []
         seen_doc_ids = set()
@@ -15,7 +15,17 @@ class ResponseBuilder:
                 continue
             seen_doc_ids.add(r.doc_id)
             citations.append(
-                Citation(doc_id=r.doc_id, url=r.document.url, subject_name=r.document.subject_name)
+                Citation(
+                    doc_id=r.doc_id,
+                    subject_id=r.document.subject_id,
+                    subject_name=r.document.subject_name,
+                    source=r.document.source,
+                    field=r.document.field,
+                    relation_id=r.document.relation_id,
+                    relation_name=r.document.relation_name,
+                    url=r.document.url,
+                    references=r.document.references,
+                )
             )
 
         return Answer(text=generation_result.answer, citations=citations, abstained=False)

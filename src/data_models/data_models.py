@@ -71,8 +71,15 @@ class GenerationResult(BaseModel):
 
 class Citation(BaseModel):
     doc_id: str
-    url: str
+
+    subject_id: str
     subject_name: str | None = None
+    source: str
+    field: str | None = None
+    relation_id: str | None = None
+    relation_name: str | None = None
+    url: str
+    references: list[dict] | None = None
 
 
 class Answer(BaseModel):
@@ -80,5 +87,5 @@ class Answer(BaseModel):
     scores) are deliberately left behind in GenerationResult."""
 
     text: str
-    citations: list[Citation]
     abstained: bool
+    citations: list[Citation]
