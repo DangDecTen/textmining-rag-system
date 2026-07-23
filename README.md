@@ -8,23 +8,37 @@ Text Mining, build a simple RAG system
 - Indexing & Retrieval
 	- [Lexical Retrieval](#lexical-retrieval)
 	- [Dense Retrieval](#dense-retrieval)
+- Generator
+	- [Llama Generator](#llama-generator)
+    - [Qwen Generator](#qwen-generator)
 - [Streamlit App](#streamlit-app)
 - [Repository Structure](#repository-structure)
 - [References](#references)
 
 ## RAG Pipeline
 
+Preparing the Index for retrieval.
+
 ```
 attackqa.parquet
-        │  run_ingestion.py
+        │  data ingestion
         ▼
 corpus + QA pairs (train/dev/test)
-        │
+        │  indexing
         ▼
-Index (indexing/base.py)
-        │
+Index + Retriever
+```
+
+Full RAG pipeline.
+
+```
+question + top_k
+        │  
         ▼
-Retriever (retrieval/base.py)
+Pipeline (Retriever + Generator)
+        │  
+        ▼
+Answer
 ```
 
 ## Data Ingestion
@@ -84,17 +98,44 @@ Report on some experiments.
 |-|-|-|-|-|
 |`IndexFlatIP`|~32 min|2,533 (dev)|mrr: 0.847<br>recall@1: 0.797<br>recall@5: 0.914<br>recall@10: 0.940|model: `BAAI/bge-small-en-v1.5`<br>batch: 64|
 
-Start the API server:
+## Generator
+
+Using `RetrievalResult` from retrieval stage as inputs, the generator is forced to output in JSON format (config with system prompt and/or API interface) which then is parsed into `GenerationResult` for a structured answer.
+
+Test the question and number of retrieved documents (k) with your desired `Retriever` and `Generator`.
 
 ```bash
-uvicorn src.api:app --reload
+# Choose your retriever, generator, and then run the file
+python -m src.test_rag
 ```
 
-Then query it:
+### Llama Generator
 
-```bash
-curl -X POST http://127.0.0.1:8000/query -H "Content-Type: application/json" -d "{\"query\": \"mitigations for command and control\", \"k\": 5}"
+Use Groq API to generate with [`llama-3.3-70b-versatile`](https://console.groq.com/docs/model/llama-3.3-70b-versatile) model.
+
+```dotenv
+# Set your API key in .env to use Groq models.
+GROQ_API_KEY=<YOUR_API_KEY>
 ```
+
+Limits:
+- Context window: 131,072
+- Max output tokens: 32,768
+- Latency: ~1 sec
+
+### Qwen Generator
+
+Download from Hugging with [`Qwen/Qwen2.5-1.5B-Instruct`](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct) model.
+
+```dotenv
+# Optional, set a HF_TOKEN in .env to enable faster model downloads.
+HF_TOKEN=<YOUR_API_KEY>
+```
+
+Limits:
+- Context window: 128k
+- Max output tokens: 8k
+- Latency: ~15 min
 
 ## Streamlit App
 
@@ -120,6 +161,20 @@ Open another terminal and run the streamlit app
 
 ```bash
 python -m streamlit run app.py
+```
+
+## API (in progress...)
+
+Start the API server:
+
+```bash
+uvicorn src.api:app --reload
+```
+
+Then query it:
+
+```bash
+curl -X POST http://127.0.0.1:8000/query -H "Content-Type: application/json" -d "{\"query\": \"mitigations for command and control\", \"k\": 5}"
 ```
 
 ## Repository Structure
