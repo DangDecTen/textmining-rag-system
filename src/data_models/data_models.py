@@ -45,3 +45,40 @@ class RetrievalResult(BaseModel):
     doc_id: str
     score: float
     document: Document | None = None
+
+
+class GenerationResult(BaseModel):
+    """Output produced by a Generator."""
+
+    answer: str
+
+    # Whether the generator located the answer in the provided context, vs.
+    # abstained.
+    found: bool
+
+    # Prompt actually sent to the LLM.
+    # Useful for debugging, evaluation, and reproducibility.
+    prompt: str
+
+    # Retrieved documents that were provided as context.
+    retrieval_results: list[RetrievalResult]
+
+    # Generation statistics.
+    latency_ms: float
+    prompt_tokens: int | None = None
+    completion_tokens: int | None = None
+
+
+class Citation(BaseModel):
+    doc_id: str
+    url: str
+    subject_name: str | None = None
+
+
+class Answer(BaseModel):
+    """Final, UI-facing response -- debug fields (prompt, latency, raw retrieval
+    scores) are deliberately left behind in GenerationResult."""
+
+    text: str
+    citations: list[Citation]
+    abstained: bool
