@@ -8,7 +8,7 @@ Text Mining, build a simple RAG system
 - Indexing & Retrieval
 	- [Lexical Retrieval](#lexical-retrieval)
 	- [Dense Retrieval](#dense-retrieval)
-- Generator
+- [Generator](#generator)
 	- [Llama Generator](#llama-generator)
     - [Qwen Generator](#qwen-generator)
 - [Streamlit App](#streamlit-app)
