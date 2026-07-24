@@ -1,0 +1,2432 @@
+[
+  {
+    "question": "What is the purpose of Mark-of-the-Web (MOTW) controls in Windows?",
+    "source": "techniques",
+    "true_answer": "Mark-of-the-Web (MOTW) controls in Windows are designed to protect files downloaded from the Internet by tagging them with a hidden NTFS Alternate Data Stream (ADS) named Zone.Identifier with a specific value, thereby preventing certain actions from being performed.",
+    "generated_answer": "The purpose of Mark-of-the-Web (MOTW) controls in Windows is to protect files downloaded from the Internet by tagging them with a hidden NTFS Alternate Data Stream (ADS) and preventing certain actions, such as execution of unknown executables and opening of MS Office files in Protected View.",
+    "references": [
+      "5dd58c22f09a4375"
+    ],
+    "hard_accuracy": 9,
+    "faithfulness": 9,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is the purpose of ASPXSpy?",
+    "source": "software",
+    "true_answer": "The purpose of ASPXSpy is to create a Web shell that has been modified by Threat Group-3390 actors to create the ASPXTool version.",
+    "generated_answer": "ASPxSpy is a Web shell",
+    "references": [
+      "8689c03a5dfe214e",
+      "c3796bde4ded92cf"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 0,
+    "answer_relevancy": 0
+  },
+  {
+    "question": "What are the specific data components that can be used to detect the attack technique 'T1556.006: Modify Authentication Process: Multi-Factor Authentication'?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The specific data components that can be used to detect the attack technique 'T1556.006: Modify Authentication Process: Multi-Factor Authentication' are Active Directory Object Modification, Application Log Content, Logon Session Creation, User Account Authentication, and User Account Modification.",
+    "generated_answer": "Active Directory Object Modification, Application Log Content, Logon Session Creation, User Account Authentication, User Account Modification",
+    "references": [
+      "210d357ed4713597"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0107: Cherry Picker' use attack technique 'T1070.004: File Deletion'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Recent versions of Cherry Picker delete files and registry keys created by the malware.",
+    "generated_answer": "Recent versions of Cherry Picker delete files and registry keys created by the malware.",
+    "references": [
+      "9ec71120304a0e85"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is the recommended approach to manage accounts and permissions in trusted relationships?",
+    "source": "relationships_mitigations",
+    "true_answer": "Properly manage accounts and permissions used by parties in trusted relationships to minimize potential abuse by the party and if the party is compromised by an adversary. In Office 365 environments, partner relationships and roles can be viewed under the 'Partner Relationships' page.",
+    "generated_answer": "Properly manage accounts and permissions used by parties in trusted relationships to minimize potential abuse by the party and if the party is compromised by an adversary.",
+    "references": [
+      "776c90b5f8c99063"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What are the two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware'?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware' are Malware Content and Malware Metadata.",
+    "generated_answer": "Malware Content, Malware Metadata",
+    "references": [
+      "c2464d4168d0db49"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0083: Misdat' use attack technique 'T1041: Exfiltration Over C2 Channel'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Misdat has been observed to upload files and data to its C2 servers.",
+    "generated_answer": "Misdat has uploaded files and data to its C2 servers.",
+    "references": [
+      "85e22dc8bcba34a4"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Describe attack technique 'T1584.005: Compromise Infrastructure: Botnet'",
+    "source": "techniques",
+    "true_answer": "T1584.005: Compromise Infrastructure: Botnet is an attack technique that involves compromising numerous third-party systems to form a botnet, which is a network of compromised systems that can be instructed to perform coordinated tasks. Instead of purchasing or renting a botnet from a booter/stresser service, adversaries may build their own botnet by compromising numerous third-party systems.",
+    "generated_answer": "Attack technique 'T1584.005: Compromise Infrastructure: Botnet' is a sub-technique of 'T1584: Compromise Infrastructure' and uses the tactic 'Resource Development'.",
+    "references": [
+      "30efe4033b44ca1c",
+      "2e32a42ebafb08a7"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What software procedures use attack technique 'T1136.003: Cloud Account'?",
+    "source": "relationships_software_for_technique",
+    "true_answer": "The software procedures that use attack technique 'T1136.003: Cloud Account' are: 'S0677: AADInternals'",
+    "generated_answer": "S0677: AADInternals",
+    "references": [
+      "d4872a6a1216258d"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0680: LitePower' use attack technique 'T1053.005: Scheduled Task'?",
+    "source": "relationships_uses_software",
+    "true_answer": "LitePower can create a scheduled task to enable persistence mechanisms.",
+    "generated_answer": "LitePower can create a scheduled task to enable persistence mechanisms.",
+    "references": [
+      "aaf6468faab5cfa6"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0534: Bazar' use attack technique 'T1057: Process Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Bazar can identify the current process on a compromised host, which is a characteristic of the 'T1057: Process Discovery' attack technique.",
+    "generated_answer": "Bazar can identify the current process on a compromised host.",
+    "references": [
+      "483f6f848801ccaa"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0148: RTM' use attack technique 'T1059.003: Windows Command Shell'?",
+    "source": "relationships_uses_software",
+    "true_answer": "RTM uses the command line and rundll32.exe to execute commands.",
+    "generated_answer": "RTM uses the command line and rundll32.exe to execute.",
+    "references": [
+      "02a641428802218e"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S1033: DCSrv' use attack technique 'T1027.013: Encrypted/Encoded File'?",
+    "source": "relationships_uses_software",
+    "true_answer": "DCSrv's configuration is encrypted, which enables the attack software to conceal its settings and operations.",
+    "generated_answer": "DCSrv's configuration is encrypted.",
+    "references": [
+      "4a97cde01d215b1b"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0451: LoudMiner' use attack technique 'T1543.003: Windows Service'?",
+    "source": "relationships_uses_software",
+    "true_answer": "LoudMiner can automatically launch a Linux virtual machine as a service at startup if the AutoStart option is enabled in the VBoxVmService configuration file.",
+    "generated_answer": "LoudMiner can automatically launch a Linux virtual machine as a service at startup if the AutoStart option is enabled in the VBoxVmService configuration file.",
+    "references": [
+      "d4dbe8d8b61113c5"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0386: Ursnif' use attack technique 'T1106: Native API'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Ursnif has used the CreateProcessW function to create child processes, which is an example of utilizing the Native API technique 'T1106'.",
+    "generated_answer": "Ursnif has used CreateProcessW to create child processes.",
+    "references": [
+      "2d44bd3627e538e3"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What type of network connections should be monitored to detect the 'T1104: Multi-Stage Channels' attack technique?",
+    "source": "relationships_detects",
+    "true_answer": "Newly constructed network connections should be monitored to detect the 'T1104: Multi-Stage Channels' attack technique, specifically those sent or received by untrusted hosts.",
+    "generated_answer": "Newly constructed network connections sent or received by untrusted hosts and uncommon data flows from processes that do not normally have network communication",
+    "references": [
+      "dfc70d557dff619c",
+      "8b52cd69537386d0"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What attack techniques were used in campaign 'C0017: C0017'?",
+    "source": "relationships_techniques_for_campaign",
+    "true_answer": "The attack techniques used in campaign 'C0017: C0017' were: 'T1001.003: Protocol Impersonation', 'T1003.002: Security Account Manager', 'T1005: Data from Local System', 'T1016: System Network Configuration Discovery', 'T1027.002: Software Packing', 'T1027: Obfuscated Files or Information', 'T1033: System Owner/User Discovery', 'T1036.004: Masquerade Task or Service', 'T1036.005: Match Legitimate Name or Location', 'T1041: Exfiltration Over C2 Channel', 'T1048.003: Exfiltration Over Unencrypted Non-C2 Protocol', 'T1053.005: Scheduled Task', 'T1059.003: Windows Command Shell', 'T1059.007: JavaScript', 'T1068: Exploitation for Privilege Escalation', 'T1071.001: Web Protocols', 'T1074.001: Local Data Staging', 'T1082: System Information Discovery', 'T1090: Proxy', 'T1102.001: Dead Drop Resolver', 'T1102: Web Service', 'T1105: Ingress Tool Transfer', 'T1134: Access Token Manipulation', 'T1140: Deobfuscate/Decode Files or Information', 'T1190: Exploit Public-Facing Application', 'T1505.003: Web Shell', 'T1560.003: Archive via Custom Method', 'T1567: Exfiltration Over Web Service', 'T1574: Hijack Execution Flow', 'T1588.002: Tool'",
+    "generated_answer": "The attack techniques used in campaign 'C0017: C0017' were: 'T1001.003: Protocol Impersonation', 'T1003.002: Security Account Manager', 'T1005: Data from Local System', 'T1016: System Network Configuration Discovery', 'T1027.002: Software Packing', 'T1027: Obfuscated Files or Information', 'T1033: System Owner/User Discovery', 'T1036.004: Masquerade Task or Service', 'T1036.005: Match Legitimate Name or Location', 'T1041: Exfiltration Over C2 Channel', 'T1048.003: Exfiltration Over Unencrypted Non-C2 Protocol', 'T1053.005: Scheduled Task', 'T1059.003: Windows Command Shell', 'T1059.007: JavaScript', 'T1068: Exploitation for Privilege Escalation', 'T1071.001: Web Protocols', 'T1074.001: Local Data Staging', 'T1082: System Information Discovery', 'T1090: Proxy', 'T1102.001: Dead Drop Resolver', 'T1102: Web Service', 'T1105: Ingress Tool Transfer', 'T1134: Access Token Manipulation', 'T1140: Deobfuscate/Decode Files or Information', 'T1190: Exploit Public-Facing Application', 'T1505.003: Web Shell', 'T1560.003: Archive via Custom Method', 'T1567: Exfiltration Over Web Service', 'T1574: Hijack Execution Flow', 'T1588.002: Tool'",
+    "references": [
+      "2f8fae0d50597643"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0386: Ursnif' use attack technique 'T1059.005: Visual Basic'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Ursnif droppers use VBA macros to download and execute the malware's full executable payload.",
+    "generated_answer": "Ursnif droppers have used VBA macros to download and execute the malware's full executable payload.",
+    "references": [
+      "b20504f9aeee6753"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What software are used by attack group 'G0090: WIRTE'?",
+    "source": "relationships_software_for_group",
+    "true_answer": "The software used by attack group 'G0090: WIRTE' are: 'S0363: Empire', 'S0679: Ferocious', 'S0680: LitePower'",
+    "generated_answer": "The software used by attack group 'G0090: WIRTE' are: 'S0363: Empire', 'S0679: Ferocious', 'S0680: LitePower'",
+    "references": [
+      "f06de8dc00ed85c3"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can data component 'Process Modification' be used to detect attack technique 'T1055.004: Asynchronous Procedure Call'?",
+    "source": "relationships_detects",
+    "true_answer": "Monitor for changes made to processes that may inject malicious code into processes via the asynchronous procedure call (APC) queue in order to evade process-based defenses as well as possibly elevate privileges.",
+    "generated_answer": "Monitor for changes made to processes that may inject malicious code into processes via the asynchronous procedure call (APC) queue in order to evade process-based defenses as well as possibly elevate privileges.",
+    "references": [
+      "bbc1a6f1adb675a2"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What attack techniques are used by software 'S0027: Zeroaccess'?",
+    "source": "relationships_techniques_for_software",
+    "true_answer": "The attack techniques used by software 'S0027: Zeroaccess' are: 'T1014: Rootkit', 'T1564.004: NTFS File Attributes'",
+    "generated_answer": "T1014: Rootkit, T1564.004: NTFS File Attributes",
+    "references": [
+      "356528a8f691f418"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Which tactics are used in attack technique 'T1059.002: Command and Scripting Interpreter: AppleScript'? Name them all",
+    "source": "techniques_tactics",
+    "true_answer": "1 tactic is used in attack technique 'T1059.002: Command and Scripting Interpreter: AppleScript'. It is: Execution",
+    "generated_answer": "Execution",
+    "references": [
+      "cecdf2e87edacba4"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What are the specific data components used to detect the attack technique 'T1574.014: Hijack Execution Flow: AppDomainManager'?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The specific data components used to detect the attack technique 'T1574.014: Hijack Execution Flow: AppDomainManager' are File Creation, Module Load, and Process Creation.",
+    "generated_answer": "File Creation, Module Load, Process Creation",
+    "references": [
+      "4f80b34bfad2db1f"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Describe attack technique 'T1530: Data from Cloud Storage'",
+    "source": "techniques",
+    "true_answer": "T1530: Data from Cloud Storage is an attack technique that involves adversaries accessing and collecting sensitive data from cloud storage solutions, such as Amazon S3, Azure Storage, and Google Cloud Storage, as well as cloud-based document storage provided by SaaS enterprise platforms like Office 365 and Google Workspace. Adversaries may collect this data directly from APIs or backend cloud storage objects, rather than through the front-end application or interface.",
+    "generated_answer": "Attack technique 'T1530: Data from Cloud Storage' involves collecting data from cloud storage and can be detected by monitoring for unusual queries to the cloud provider's storage service, including activity from unexpected sources and detecting failed attempts by a user followed by escalation of privileges.",
+    "references": [
+      "e775df6109204703",
+      "bd6967dcfcfc9304"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Describe attack software 'S0391: HAWKBALL'",
+    "source": "software",
+    "true_answer": "S0391: HAWKBALL is an attack software that is a backdoor that was observed in targeting the government sector in Central Asia.",
+    "generated_answer": "HAWKBALL is a backdoor that targets the government sector in Central Asia, using various attack techniques such as encrypted file, system owner discovery, exfiltration over C2 channel, and system information discovery.",
+    "references": [
+      "8b0d52578c8ad845",
+      "d3bcd124d8a160fc"
+    ],
+    "hard_accuracy": 9,
+    "faithfulness": 9,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is one way to prevent the 'T1098.004: Account Manipulation: SSH Authorized Keys' attack technique?",
+    "source": "relationships_mitigations_summaries",
+    "true_answer": "One way to prevent the 'T1098.004: Account Manipulation: SSH Authorized Keys' attack technique is to disable or remove the feature or program that is vulnerable to the attack.",
+    "generated_answer": "M1042: Disable or Remove Feature or Program",
+    "references": [
+      "2879465cb6bb4241"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0439: Okrum' use attack technique 'T1132.001: Standard Encoding'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Okrum has employed base64 encoding for encrypting its C2 communication.",
+    "generated_answer": "Okrum uses base64 to encode C2 communication.",
+    "references": [
+      "02ed3417cca606e7"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can mitigation strategy 'M1031: Network Intrusion Prevention' be used to mitigate attack technique 'T1071.003: Mail Protocols'?",
+    "source": "relationships_mitigations",
+    "true_answer": "Network intrusion detection and prevention systems that use network signatures to identify traffic for specific adversary malware can be used to mitigate activity at the network level.",
+    "generated_answer": "Network intrusion detection and prevention systems that use network signatures to identify traffic for specific adversary malware can be used to mitigate activity at the network level.",
+    "references": [
+      "5aac4c60fcd1003c"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0431: HotCroissant' use attack technique 'T1518: Software Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "HotCroissant uses attack technique 'T1518: Software Discovery' by retrieving a list of applications from the SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths registry key.",
+    "generated_answer": "HotCroissant can retrieve a list of applications from the SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths registry key.",
+    "references": [
+      "a56aa5ddded7c1ef"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Which tactics are used in attack technique 'T1125: Video Capture'? Name them all",
+    "source": "techniques_tactics",
+    "true_answer": "1 tactic is used in attack technique 'T1125: Video Capture'. It is: Collection",
+    "generated_answer": "Collection",
+    "references": [
+      "aab0b9859d7795f0"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0476: Valak' use attack technique 'T1105: Ingress Tool Transfer'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Valak uses attack technique 'T1105: Ingress Tool Transfer' by downloading a variety of modules and payloads to the compromised host, including IcedID and NetSupport Manager RAT-based malware.",
+    "generated_answer": "Valak downloads a variety of modules and payloads to the compromised host, including IcedID and NetSupport Manager RAT-based malware.",
+    "references": [
+      "16f9b382f9a269db"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0375: Remexi' use attack technique 'T1071.001: Web Protocols'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Remexi uses BITSAdmin to communicate with the C2 server over HTTP.",
+    "generated_answer": "Remexi uses BITSAdmin to communicate with the C2 server over HTTP.",
+    "references": [
+      "6fb410f84c0e3e31"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Who uses PUNCHBUGGY?",
+    "source": "software",
+    "true_answer": "PUNCHBUGGY is used by FIN8.",
+    "generated_answer": "FIN8",
+    "references": [
+      "efa84566353e5131"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What was the target of Ajax Security Team's malware-based cyber espionage campaigns after 2014?",
+    "source": "groups",
+    "true_answer": "The targets of Ajax Security Team's malware-based cyber espionage campaigns after 2014 were the US defense industrial base and Iranian users of anti-censorship technologies.",
+    "generated_answer": "The US defense industrial base and Iranian users of anti-censorship technologies",
+    "references": [
+      "5e9da73d7d12dd7a"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can data component 'Drive Access' be used to detect attack technique 'T1561.002: Disk Structure Wipe'?",
+    "source": "relationships_detects",
+    "true_answer": "Monitor for newly constructed drive letters or mount points to a data storage device for attempts to write to sensitive locations like the partition boot sector, master boot record, disk partition table, or BIOS parameter block/superblock.",
+    "generated_answer": "I do not have enough information from the provided context.",
+    "references": [],
+    "hard_accuracy": 10,
+    "faithfulness": 0,
+    "answer_relevancy": 0
+  },
+  {
+    "question": "How can data component 'File Access' be used to detect attack technique 'T1558: Steal or Forge Kerberos Tickets'?",
+    "source": "relationships_detects",
+    "true_answer": "Monitor for unexpected processes interacting with lsass.exe, as common credential dumpers such as Mimikatz access the LSA Subsystem Service (LSASS) process by opening the process, locating the LSA secrets key, and decrypting the sections in memory where credential details, including Kerberos tickets, are stored.",
+    "generated_answer": "I do not have enough information from the provided context.",
+    "references": [],
+    "hard_accuracy": 0,
+    "faithfulness": 0,
+    "answer_relevancy": 0
+  },
+  {
+    "question": "Describe attack technique 'T1484: Domain or Tenant Policy Modification'",
+    "source": "techniques",
+    "true_answer": "T1484: Domain or Tenant Policy Modification is an attack technique that involves modifying the configuration settings of a domain or identity tenant to evade defenses and/or escalate privileges in centrally managed environments. Adversaries may alter domain Group Policy Objects (GPOs) in Microsoft Active Directory (AD) or change trust settings for domains, including federation trusts relationships between domains or tenants.",
+    "generated_answer": "Attack technique 'T1484: Domain or Tenant Policy Modification' has sub-techniques 'T1484.001: Domain or Tenant Policy Modification: Group Policy Modification' and 'T1484.002: Domain or Tenant Policy Modification: Trust Modification', and can be detected using data components such as Active Directory Object Creation, Active Directory Object Deletion, Active Directory Object Modification, Application Log Content, and Command Execution.",
+    "references": [
+      "5d5ef0a7da5b19bd",
+      "1e1cc56ec25e65d6"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Describe attack technique 'T1584.008: Compromise Infrastructure: Network Devices'",
+    "source": "techniques",
+    "true_answer": "T1584.008: Compromise Infrastructure: Network Devices is an attack technique that involves compromising third-party network devices, such as small office/home office (SOHO) routers, to support additional targeting. These compromised devices can be used to launch payloads for phishing campaigns, enable access to execute content injection operations, and harvest reusable credentials from compromised network devices.",
+    "generated_answer": "Attack technique 'T1584.008: Compromise Infrastructure: Network Devices' is a sub-technique of 'T1584: Compromise Infrastructure' and involves compromising network devices, with tactics including Resource Development, and can be detected using Response Content and mitigated with M1056: Pre-compromise",
+    "references": [
+      "51ef05790910e400",
+      "144e048b90abc8e0",
+      "5fd34eb9de9d2402",
+      "ce8bc55ee9211a04"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is the primary target of Aoqin Dragon's cyber attacks?",
+    "source": "groups",
+    "true_answer": "Aoqin Dragon has primarily targeted government, education, and telecommunication organizations.",
+    "generated_answer": "Government, education, and telecommunication organizations in Australia, Cambodia, Hong Kong, Singapore, and Vietnam",
+    "references": [
+      "4aaddca8dc3c23fc"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0194: PowerSploit' use attack technique 'T1027.010: Command Obfuscation'?",
+    "source": "relationships_uses_software",
+    "true_answer": "PowerSploit contains a collection of ScriptModification modules that compress and encode scripts and payloads.",
+    "generated_answer": "PowerSploit contains a collection of ScriptModification modules that compress and encode scripts and payloads.",
+    "references": [
+      "05ec0144be2392e1"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0115: Crimson' use attack technique 'T1033: System Owner/User Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Crimson can identify the user on a targeted system.",
+    "generated_answer": "Crimson can identify the user on a targeted system.",
+    "references": [
+      "86573b46b661965e"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Who has used LitePower?",
+    "source": "software",
+    "true_answer": "WIRTE has used LitePower since at least 2021.",
+    "generated_answer": "WIRTE",
+    "references": [
+      "f0e7bad9a6fe4fc0"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0251: Zebrocy' use attack technique 'T1027.002: Software Packing'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Zebrocy's Delphi variant was packed with UPX.",
+    "generated_answer": "Zebrocy's Delphi variant was packed with UPX.",
+    "references": [
+      "85476f149f439d01"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is the purpose of Regsvcs and Regasm?",
+    "source": "techniques",
+    "true_answer": "The purpose of Regsvcs and Regasm is to register.NET COM assemblies, allowing them to be used by other applications.",
+    "generated_answer": "Regsvcs and Regasm are Windows command-line utilities used to register .NET Component Object Model (COM) assemblies.",
+    "references": [
+      "30772199b9015597"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is CreepyDrive?",
+    "source": "software",
+    "true_answer": "CreepyDrive is a custom implant used by POLONIUM for command and control (C2) with exfiltration to actor-controlled OneDrive accounts.",
+    "generated_answer": "CreepyDrive is a custom implant used by POLONIUM for C2 and exfiltration to actor-controlled OneDrive accounts.",
+    "references": [
+      "4d1ac73e84eef3f2"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Describe attack technique 'T1102.001: Web Service: Dead Drop Resolver'",
+    "source": "techniques",
+    "true_answer": "T1102.001: Web Service: Dead Drop Resolver is an attack technique that involves using an existing, legitimate external Web service to host information that points to additional command and control infrastructure. Adversaries may post content, known as a dead drop resolver, on Web services with embedded (and often obfuscated/encoded) domains or IP addresses.",
+    "generated_answer": "Attack technique 'T1102.001: Web Service: Dead Drop Resolver' is a sub-technique of 'T1102: Web Service' used for Command and Control, and can be detected using Network Traffic Content and Network Traffic Flow data components.",
+    "references": [
+      "a3d6aeb385dfb8a0",
+      "3183b4f8f844d5cc",
+      "0a04aaf597009a47"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S1020: Kevin' use attack technique 'T1082: System Information Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Kevin can enumerate the OS version and hostname of a targeted machine.",
+    "generated_answer": "Kevin can enumerate the OS version and hostname of a targeted machine.",
+    "references": [
+      "b8f195836bb53352"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is the specific API call to monitor to detect 'T1547.010: Port Monitors' attack technique?",
+    "source": "relationships_detects",
+    "true_answer": "The specific API call to monitor to detect 'T1547.010: Port Monitors' attack technique is 'AddMonitor'.",
+    "generated_answer": "AddMonitor",
+    "references": [
+      "933d7e54087800f6"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is the recommended method to detect the 'T1546.009: AppCert DLLs' attack technique?",
+    "source": "relationships_detects",
+    "true_answer": "The recommended method is to monitor the AppCertDLLs Registry value for modifications that do not correlate with known software, patch cycles, etc.",
+    "generated_answer": "Monitor the AppCertDLLs Registry value for modifications that do not correlate with known software, patch cycles, etc.",
+    "references": [
+      "da48678b54f6c292"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Describe attack software 'S1060: Mafalda'",
+    "source": "software",
+    "true_answer": "S1060: Mafalda is an attack software that is a flexible interactive implant that has been used by Metador. It is assessed that the name 'Mafalda' may be inspired by an Argentinian cartoon character that has been popular as a means of political commentary since the 1960s.",
+    "generated_answer": "Mafalda is attack software that can execute PowerShell commands, use HTTP for C2, enumerate running processes, conduct mouse event logging, and use a variety of API calls.",
+    "references": [
+      "9eeac7511d60cfff",
+      "68134b9ba8c1166f",
+      "276d6f94cfd8092a",
+      "f182b146c73e0baf",
+      "eff85eea3f7d3af6"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0572: Caterpillar WebShell' use attack technique 'T1016: System Network Configuration Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Caterpillar WebShell can gather the IP address from the victim's machine using the IP config command.",
+    "generated_answer": "Caterpillar WebShell can gather the IP address from the victim's machine using the IP config command.",
+    "references": [
+      "3593fd18d41d17d4"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can data component 'File Creation' be used to detect attack technique 'T1659: Content Injection'?",
+    "source": "relationships_detects",
+    "true_answer": "Data component 'File Creation' can be used to detect attack technique 'T1659: Content Injection' by monitoring for unexpected and abnormal file creations that may indicate malicious content injected through online network communications.",
+    "generated_answer": "Monitor for unexpected and abnormal file creations that may indicate malicious content injected through online network communications.",
+    "references": [
+      "2834e981bc4eadb4"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0354: Denis' use attack technique 'T1016: System Network Configuration Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Denis uses the 'ipconfig' command to gather the IP address from the system.",
+    "generated_answer": "Denis uses ipconfig to gather the IP address from the system.",
+    "references": [
+      "8f5ad5cc89aa9ff8"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0390: SQLRat' use attack technique 'T1140: Deobfuscate/Decode Files or Information'?",
+    "source": "relationships_uses_software",
+    "true_answer": "SQLRat has scripts that are responsible for deobfuscating additional scripts.",
+    "generated_answer": "SQLRat has scripts that are responsible for deobfuscating additional scripts.",
+    "references": [
+      "e4d6ff9df8409608"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0611: Clop' use attack technique 'T1106: Native API'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Clop has employed built-in API functions such as WNetOpenEnumW(), WNetEnumResourceW(), WNetCloseEnum(), GetProcAddress(), and VirtualAlloc() to carry out its attacks.",
+    "generated_answer": "Clop uses built-in API functions such as WNetOpenEnumW(), WNetEnumResourceW(), WNetCloseEnum(), GetProcAddress(), and VirtualAlloc() to use attack technique 'T1106: Native API'.",
+    "references": [
+      "f736b15f391c3303"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What attack techniques are used by software 'S0564: BlackMould'?",
+    "source": "relationships_techniques_for_software",
+    "true_answer": "The attack techniques used by software 'S0564: BlackMould' are: 'T1005: Data from Local System', 'T1059.003: Windows Command Shell', 'T1071.001: Web Protocols', 'T1082: System Information Discovery', 'T1083: File and Directory Discovery', 'T1105: Ingress Tool Transfer'",
+    "generated_answer": "T1005: Data from Local System, T1059.003: Windows Command Shell, T1071.001: Web Protocols, T1082: System Information Discovery, T1083: File and Directory Discovery, T1105: Ingress Tool Transfer",
+    "references": [
+      "dbe061c7542866ce"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Describe attack software 'S0431: HotCroissant'",
+    "source": "software",
+    "true_answer": "S0431: HotCroissant is an attack software that is a remote access trojan (RAT) attributed by U.S. government entities to malicious North Korean government cyber activity, tracked collectively as HIDDEN COBRA. It shares numerous code similarities with Rifdoor.",
+    "generated_answer": "HotCroissant is a remote access trojan (RAT) attributed to malicious North Korean government cyber activity, tracked collectively as HIDDEN COBRA, with capabilities including system network configuration discovery, stopping services, process discovery, and system service discovery.",
+    "references": [
+      "3639c54b29d490dd",
+      "794c8567723e2aef",
+      "b1c37060f13b65c3",
+      "ab0025f9acda3195",
+      "5489bbfdf658cf7a"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What are the data components used to detect the attack technique 'T1046: Network Service Discovery'?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The data components used to detect the 'T1046: Network Service Discovery' attack technique are Cloud Service Enumeration, Command Execution, and Network Traffic Flow.",
+    "generated_answer": "Cloud Service Enumeration, Command Execution, Network Traffic Flow",
+    "references": [
+      "d38b1b1f821dd6ca"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0534: Bazar' use attack technique 'T1105: Ingress Tool Transfer'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Bazar can download and deploy additional payloads, including ransomware and post-exploitation frameworks such as Cobalt Strike, using the Ingress Tool Transfer technique.",
+    "generated_answer": "Bazar can download and deploy additional payloads, including ransomware and post-exploitation frameworks such as Cobalt Strike.",
+    "references": [
+      "26bc4badd7b3ff60"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What attack techniques are used by software 'S0417: GRIFFON'?",
+    "source": "relationships_techniques_for_software",
+    "true_answer": "The attack techniques used by software 'S0417: GRIFFON' are: 'T1053.005: Scheduled Task', 'T1059.001: PowerShell', 'T1059.007: JavaScript', 'T1069.002: Domain Groups', 'T1082: System Information Discovery', 'T1113: Screen Capture', 'T1124: System Time Discovery', 'T1547.001: Registry Run Keys / Startup Folder'",
+    "generated_answer": "T1053.005: Scheduled Task, T1059.001: PowerShell, T1059.007: JavaScript, T1069.002: Domain Groups, T1082: System Information Discovery, T1113: Screen Capture, T1124: System Time Discovery, T1547.001: Registry Run Keys / Startup Folder",
+    "references": [
+      "74879ea7c5d63379"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0089: BlackEnergy' use attack technique 'T1082: System Information Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "BlackEnergy uses Systeminfo to gather the OS version, as well as information on the system configuration, BIOS, the motherboard, and the processor.",
+    "generated_answer": "BlackEnergy has used Systeminfo to gather the OS version, as well as information on the system configuration, BIOS, the motherboard, and the processor.",
+    "references": [
+      "8a6c13e5a08f2772"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What types of traffic patterns should be monitored to detect the 'T1090.001: Internal Proxy' attack technique?",
+    "source": "relationships_detects",
+    "true_answer": "Extraneous packets that do not belong to established flows, gratuitous or anomalous traffic patterns, anomalous syntax, or structure should be monitored to detect the 'T1090.001: Internal Proxy' attack technique.",
+    "generated_answer": "Traffic patterns that do not follow the expected protocol standards and traffic flows, such as extraneous packets, gratuitous or anomalous traffic patterns, anomalous syntax, or structure.",
+    "references": [
+      "591d7c9703ba7d99"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0516: SoreFang' use attack technique 'T1105: Ingress Tool Transfer'?",
+    "source": "relationships_uses_software",
+    "true_answer": "SoreFang can download additional payloads from its command and control (C2) server.",
+    "generated_answer": "SoreFang can download additional payloads from C2.",
+    "references": [
+      "8a38046868ed4d65"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S1018: Saint Bot' use attack technique 'T1033: System Owner/User Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Saint Bot can collect the username from a compromised host.",
+    "generated_answer": "Saint Bot can collect the username from a compromised host.",
+    "references": [
+      "9b7917db9f01fef6"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is the purpose of VBShower?",
+    "source": "software",
+    "true_answer": "VBShower has been used as a downloader for second-stage payloads, including PowerShower.",
+    "generated_answer": "VBShower is a backdoor that has been used as a downloader for second stage payloads.",
+    "references": [
+      "9063287465990168"
+    ],
+    "hard_accuracy": 9,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can data component 'Process Creation' be used to detect attack technique 'T1553.001: Gatekeeper Bypass'?",
+    "source": "relationships_detects",
+    "true_answer": "Process Creation can be used to detect the 'Gatekeeper Bypass' attack technique by monitoring and investigating attempts to modify extended file attributes with utilities such as xattr.",
+    "generated_answer": "Monitor and investigate attempts to modify extended file attributes with utilities such as xattr, and compare against baseline knowledge for how systems are typically used and correlate modification events with other indications of malicious activity where possible.",
+    "references": [
+      "c47cd7ef93fc9b1d"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What are the data components used to detect attack technique 'T1041: Exfiltration Over C2 Channel'?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The data components used to detect attack technique 'T1041: Exfiltration Over C2 Channel' are Command Execution, File Access, Network Connection Creation, Network Traffic Content, and Network Traffic Flow.",
+    "generated_answer": "The data components used to detect attack technique 'T1041: Exfiltration Over C2 Channel' are Command Execution, File Access, Network Connection Creation, Network Traffic Content, and Network Traffic Flow",
+    "references": [
+      "e3472fc7686c73d4"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Describe attack group 'G0067: APT37'",
+    "source": "groups",
+    "true_answer": "G0067: APT37 is an attack group that is a North Korean state-sponsored cyber espionage group that has been active since at least 2012. It has primarily targeted victims in South Korea, but also in other countries such as Japan, Vietnam, Russia, Nepal, China, India, Romania, Kuwait, and parts of the Middle East.",
+    "generated_answer": "APT37 is a North Korean state-sponsored cyber espionage group that has been active since at least 2012, targeting victims primarily in South Korea and other countries, and has been linked to several campaigns between 2016-2018.",
+    "references": [
+      "a5d57ca186987535"
+    ],
+    "hard_accuracy": 9,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0071: hcdLoader' use attack technique 'T1059.003: Windows Command Shell'?",
+    "source": "relationships_uses_software",
+    "true_answer": "hcdLoader provides command-line access to the compromised system.",
+    "generated_answer": "hcdLoader provides command-line access to the compromised system.",
+    "references": [
+      "bc1f9c22eee836a3"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "When may User Execution occur in an intrusion?",
+    "source": "techniques",
+    "true_answer": "User Execution may occur shortly after Initial Access, or it may occur at other phases of an intrusion, such as when an adversary places a file in a shared directory or on a user's desktop hoping that a user will click on it, or shortly after Internal Spearphishing.",
+    "generated_answer": "User Execution may occur shortly after Initial Access or at other phases of an intrusion, such as when an adversary places a file in a shared directory or on a user's desktop hoping that a user will click on it.",
+    "references": [
+      "171efd4c73002ea9"
+    ],
+    "hard_accuracy": 9,
+    "faithfulness": 9,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What are some potential uses of SSL/TLS certificates?",
+    "source": "techniques",
+    "true_answer": "SSL/TLS certificates can be used to encrypt C2 traffic, enable Adversary-in-the-Middle attacks, or even install the certificate on infrastructure under an adversary's control.",
+    "generated_answer": "Some potential uses of SSL/TLS certificates include encrypting C2 traffic, lending credibility to a credential harvesting site, and enabling Adversary-in-the-Middle if added to the root of trust.",
+    "references": [
+      "1cec53b0e670b8a7",
+      "620c6277d85f75e2",
+      "60e30b6ec4c6c5a1"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 8
+  },
+  {
+    "question": "Which tactics are used in attack technique 'T1098.005: Account Manipulation: Device Registration'? Name them all",
+    "source": "techniques_tactics",
+    "true_answer": "2 tactics are used in attack technique 'T1098.005: Account Manipulation: Device Registration'. They are: Persistence, Privilege Escalation",
+    "generated_answer": "Persistence, Privilege Escalation",
+    "references": [
+      "b8f34d01025066a0"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What features can adversaries use to open sockets and install filters?",
+    "source": "techniques",
+    "true_answer": "Adversaries can use features such as the `libpcap` library to open sockets and install filters to allow or disallow certain types of data to come through the socket.",
+    "generated_answer": "features such as the `libpcap` library",
+    "references": [
+      "01e744e588b270b3"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0384: Dridex' use attack technique 'T1106: Native API'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Dridex has employed the OutputDebugStringW function as part of its anti-debugging technique to avoid malware analysis.",
+    "generated_answer": "Dridex uses the OutputDebugStringW function to avoid malware analysis as part of its anti-debugging technique.",
+    "references": [
+      "e959622b28979069"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How many data components can be used to detect attack technique 'T1600: Weaken Encryption'? Name them all.",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The following 1 data components can be used to detect attack technique 'T1600: Weaken Encryption': File Modification",
+    "generated_answer": "1 data component: File Modification",
+    "references": [
+      "80ef437ff85933f0"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0280: MirageFox' use attack technique 'T1059.003: Windows Command Shell'?",
+    "source": "relationships_uses_software",
+    "true_answer": "MirageFox has the capability to execute commands using cmd.exe.",
+    "generated_answer": "MirageFox has the capability to execute commands using cmd.exe.",
+    "references": [
+      "e7c93b51e80e6b88"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Which tactics are used in attack technique 'T1110: Brute Force'? Name them all",
+    "source": "techniques_tactics",
+    "true_answer": "1 tactic is used in attack technique 'T1110: Brute Force'. It is: Credential Access",
+    "generated_answer": "I do not have enough information from the provided context.",
+    "references": [],
+    "hard_accuracy": 0,
+    "faithfulness": 0,
+    "answer_relevancy": 0
+  },
+  {
+    "question": "How does attack software 'S0661: FoggyWeb' use attack technique 'T1041: Exfiltration Over C2 Channel'?",
+    "source": "relationships_uses_software",
+    "true_answer": "FoggyWeb can remotely exfiltrate sensitive information from a compromised AD FS server.",
+    "generated_answer": "FoggyWeb can remotely exfiltrate sensitive information from a compromised AD FS server.",
+    "references": [
+      "d3a15e209aa21f2e"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can organizations identify and block potentially malicious software executed through search order hijacking?",
+    "source": "relationships_mitigations",
+    "true_answer": "Organizations can identify and block potentially malicious software executed through search order hijacking by using application control solutions capable of blocking DLLs loaded by legitimate software.",
+    "generated_answer": "Organizations can identify and block potentially malicious software executed through search order hijacking by using application control solutions capable of blocking DLLs loaded by legitimate software.",
+    "references": [
+      "cb44d6b30154b4a5"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0363: Empire' use attack technique 'T1574.004: Dylib Hijacking'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Empire has a dylib hijacker module that generates a malicious dylib given the path to a legitimate dylib of a vulnerable application.",
+    "generated_answer": "Empire has a dylib hijacker module that generates a malicious dylib given the path to a legitimate dylib of a vulnerable application.",
+    "references": [
+      "dcf37dd38b0ff251"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0142: StreamEx' use attack technique 'T1543.003: Windows Service'?",
+    "source": "relationships_uses_software",
+    "true_answer": "StreamEx establishes persistence by installing a new service pointing to its DLL and setting the service to auto-start.",
+    "generated_answer": "StreamEx establishes persistence by installing a new service pointing to its DLL and setting the service to auto-start.",
+    "references": [
+      "c31cb00892db4a69"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How do adversaries typically wipe disk content?",
+    "source": "techniques",
+    "true_answer": "Adversaries typically wipe disk content by acquiring direct access to the hard drive and overwriting arbitrarily sized portions of disk with random data.",
+    "generated_answer": "Adversaries may partially or completely overwrite the contents of a storage device rendering the data irrecoverable through the storage interface, and may acquire direct access to the hard drive to overwrite arbitrarily sized portions of disk with random data, or leverage third-party drivers like RawDisk to directly access disk content.",
+    "references": [
+      "2e9f5075167a0015"
+    ],
+    "hard_accuracy": 9,
+    "faithfulness": 9,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0533: SLOTHFULMEDIA' use attack technique 'T1083: File and Directory Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "SLOTHFULMEDIA can enumerate files and directories.",
+    "generated_answer": "SLOTHFULMEDIA can enumerate files and directories.",
+    "references": [
+      "9d2fa901abe677f5"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0567: Dtrack' use attack technique 'T1012: Query Registry'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Dtrack can collect the RegisteredOwner, RegisteredOrganization, and InstallDate registry values.",
+    "generated_answer": "Dtrack can collect the RegisteredOwner, RegisteredOrganization, and InstallDate registry values.",
+    "references": [
+      "8d22da2704b97a28"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is Power Loader?",
+    "source": "software",
+    "true_answer": "Power Loader is a modular code sold in the cybercrime market, used as a downloader in malware families such as Carberp, Redyms, and Gapz.",
+    "generated_answer": "Power Loader is modular code sold in the cybercrime market used as a downloader in malware families such as Carberp, Redyms and Gapz.",
+    "references": [
+      "5e6ea62f5dea9dd2"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What attack techniques are used by software 'S0395: LightNeuron'?",
+    "source": "relationships_techniques_for_software",
+    "true_answer": "The attack techniques used by software 'S0395: LightNeuron' are: 'T1001.002: Steganography', 'T1005: Data from Local System', 'T1016: System Network Configuration Discovery', 'T1020: Automated Exfiltration', 'T1027.013: Encrypted/Encoded File', 'T1029: Scheduled Transfer', 'T1036.005: Match Legitimate Name or Location', 'T1041: Exfiltration Over C2 Channel', 'T1059.003: Windows Command Shell', 'T1070.004: File Deletion', 'T1071.003: Mail Protocols', 'T1074.001: Local Data Staging', 'T1082: System Information Discovery', 'T1105: Ingress Tool Transfer', 'T1106: Native API', 'T1114.002: Remote Email Collection', 'T1119: Automated Collection', 'T1140: Deobfuscate/Decode Files or Information', 'T1505.002: Transport Agent', 'T1560: Archive Collected Data', 'T1565.002: Transmitted Data Manipulation', 'T1573.001: Symmetric Cryptography'",
+    "generated_answer": "The attack techniques used by software 'S0395: LightNeuron' are: 'T1001.002: Steganography', 'T1005: Data from Local System', 'T1016: System Network Configuration Discovery', 'T1020: Automated Exfiltration', 'T1027.013: Encrypted/Encoded File', 'T1029: Scheduled Transfer', 'T1036.005: Match Legitimate Name or Location', 'T1041: Exfiltration Over C2 Channel', 'T1059.003: Windows Command Shell', 'T1070.004: File Deletion', 'T1071.003: Mail Protocols', 'T1074.001: Local Data Staging', 'T1082: System Information Discovery', 'T1105: Ingress Tool Transfer', 'T1106: Native API', 'T1114.002: Remote Email Collection', 'T1119: Automated Collection', 'T1140: Deobfuscate/Decode Files or Information', 'T1505.002: Transport Agent', 'T1560: Archive Collected Data', 'T1565.002: Transmitted Data Manipulation', 'T1573.001: Symmetric Cryptography'",
+    "references": [
+      "e38a81429295ea5d"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What software procedures use attack technique 'T1222.002: Linux and Mac File and Directory Permissions Modification'?",
+    "source": "relationships_software_for_technique",
+    "true_answer": "The software procedures that use attack technique 'T1222.002: Linux and Mac File and Directory Permissions Modification' are: 'S0281: Dok', 'S0352: OSX_OCEANLOTUS.D', 'S0402: OSX/Shlayer', 'S0482: Bundlore', 'S0587: Penquin', 'S0598: P.A.S. Webshell', 'S0599: Kinsing', 'S0658: XCSSET', 'S1070: Black Basta', 'S1105: COATHANGER'",
+    "generated_answer": "The software procedures that use attack technique 'T1222.002: Linux and Mac File and Directory Permissions Modification' are: 'S0281: Dok', 'S0352: OSX_OCEANLOTUS.D', 'S0402: OSX/Shlayer', 'S0482: Bundlore', 'S0587: Penquin', 'S0598: P.A.S. Webshell', 'S0599: Kinsing', 'S0658: XCSSET', 'S1070: Black Basta', 'S1105: COATHANGER'",
+    "references": [
+      "e10cc091dee6448a"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0172: Reaver' use attack technique 'T1027.013: Encrypted/Encoded File'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Reaver encrypts some of its files with XOR.",
+    "generated_answer": "Reaver encrypts some of its files with XOR.",
+    "references": [
+      "1cad9f10fcc51d3b"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0584: AppleJeus' use attack technique 'T1543.003: Windows Service'?",
+    "source": "relationships_uses_software",
+    "true_answer": "AppleJeus can install itself as a service, which enables it to run in the background and maintain persistence on the compromised system.",
+    "generated_answer": "AppleJeus can install itself as a service.",
+    "references": [
+      "00cfa85d342841e9"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0437: Kivars' use attack technique 'T1056.001: Keylogging'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Kivars has the ability to initiate keylogging on the infected host.",
+    "generated_answer": "Kivars has the ability to initiate keylogging on the infected host.",
+    "references": [
+      "21b7118487b0e4e2"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What software procedures use attack technique 'T1562.009: Safe Mode Boot'?",
+    "source": "relationships_software_for_technique",
+    "true_answer": "The software procedures that use attack technique 'T1562.009: Safe Mode Boot' are: 'S0496: REvil', 'S1053: AvosLocker', 'S1070: Black Basta'",
+    "generated_answer": "The software procedures that use attack technique 'T1562.009: Safe Mode Boot' are: 'S0496: REvil', 'S1053: AvosLocker', 'S1070: Black Basta'",
+    "references": [
+      "472d6cc8446a7fd9"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can mitigation strategy 'M1047: Audit' be used to mitigate attack technique 'T1505.005: Terminal Services DLL'?",
+    "source": "relationships_mitigations",
+    "true_answer": "Regularly checking component software on critical services that adversaries may target for persistence can help verify the integrity of the systems and identify if unexpected changes have been made, thereby mitigating the attack technique.",
+    "generated_answer": "Regularly check component software on critical services that adversaries may target for persistence to verify the integrity of the systems and identify if unexpected changes have been made.",
+    "references": [
+      "ae1ef06096000d2f"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0663: SysUpdate' use attack technique 'T1033: System Owner/User Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "SysUpdate can collect the username from a compromised host.",
+    "generated_answer": "SysUpdate can collect the username from a compromised host.",
+    "references": [
+      "0f4bc4d5bc11008f"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is the primary method to detect the 'T1003.006: DCSync' attack technique?",
+    "source": "relationships_detects",
+    "true_answer": "The primary method to detect the 'T1003.006: DCSync' attack technique is to monitor and analyze traffic patterns and packet inspection associated with protocols that do not follow expected protocol standards and traffic flows.",
+    "generated_answer": "Monitoring network data for uncommon data flows and analyzing traffic patterns and packet inspection",
+    "references": [
+      "b803c950726fbcdb",
+      "2eea4ab24cf6a001"
+    ],
+    "hard_accuracy": 9,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "When did APT29 start using the disposable custom Cobalt Strike loaders?",
+    "source": "software",
+    "true_answer": "APT29 started using the disposable custom Cobalt Strike loaders since at least 2021.",
+    "generated_answer": "at least 2021",
+    "references": [
+      "8e96e0dffc5a0c7e"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is the mitigation strategy that addresses the attack technique 'T1608.006: Stage Capabilities: SEO Poisoning'?",
+    "source": "relationships_mitigations_summaries",
+    "true_answer": "The mitigation strategy M1056: Pre-compromise addresses the attack technique 'T1608.006: Stage Capabilities: SEO Poisoning'.",
+    "generated_answer": "M1056: Pre-compromise",
+    "references": [
+      "b61cf78c374e1e76"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can data component 'Command Execution' be used to detect attack technique 'T1562.002: Disable Windows Event Logging'?",
+    "source": "relationships_detects",
+    "true_answer": "Monitor executed commands and arguments for commands that can be used to disable logging, such as Wevtutil, auditpol, sc stop EventLog, reg add, Set- or Stop-Service, Set- or New-ItemProperty, sc config, and offensive tooling like Mimikatz and Invoke-Phant0m.",
+    "generated_answer": "Monitor executed commands and arguments for commands that can be used to disable logging, such as Wevtutil, auditpol, `sc stop EventLog`, reg add, Set- or Stop-Service, Set- or New-ItemProperty, sc config, and offensive tooling like Mimikatz and Invoke-Phant0m.",
+    "references": [
+      "4143f98d4badaf25"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What attack techniques are used by software 'S0561: GuLoader'?",
+    "source": "relationships_techniques_for_software",
+    "true_answer": "The attack techniques used by software 'S0561: GuLoader' are: 'T1055: Process Injection', 'T1070.004: File Deletion', 'T1071.001: Web Protocols', 'T1102: Web Service', 'T1105: Ingress Tool Transfer', 'T1106: Native API', 'T1204.001: Malicious Link', 'T1204.002: Malicious File', 'T1497.001: System Checks', 'T1497.003: Time Based Evasion', 'T1547.001: Registry Run Keys / Startup Folder', 'T1566.002: Spearphishing Link'",
+    "generated_answer": "T1055: Process Injection, T1070.004: File Deletion, T1071.001: Web Protocols, T1102: Web Service, T1105: Ingress Tool Transfer, T1106: Native API, T1204.001: Malicious Link, T1204.002: Malicious File, T1497.001: System Checks, T1497.003: Time Based Evasion, T1547.001: Registry Run Keys / Startup Folder, T1566.002: Spearphishing Link",
+    "references": [
+      "e5fcbb54df110ef8"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is the recommended method to detect the 'T1090: Proxy' attack technique?",
+    "source": "relationships_detects",
+    "true_answer": "The recommended method to detect the 'T1090: Proxy' attack technique is to monitor for newly constructed network connections that are sent or received by untrusted hosts.",
+    "generated_answer": "The recommended method to detect the 'T1090: Proxy' attack technique involves using the following 3 data components: Network Connection Creation, Network Traffic Content, and Network Traffic Flow",
+    "references": [
+      "aa83d64ac65ca93c"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is a common method used by adversaries to gather information during an operation?",
+    "source": "techniques",
+    "true_answer": "Adversaries may attempt to take screen captures of the desktop to gather information over the course of an operation.",
+    "generated_answer": "Phishing for Information",
+    "references": [
+      "b2473e9914c717ea",
+      "5092aba7b7fdd678",
+      "622786fd222d3ba2"
+    ],
+    "hard_accuracy": 0,
+    "faithfulness": 0,
+    "answer_relevancy": 0
+  },
+  {
+    "question": "What is a potential indicator of the 'T1572: Protocol Tunneling' attack technique?",
+    "source": "relationships_detects",
+    "true_answer": "A potential indicator of the 'T1572: Protocol Tunneling' attack technique is the creation of newly constructed network connections sent or received by untrusted hosts.",
+    "generated_answer": "Uncommon data flows, such as processes utilizing the network that do not normally have network communication or have never been seen before, are suspicious.",
+    "references": [
+      "27f8a4db7d3782ad"
+    ],
+    "hard_accuracy": 6,
+    "faithfulness": 0,
+    "answer_relevancy": 0
+  },
+  {
+    "question": "How does attack software 'S0124: Pisloader' use attack technique 'T1105: Ingress Tool Transfer'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Pisloader has a command to upload a file to the victim machine, utilizing the 'T1105: Ingress Tool Transfer' attack technique.",
+    "generated_answer": "Pisloader has a command to upload a file to the victim machine.",
+    "references": [
+      "b252eb53a8540b1c"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0251: Zebrocy' use attack technique 'T1049: System Network Connections Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Zebrocy uses the command 'netstat -aon' to gather network connection information.",
+    "generated_answer": "Zebrocy uses netstat -aon to gather network connection information.",
+    "references": [
+      "afd4d1351bf92a74"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0045: ADVSTORESHELL' use attack technique 'T1120: Peripheral Device Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "ADVSTORESHELL can list connected devices, allowing it to discover peripheral devices.",
+    "generated_answer": "ADVSTORESHELL can list connected devices.",
+    "references": [
+      "950db852f8c96b42"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is a recommended method for detecting the 'T1565.002: Transmitted Data Manipulation' attack technique?",
+    "source": "relationships_detects",
+    "true_answer": "A recommended method for detecting the 'T1565.002: Transmitted Data Manipulation' attack technique is to monitor network traffic originating from unknown or unexpected hardware devices.",
+    "generated_answer": "Monitor for networks that solicit and obtain the configuration information of the queried device.",
+    "references": [
+      "964a8e4a2ddfba01"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0116: UACMe' use attack technique 'T1548.002: Bypass User Account Control'?",
+    "source": "relationships_uses_software",
+    "true_answer": "UACMe contains many methods for bypassing Windows User Account Control on multiple versions of the operating system.",
+    "generated_answer": "UACMe contains many methods for bypassing Windows User Account Control on multiple versions of the operating system.",
+    "references": [
+      "8a0837c830a4bc31"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0687: Cyclops Blink' use attack technique 'T1057: Process Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Cyclops Blink can enumerate the process it is currently running under.",
+    "generated_answer": "Cyclops Blink can enumerate the process it is currently running under.",
+    "references": [
+      "acf808009561b983"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What software procedures use attack technique 'T1027.011: Fileless Storage'?",
+    "source": "relationships_software_for_technique",
+    "true_answer": "The software procedures that use attack technique 'T1027.011: Fileless Storage' are: 'S0022: Uroburos', 'S0023: CHOPSTICK', 'S0126: ComRAT', 'S0180: Volgmer', 'S0198: NETWIRE', 'S0256: Mosquito', 'S0263: TYPEFRAME', 'S0269: QUADAGENT', 'S0343: Exaramel for Windows', 'S0476: Valak', 'S0496: REvil', 'S0501: PipeMon', 'S0511: RegDuke', 'S0517: Pillowmint', 'S0518: PolyglotDuke', 'S0531: Grandoreiro', 'S0589: Sibot', 'S0596: ShadowPad', 'S0631: Chaes', 'S0650: QakBot', 'S0662: RCSession', 'S0663: SysUpdate', 'S0665: ThreatNeedle', 'S0666: Gelsemium', 'S0668: TinyTurla', 'S0673: DarkWatchman'",
+    "generated_answer": "The software procedures that use attack technique 'T1027.011: Fileless Storage' are: 'S0022: Uroburos', 'S0023: CHOPSTICK', 'S0126: ComRAT', 'S0180: Volgmer', 'S0198: NETWIRE', 'S0256: Mosquito', 'S0263: TYPEFRAME', 'S0269: QUADAGENT', 'S0343: Exaramel for Windows', 'S0476: Valak', 'S0496: REvil', 'S0501: PipeMon', 'S0511: RegDuke', 'S0517: Pillowmint', 'S0518: PolyglotDuke', 'S0531: Grandoreiro', 'S0589: Sibot', 'S0596: ShadowPad', 'S0631: Chaes', 'S0650: QakBot', 'S0662: RCSession', 'S0663: SysUpdate', 'S0665: ThreatNeedle', 'S0666: Gelsemium', 'S0668: TinyTurla', 'S0673: DarkWatchman'",
+    "references": [
+      "9b9fbe0a789ea969"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What groups used attack technique 'T1596.005: Scan Databases'?",
+    "source": "relationships_groups_for_technique",
+    "true_answer": "The groups that used attack technique 'T1596.005: Scan Databases' are: 'G0096: APT41'",
+    "generated_answer": "G0096: APT41",
+    "references": [
+      "f523e4109e7dc16c"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can mitigation strategy 'M1049: Antivirus/Antimalware' be used to mitigate attack technique 'T1547.006: Kernel Modules and Extensions'?",
+    "source": "relationships_mitigations",
+    "true_answer": "Mitigation strategy 'M1049: Antivirus/Antimalware' can be used to mitigate attack technique 'T1547.006: Kernel Modules and Extensions' by utilizing common tools for detecting Linux rootkits, such as rkhunter and chrootkit, to identify and remove any malicious kernel modules or extensions.",
+    "generated_answer": "I do not have enough information from the provided context.",
+    "references": [],
+    "hard_accuracy": 0,
+    "faithfulness": 0,
+    "answer_relevancy": 0
+  },
+  {
+    "question": "What is the recommended action to mitigate the attack technique 'T1542.001: System Firmware'?",
+    "source": "relationships_mitigations",
+    "true_answer": "The recommended action is to patch the BIOS and EFI as necessary.",
+    "generated_answer": "Patch the BIOS and EFI as necessary",
+    "references": [
+      "3b58d120b797fbaa"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Which tactics are used in attack technique 'T1218.009: System Binary Proxy Execution: Regsvcs/Regasm'? Name them all",
+    "source": "techniques_tactics",
+    "true_answer": "1 tactic is used in attack technique 'T1218.009: System Binary Proxy Execution: Regsvcs/Regasm'. It is: Defense Evasion",
+    "generated_answer": "Defense Evasion",
+    "references": [
+      "3cd5f86e6a2ab737"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Which tactics are used in attack technique 'T1199: Trusted Relationship'? Name them all",
+    "source": "techniques_tactics",
+    "true_answer": "1 tactic is used in attack technique 'T1199: Trusted Relationship'. It is: Initial Access",
+    "generated_answer": "Initial Access",
+    "references": [
+      "aad4d2b12078fa34"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is a way to mitigate the attack technique 'T1598.004: Spearphishing Voice'?",
+    "source": "relationships_mitigations",
+    "true_answer": "One way to mitigate the attack technique 'T1598.004: Spearphishing Voice' is to train users to identify and report social engineering techniques and spearphishing attempts. This can be achieved by making users suspicious of and verifying the identity of callers.",
+    "generated_answer": "M1017: User Training",
+    "references": [
+      "f984335947b0e9f2",
+      "951bd9d396ca2620"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What campaigns used attack technique 'T1595.002: Vulnerability Scanning'?",
+    "source": "relationships_campaigns_for_technique",
+    "true_answer": "The campaigns that used attack technique 'T1595.002: Vulnerability Scanning' were: 'C0029: Cutting Edge'",
+    "generated_answer": "C0029: Cutting Edge",
+    "references": [
+      "66a76ba73e6d681f"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What are the sub-techniques of attack technique 'T1216: System Script Proxy Execution'?",
+    "source": "techniques_sub",
+    "true_answer": "The sub-techniques of attack technique 'T1216: System Script Proxy Execution' are: 'T1216.001: System Script Proxy Execution: PubPrn', 'T1216.002: System Script Proxy Execution: SyncAppvPublishingServer'",
+    "generated_answer": "The sub-techniques of attack technique 'T1216: System Script Proxy Execution' are: 'T1216.001: System Script Proxy Execution: PubPrn', 'T1216.002: System Script Proxy Execution: SyncAppvPublishingServer'",
+    "references": [
+      "530036916fea76c8"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0217: SHUTTERSPEED' use attack technique 'T1113: Screen Capture'?",
+    "source": "relationships_uses_software",
+    "true_answer": "SHUTTERSPEED can capture screenshots.",
+    "generated_answer": "SHUTTERSPEED can capture screenshots.",
+    "references": [
+      "4f7dd19ce0bf4ed0"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How many data components can be used to detect attack technique 'T1608.002: Stage Capabilities: Upload Tool'? Name them all.",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The following 1 data components can be used to detect attack technique 'T1608.002: Stage Capabilities: Upload Tool': Response Content",
+    "generated_answer": "1 data component: Response Content",
+    "references": [
+      "a8b1db0bd5721a52"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Which tactics are used in attack technique 'T1547.012: Boot or Logon Autostart Execution: Print Processors'? Name them all",
+    "source": "techniques_tactics",
+    "true_answer": "2 tactics are used in attack technique 'T1547.012: Boot or Logon Autostart Execution: Print Processors'. They are: Persistence, Privilege Escalation",
+    "generated_answer": "Persistence, Privilege Escalation",
+    "references": [
+      "91d8d498ee479b9a"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S1091: Pacu' use attack technique 'T1546: Event Triggered Execution'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Pacu can set up S3 bucket notifications to trigger a malicious Lambda function when a CloudFormation template is uploaded to the bucket, and it can also create Lambda functions that trigger upon the creation of users, roles, and groups.",
+    "generated_answer": "Pacu sets up S3 bucket notifications to trigger a malicious Lambda function when a CloudFormation template is uploaded to the bucket and creates Lambda functions that trigger upon the creation of users, roles, and groups.",
+    "references": [
+      "010ff174140c4811"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S1013: ZxxZ' use attack technique 'T1106: Native API'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Attack software 'S1013: ZxxZ' uses attack technique 'T1106: Native API' by employing API functions such as Process32First, Process32Next, and ShellExecuteA.",
+    "generated_answer": "ZxxZ has used API functions such as `Process32First`, `Process32Next`, and `ShellExecuteA`.",
+    "references": [
+      "20d9739ba8e834b1"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can data component 'Command Execution' be used to detect attack technique 'T1070.009: Clear Persistence'?",
+    "source": "relationships_detects",
+    "true_answer": "Command Execution can be used to detect attack technique 'T1070.009: Clear Persistence' by monitoring executed commands and arguments that may delete or alter generated artifacts associated with persistence on a host system.",
+    "generated_answer": "Monitor executed commands and arguments that may delete or alter generated artifacts associated with persistence on a host system.",
+    "references": [
+      "0294c63cd1c4a651"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Describe attack technique 'T1585.002: Establish Accounts: Email Accounts'",
+    "source": "techniques",
+    "true_answer": "T1585.002: Establish Accounts: Email Accounts is an attack technique that involves creating email accounts that can be used during targeting. Adversaries can use these accounts to conduct phishing for information or phishing, and may also abuse free services such as trial periods to acquire infrastructure for follow-on purposes.",
+    "generated_answer": "Attack technique 'T1585.002: Establish Accounts: Email Accounts' is a sub-technique of 'T1585: Establish Accounts' and uses the tactic 'Resource Development'",
+    "references": [
+      "0d670a569ab28349",
+      "9c8d534d1d2f1c35",
+      "e3d7ebbc615364ec"
+    ],
+    "hard_accuracy": 6,
+    "faithfulness": 0,
+    "answer_relevancy": 0
+  },
+  {
+    "question": "How does attack software 'S0670: WarzoneRAT' use attack technique 'T1564.003: Hidden Window'?",
+    "source": "relationships_uses_software",
+    "true_answer": "WarzoneRAT uses the 'Hidden Window' technique by performing remote desktop access via a hVNC window for decreased visibility.",
+    "generated_answer": "WarzoneRAT has the ability of performing remote desktop access via a hVNC window for decreased visibility.",
+    "references": [
+      "124e10cfaae7686a"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How may adversaries use the information gathered from Query Registry?",
+    "source": "techniques",
+    "true_answer": "Adversaries may use the information gathered from Query Registry during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions.",
+    "generated_answer": "Adversaries may use the information from Query Registry during automated discovery to shape follow-on behaviors, including whether or not the adversary fully infects the target and/or attempts specific actions, and to gather insecurely stored credentials.",
+    "references": [
+      "b6516d5ae8a4627c",
+      "e5018574b9c0f470"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 8
+  },
+  {
+    "question": "What are the specific data components that can be used to detect the attack technique 'T1059.007: Command and Scripting Interpreter: JavaScript'?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The specific data components that can be used to detect the attack technique 'T1059.007: Command and Scripting Interpreter: JavaScript' are Command Execution, Module Load, Process Creation, and Script Execution.",
+    "generated_answer": "Command Execution, Module Load, Process Creation, Script Execution",
+    "references": [
+      "d0177f055ea34642"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What type of malware is Hancitor used with?",
+    "source": "software",
+    "true_answer": "Hancitor is used with Pony and other information stealing malware.",
+    "generated_answer": "Information stealing malware, such as Pony",
+    "references": [
+      "9d770f669d073d39"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0022: Uroburos' use attack technique 'T1027.002: Software Packing'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Uroburos uses a custom packer to employ the software packing technique.",
+    "generated_answer": "Uroburos uses a custom packer.",
+    "references": [
+      "c312b5bd557dbce6"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0455: Metamorfo' use attack technique 'T1059.005: Visual Basic'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Metamorfo has used VBS code on victims' systems.",
+    "generated_answer": "Metamorfo has used VBS code on victims’ systems.",
+    "references": [
+      "1283ceea07c28f7f"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What are the specific data components that can be used to detect the 'Debugger Evasion' attack technique?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The specific data components that can be used to detect the 'Debugger Evasion' attack technique are Application Log Content, Command Execution, OS API Execution, and Process Creation.",
+    "generated_answer": "The specific data components that can be used to detect the 'Debugger Evasion' attack technique are Application Log Content, Command Execution, OS API Execution, and Process Creation",
+    "references": [
+      "d4e6f34a859995e3"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is Bonadan?",
+    "source": "software",
+    "true_answer": "Bonadan is a malicious version of OpenSSH that acts as a custom backdoor.",
+    "generated_answer": "Bonadan is a malicious version of OpenSSH which acts as a custom backdoor.",
+    "references": [
+      "e373cafed0c858e1"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0210: Nerex' use attack technique 'T1543.003: Windows Service'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Nerex creates a Registry subkey that registers a new service.",
+    "generated_answer": "Nerex creates a Registry subkey that registers a new service.",
+    "references": [
+      "9650ccd94c97259d"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S1053: AvosLocker' use attack technique 'T1083: File and Directory Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "AvosLocker has searched for files and directories on a compromised network.",
+    "generated_answer": "AvosLocker has searched for files and directories on a compromised network.",
+    "references": [
+      "782c7c2253a90a2b"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is a recommended method to ensure proper system and access isolation for critical network systems?",
+    "source": "relationships_mitigations",
+    "true_answer": "According to the mitigation strategy 'M1015: Active Directory Configuration', a recommended method to ensure proper system and access isolation for critical network systems is through the use of group policy. This approach helps to restrict access to critical systems and prevent unauthorized access.",
+    "generated_answer": "Use of firewalls, account privilege separation, or group policy",
+    "references": [
+      "ff5629a423fa06a0",
+      "c9170c2fde03e45b",
+      "2effb36d0cf8103d"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 0,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is a recommended method to make cracking of private keys difficult?",
+    "source": "relationships_mitigations",
+    "true_answer": "A recommended method to make cracking of private keys difficult is to use strong passphrases. This is because strong passphrases are designed to be resistant to cracking attempts.",
+    "generated_answer": "Use strong passphrases for private keys",
+    "references": [
+      "062408c1e5e0fd2a"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0690: Green Lambert' use attack technique 'T1543.001: Launch Agent'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Green Lambert creates a Launch Agent with the 'RunAtLoad' key-value pair set to true, ensuring the 'com.apple.GrowlHelper.plist' file runs every time a user logs in.",
+    "generated_answer": "Green Lambert can create a Launch Agent with the `RunAtLoad` key-value pair set to true, ensuring the `com.apple.GrowlHelper.plist` file runs every time a user logs in.",
+    "references": [
+      "93d083d763a53193"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can ARP Cache Poisoning be mitigated on switches?",
+    "source": "relationships_mitigations",
+    "true_answer": "ARP Cache Poisoning can be mitigated on switches by enabling DHCP Snooping and Dynamic ARP Inspection. This allows the switch to create mappings between IP addresses requested via DHCP and ARP tables, and tie the values to a port on the switch that may block bogus traffic.",
+    "generated_answer": "Consider enabling DHCP Snooping and Dynamic ARP Inspection on switches to create mappings between IP addresses requested via DHCP and ARP tables and tie the values to a port on the switch that may block bogus traffic.",
+    "references": [
+      "0bbd94900dc3e161"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0475: BackConfig' use attack technique 'T1070.004: File Deletion'?",
+    "source": "relationships_uses_software",
+    "true_answer": "BackConfig has the ability to remove files and folders related to previous infections.",
+    "generated_answer": "BackConfig has the ability to remove files and folders related to previous infections.",
+    "references": [
+      "46c0db9923f69c83"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "When was IcedID first observed in the wild?",
+    "source": "software",
+    "true_answer": "IcedID has been observed in the wild since at least 2017.",
+    "generated_answer": "IcedID has been observed in the wild since at least 2017",
+    "references": [
+      "4c84c4c73237ec6a"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How many mitigation strategies can be used against attack technique 'T1078: Valid Accounts'? Name them all.",
+    "source": "relationships_mitigations_summaries",
+    "true_answer": "The following 7 mitigation strategies mitigate attack technique 'T1078: Valid Accounts': M1036: Account Use Policies, M1015: Active Directory Configuration, M1013: Application Developer Guidance, M1027: Password Policies, M1026: Privileged Account Management, M1018: User Account Management, M1017: User Training",
+    "generated_answer": "There are 7 mitigation strategies against attack technique 'T1078: Valid Accounts': M1036: Account Use Policies, M1015: Active Directory Configuration, M1013: Application Developer Guidance, M1027: Password Policies, M1026: Privileged Account Management, M1018: User Account Management, M1017: User Training",
+    "references": [
+      "b36fe871807b0907"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can data component 'Command Execution' be used to detect attack technique 'T1027: Obfuscated Files or Information'?",
+    "source": "relationships_detects",
+    "true_answer": "Monitor executed commands and arguments for indicators of obfuscation and potentially suspicious syntax such as uninterpreted escape characters, and also monitor command-lines for syntax-specific signs of obfuscation, such as variations of arguments associated with encoding.",
+    "generated_answer": "Monitor executed commands and arguments for indicators of obfuscation and potentially suspicious syntax such as uninterpreted escape characters, and monitor command-lines for syntax-specific signs of obfuscation, such as variations of arguments associated with encoding.",
+    "references": [
+      "0ba9fb35ec7497b3"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is the mitigation strategy that mitigates the attack technique 'T1583.008: Acquire Infrastructure: Malvertising'?",
+    "source": "relationships_mitigations_summaries",
+    "true_answer": "The mitigation strategy 'M1056: Pre-compromise' is the one that mitigates the attack technique 'T1583.008: Acquire Infrastructure: Malvertising'.",
+    "generated_answer": "M1056: Pre-compromise",
+    "references": [
+      "5da335ca73ed4a70"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can mitigation strategy 'M1056: Pre-compromise' be used to mitigate attack technique 'T1594: Search Victim-Owned Websites'?",
+    "source": "relationships_mitigations",
+    "true_answer": "Efforts should focus on minimizing the amount and sensitivity of data available to external parties.",
+    "generated_answer": "This technique cannot be easily mitigated with preventive controls since it is based on behaviors performed outside of the scope of enterprise defenses and controls. Efforts should focus on minimizing the amount and sensitivity of data available to external parties.",
+    "references": [
+      "326562b58738a76e"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0546: SharpStage' use attack technique 'T1614.001: System Language Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "SharpStage has been used to target Arabic-speaking users and checks if the compromised machine has the Arabic language installed.",
+    "generated_answer": "SharpStage checks if the compromised machine has the Arabic language installed and checks the system settings to see if Arabic is the configured language.",
+    "references": [
+      "b096a0adc63510be",
+      "001380ed8147ac65"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is a recommended mitigation strategy to prevent Kerberoasting?",
+    "source": "relationships_mitigations",
+    "true_answer": "A recommended mitigation strategy to prevent Kerberoasting is to limit service accounts to minimal required privileges, including membership in privileged groups such as Domain Administrators.",
+    "generated_answer": "M1027: Password Policies, which includes ensuring strong password length and complexity for service accounts and periodic password expiration",
+    "references": [
+      "642aceb566488570"
+    ],
+    "hard_accuracy": 6,
+    "faithfulness": 0,
+    "answer_relevancy": 0
+  },
+  {
+    "question": "How do adversaries gather information about the victim's client configurations?",
+    "source": "techniques",
+    "true_answer": "Adversaries may gather information about the victim's client configurations through direct collection actions via active scanning, phishing for information, or compromising sites and including malicious content designed to collect host information from visitors.",
+    "generated_answer": "Adversaries may gather information about the victim's client configurations through direct collection actions via Active Scanning or Phishing for Information, compromising sites with malicious content, or exposing information via online or other accessible data sets.",
+    "references": [
+      "e8b8db741ff51d0c"
+    ],
+    "hard_accuracy": 9,
+    "faithfulness": 9,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can mitigation strategy 'M1042: Disable or Remove Feature or Program' be used to mitigate attack technique 'T1218.004: InstallUtil'?",
+    "source": "relationships_mitigations",
+    "true_answer": "Mitigation strategy 'M1042: Disable or Remove Feature or Program' can be used to mitigate attack technique 'T1218.004: InstallUtil' by disabling or removing the InstallUtil feature or program, which may not be necessary within a given environment.",
+    "generated_answer": "InstallUtil may not be necessary within a given environment.",
+    "references": [
+      "071a39980f43d32b"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How many data components can be used to detect attack technique 'T1560.001: Archive Collected Data: Archive via Utility'? Name them all.",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The following 3 data components can be used to detect attack technique 'T1560.001: Archive Collected Data: Archive via Utility': Command Execution, File Creation, Process Creation",
+    "generated_answer": "3 data components can be used to detect attack technique 'T1560.001: Archive Collected Data: Archive via Utility': Command Execution, File Creation, Process Creation",
+    "references": [
+      "6b31c573a7191960"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What are the implications of disabling SID Filtering on external trusts?",
+    "source": "relationships_mitigations",
+    "true_answer": "Disabling SID Filtering on external trusts can allow inter-domain access to resources, which may be desirable in certain scenarios. However, this also increases the risk of unauthorized access and data breaches, as SID-History Injection attacks may be more successful.",
+    "generated_answer": "Disabling SID Filtering on external trusts may allow inter-domain access to resources, but it is not recommended as it can allow the trusted domain to claim a user has membership in groups outside of the domain.",
+    "references": [
+      "8b1eaa53da3279b3"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 0,
+    "answer_relevancy": 0
+  },
+  {
+    "question": "What is the parent technique of attack technique 'T1001.001: Data Obfuscation: Junk Data'?",
+    "source": "techniques_parent",
+    "true_answer": "The parent technique of attack technique 'T1001.001: Data Obfuscation: Junk Data' is 'T1001: Data Obfuscation'",
+    "generated_answer": "T1001: Data Obfuscation",
+    "references": [
+      "93d3d07f16deed71"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0601: Hildegard' use attack technique 'T1027.013: Encrypted/Encoded File'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Hildegard uses the 'T1027.013: Encrypted/Encoded File' technique by encrypting an ELF file.",
+    "generated_answer": "Hildegard has encrypted an ELF file.",
+    "references": [
+      "34503d5139cfeb9f"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What software was used in campaign 'C0028: 2015 Ukraine Electric Power Attack'?",
+    "source": "relationships_software_for_campaign",
+    "true_answer": "The software used in campaign 'C0028: 2015 Ukraine Electric Power Attack' were: 'S0089: BlackEnergy', 'S0607: KillDisk'",
+    "generated_answer": "S0089: BlackEnergy, S0607: KillDisk",
+    "references": [
+      "05d9a9f7f5663df5"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S1034: StrifeWater' use attack technique 'T1497.003: Time Based Evasion'?",
+    "source": "relationships_uses_software",
+    "true_answer": "StrifeWater can modify its sleep time responses from the default of 20-22 seconds, allowing it to evade detection by varying the time between its actions.",
+    "generated_answer": "StrifeWater can modify its sleep time responses from the default of 20-22 seconds.",
+    "references": [
+      "a62c4b294234dd57"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can data component 'Command Execution' be used to detect attack technique 'T1136.002: Domain Account'?",
+    "source": "relationships_detects",
+    "true_answer": "Monitor executed commands and arguments for actions that are associated with local account creation, such as net user /add /domain.",
+    "generated_answer": "Monitor executed commands and arguments for actions that are associated with local account creation, such as net user /add /domain.",
+    "references": [
+      "7c49804b3c2e3543"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0148: RTM' use attack technique 'T1566.001: Spearphishing Attachment'?",
+    "source": "relationships_uses_software",
+    "true_answer": "RTM has been delivered to victims via spearphishing attachments disguised as PDF documents.",
+    "generated_answer": "RTM has been delivered via spearphishing attachments disguised as PDF documents.",
+    "references": [
+      "5c1a6818e719f67f"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0109: WEBC2' use attack technique 'T1574.001: DLL Search Order Hijacking'?",
+    "source": "relationships_uses_software",
+    "true_answer": "WEBC2 achieves persistence by using DLL search order hijacking, typically by copying the DLL file to the %SYSTEMROOT% directory, specifically C:\\WINDOWS\\ntshrui.dll.",
+    "generated_answer": "Variants of WEBC2 achieve persistence by using DLL search order hijacking, usually by copying the DLL file to %SYSTEMROOT% (C:\\\\WINDOWS\\\\ntshrui.dll).",
+    "references": [
+      "9771f464157497ed"
+    ],
+    "hard_accuracy": 9,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0356: KONNI' use attack technique 'T1033: System Owner/User Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "KONNI can collect the username from the victim's machine.",
+    "generated_answer": "KONNI can collect the username from the victim’s machine.",
+    "references": [
+      "1e7e9f2fd18699be"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is the recommended approach to restrict Control Panel items?",
+    "source": "relationships_mitigations",
+    "true_answer": "The recommended approach is to restrict storage and execution of Control Panel items to protected directories, such as C:\\\\Windows, rather than user directories.",
+    "generated_answer": "Restrict storage and execution of Control Panel items to protected directories, such as C:\\\\Windows, rather than user directories.",
+    "references": [
+      "8d5e5a1bca129c99"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What data components can be used to detect the attack technique 'T1211: Exploitation for Defense Evasion'?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The two data components that can be used to detect the attack technique 'T1211: Exploitation for Defense Evasion' are Application Log Content and Process Creation.",
+    "generated_answer": "Application Log Content, Process Creation",
+    "references": [
+      "718394183db293c7"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can adversaries execute malicious payloads using AppDomainManager injection?",
+    "source": "techniques",
+    "true_answer": "Adversaries can execute malicious payloads using AppDomainManager injection by creating a custom application domain inside a target process to load and execute an arbitrary assembly, or by tampering with configuration files or process environment variables that define.NET runtime settings to instruct otherwise benign.NET applications to load a malicious assembly into the target process.",
+    "generated_answer": "Adversaries may execute arbitrary code by hijacking how .NET applications load assemblies, for example, by creating a custom application domain inside a target process to load and execute an arbitrary assembly, or by tampering with configuration files or process environment variables to instruct otherwise benign .NET applications to load a malicious assembly.",
+    "references": [
+      "3dc2305d4f02eaa1"
+    ],
+    "hard_accuracy": 9,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What software procedures use attack technique 'T1102.001: Dead Drop Resolver'?",
+    "source": "relationships_software_for_technique",
+    "true_answer": "The software procedures that use attack technique 'T1102.001: Dead Drop Resolver' are: 'S0013: PlugX', 'S0051: MiniDuke', 'S0069: BLACKCOFFEE', 'S0128: BADNEWS', 'S0148: RTM', 'S0341: Xbash', 'S0373: Astaroth', 'S0455: Metamorfo', 'S0518: PolyglotDuke', 'S0528: Javali', 'S0531: Grandoreiro', 'S0674: CharmPower', 'S1051: KEYPLUG'",
+    "generated_answer": "The software procedures that use attack technique 'T1102.001: Dead Drop Resolver' are: 'S0013: PlugX', 'S0051: MiniDuke', 'S0069: BLACKCOFFEE', 'S0128: BADNEWS', 'S0148: RTM', 'S0341: Xbash', 'S0373: Astaroth', 'S0455: Metamorfo', 'S0518: PolyglotDuke', 'S0528: Javali', 'S0531: Grandoreiro', 'S0674: CharmPower', 'S1051: KEYPLUG'",
+    "references": [
+      "cd1dd7158b1a86d3"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0250: Koadic' use attack technique 'T1053.005: Scheduled Task'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Koadic has used scheduled tasks to add persistence.",
+    "generated_answer": "Koadic uses scheduled tasks to add persistence.",
+    "references": [
+      "22438c2f6817e1be"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0386: Ursnif' use attack technique 'T1007: System Service Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Ursnif has gathered information about running services.",
+    "generated_answer": "Ursnif has gathered information about running services.",
+    "references": [
+      "64a92cf5a6615f4d"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How many mitigation strategies can be used against attack technique 'T1205.001: Traffic Signaling: Port Knocking'? Name them all.",
+    "source": "relationships_mitigations_summaries",
+    "true_answer": "The following 1 mitigation strategies mitigate attack technique 'T1205.001: Traffic Signaling: Port Knocking': M1037: Filter Network Traffic",
+    "generated_answer": "1 mitigation strategy: M1037: Filter Network Traffic",
+    "references": [
+      "20df4a16e54e15d1"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0125: Remsec' use attack technique 'T1049: System Network Connections Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Remsec can obtain a list of active connections and open ports.",
+    "generated_answer": "Remsec can obtain a list of active connections and open ports.",
+    "references": [
+      "eb4cc047a1f6991f"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Which tactics are used in attack technique 'T1554: Compromise Host Software Binary'? Name them all",
+    "source": "techniques_tactics",
+    "true_answer": "1 tactic is used in attack technique 'T1554: Compromise Host Software Binary'. It is: Persistence",
+    "generated_answer": "Persistence",
+    "references": [
+      "5781c1f81c594a82"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How many data components can be used to detect attack technique 'T1102: Web Service'? Name them all.",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The following 3 data components can be used to detect attack technique 'T1102: Web Service': Network Connection Creation, Network Traffic Content, Network Traffic Flow",
+    "generated_answer": "3 data components can be used to detect attack technique 'T1102: Web Service': Network Connection Creation, Network Traffic Content, Network Traffic Flow",
+    "references": [
+      "6175b89f949ce3c4"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What are the data components used to detect attack technique 'T1083: File and Directory Discovery'?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The data components used to detect attack technique 'T1083: File and Directory Discovery' are Command Execution, OS API Execution, and Process Creation.",
+    "generated_answer": "Command Execution, OS API Execution, Process Creation",
+    "references": [
+      "85be2a2c7de47dea"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is the purpose of CostaBricks?",
+    "source": "software",
+    "true_answer": "The purpose of CostaBricks is to deploy 32-bit backdoors in the CostaRicto campaign.",
+    "generated_answer": "CostaBricks is a loader used to deploy 32-bit backdoors",
+    "references": [
+      "08b06ad82453a41d"
+    ],
+    "hard_accuracy": 9,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Describe attack technique 'T1120: Peripheral Device Discovery'",
+    "source": "techniques",
+    "true_answer": "T1120: Peripheral Device Discovery is an attack technique that may involve gathering information about attached peripheral devices and components connected to a computer system. These devices could include auxiliary resources that support various functionalities such as keyboards, printers, cameras, smart card readers, or removable storage. The information gathered may be used to enhance the adversary's awareness of the system and network environment or may be used for further actions.",
+    "generated_answer": "Attack technique 'T1120: Peripheral Device Discovery' involves gathering information about attached peripheral devices and components connected to a computer system, and can be detected using data components such as Command Execution, OS API Execution, and Process Creation.",
+    "references": [
+      "4539f87dec2f0463",
+      "3ffca439b5aec68d",
+      "5e13d40e6cf9a9f3"
+    ],
+    "hard_accuracy": 9,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can data component 'OS API Execution' be used to detect attack technique 'T1010: Application Window Discovery'?",
+    "source": "relationships_detects",
+    "true_answer": "OS API Execution can be used to detect attack technique 'T1010: Application Window Discovery' by monitoring for API calls such as GetForegroundWindow() that may attempt to get a listing of open application windows.",
+    "generated_answer": "I do not have enough information from the provided context.",
+    "references": [],
+    "hard_accuracy": 0,
+    "faithfulness": 0,
+    "answer_relevancy": 0
+  },
+  {
+    "question": "Which tactics are used in attack technique 'T1027.009: Obfuscated Files or Information: Embedded Payloads'? Name them all",
+    "source": "techniques_tactics",
+    "true_answer": "1 tactic is used in attack technique 'T1027.009: Obfuscated Files or Information: Embedded Payloads'. It is: Defense Evasion",
+    "generated_answer": "Defense Evasion",
+    "references": [
+      "29043490451ac7a6"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What are the sub-techniques of attack technique 'T1585: Establish Accounts'?",
+    "source": "techniques_sub",
+    "true_answer": "The sub-techniques of attack technique 'T1585: Establish Accounts' are: 'T1585.001: Establish Accounts: Social Media Accounts', 'T1585.002: Establish Accounts: Email Accounts', 'T1585.003: Establish Accounts: Cloud Accounts'",
+    "generated_answer": "The sub-techniques of attack technique 'T1585: Establish Accounts' are: 'T1585.001: Establish Accounts: Social Media Accounts', 'T1585.002: Establish Accounts: Email Accounts', 'T1585.003: Establish Accounts: Cloud Accounts'",
+    "references": [
+      "e3d7ebbc615364ec"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0641: Kobalos' use attack technique 'T1140: Deobfuscate/Decode Files or Information'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Kobalos decrypts strings right after the initial communication, but before the authentication process.",
+    "generated_answer": "Kobalos decrypts strings right after the initial communication, but before the authentication process.",
+    "references": [
+      "545e7f756499b89b"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0170: Helminth' use attack technique 'T1553.002: Code Signing'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Helminth samples have been signed with legitimate, compromised code signing certificates owned by software company AI Squared.",
+    "generated_answer": "Helminth samples have been signed with legitimate, compromised code signing certificates owned by software company AI Squared.",
+    "references": [
+      "9b4682e6ddc19402"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0501: PipeMon' use attack technique 'T1082: System Information Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "PipeMon collects and sends the OS version and computer name as part of its C2 beacon.",
+    "generated_answer": "PipeMon can collect and send OS version and computer name as a part of its C2 beacon.",
+    "references": [
+      "68986cd0db965db4"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can mitigation strategy 'M1036: Account Use Policies' be used to mitigate attack technique 'T1110.003: Password Spraying'?",
+    "source": "relationships_mitigations",
+    "true_answer": "Set account lockout policies after a certain number of failed login attempts to prevent passwords from being guessed. Additionally, use conditional access policies to block logins from non-compliant devices or from outside defined organization IP ranges.",
+    "generated_answer": "I do not have enough information from the provided context.",
+    "references": [],
+    "hard_accuracy": 0,
+    "faithfulness": 0,
+    "answer_relevancy": 0
+  },
+  {
+    "question": "Why is it challenging to prevent the 'Drive-by Target' attack technique?",
+    "source": "relationships_mitigations",
+    "true_answer": "The 'Drive-by Target' attack technique is challenging to prevent because it is based on behaviors performed outside of the scope of enterprise defenses and controls.",
+    "generated_answer": "This technique cannot be easily mitigated with preventive controls since it is based on behaviors performed outside of the scope of enterprise defenses and controls.",
+    "references": [
+      "074fa3d0fc0d1d7f"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is a recommended way to limit container dashboard access?",
+    "source": "relationships_mitigations",
+    "true_answer": "Enforcing the principle of least privilege by limiting container dashboard access to only the necessary users is a recommended way to limit access.",
+    "generated_answer": "Enforce the principle of least privilege by limiting container dashboard access to only the necessary users, and use RoleBindings rather than ClusterRoleBindings to limit user privileges to specific namespaces.",
+    "references": [
+      "fbe4225f6dd970cf",
+      "a24ff99dba5104bb"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0366: WannaCry' use attack technique 'T1563.002: RDP Hijacking'?",
+    "source": "relationships_uses_software",
+    "true_answer": "WannaCry enumerates current remote desktop sessions and tries to execute the malware on each session.",
+    "generated_answer": "WannaCry enumerates current remote desktop sessions and tries to execute the malware on each session.",
+    "references": [
+      "633d2309928a6fa7"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What groups used attack technique 'T1651: Cloud Administration Command'?",
+    "source": "relationships_groups_for_technique",
+    "true_answer": "The groups that used attack technique 'T1651: Cloud Administration Command' are: 'G0016: APT29'",
+    "generated_answer": "G0016: APT29",
+    "references": [
+      "5bb07699b25332cd"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How many mitigation strategies can be used against attack technique 'T1036.005: Masquerading: Match Legitimate Name or Location'? Name them all.",
+    "source": "relationships_mitigations_summaries",
+    "true_answer": "The following 3 mitigation strategies mitigate attack technique 'T1036.005: Masquerading: Match Legitimate Name or Location': M1045: Code Signing, M1038: Execution Prevention, M1022: Restrict File and Directory Permissions",
+    "generated_answer": "There are 3 mitigation strategies: M1045: Code Signing, M1038: Execution Prevention, M1022: Restrict File and Directory Permissions",
+    "references": [
+      "8bb9ad724ccf1a63"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What attack techniques are used by software 'S0378: PoshC2'?",
+    "source": "relationships_techniques_for_software",
+    "true_answer": "The attack techniques used by software 'S0378: PoshC2' are: 'T1003.001: LSASS Memory', 'T1007: System Service Discovery', 'T1016: System Network Configuration Discovery', 'T1040: Network Sniffing', 'T1046: Network Service Discovery', 'T1047: Windows Management Instrumentation', 'T1049: System Network Connections Discovery', 'T1055: Process Injection', 'T1056.001: Keylogging', 'T1068: Exploitation for Privilege Escalation', 'T1069.001: Local Groups', 'T1071.001: Web Protocols', 'T1082: System Information Discovery', 'T1083: File and Directory Discovery', 'T1087.001: Local Account', 'T1087.002: Domain Account', 'T1090: Proxy', 'T1110: Brute Force', 'T1119: Automated Collection', 'T1134.002: Create Process with Token', 'T1134: Access Token Manipulation', 'T1201: Password Policy Discovery', 'T1210: Exploitation of Remote Services', 'T1482: Domain Trust Discovery', 'T1546.003: Windows Management Instrumentation Event Subscription', 'T1548.002: Bypass User Account Control', 'T1550.002: Pass the Hash', 'T1552.001: Credentials In Files', 'T1555: Credentials from Password Stores', 'T1557.001: LLMNR/NBT-NS Poisoning and SMB Relay', 'T1560.001: Archive via Utility', 'T1569.002: Service Execution'",
+    "generated_answer": "T1082, T1210, T1068, T1119, T1046",
+    "references": [
+      "73adba06ce0260ab",
+      "84cd3de49e1e5c36",
+      "26b42758e2987efa",
+      "eb8494adef5f6998",
+      "b05d27b3b834f691"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 8
+  },
+  {
+    "question": "How does attack software 'S1059: metaMain' use attack technique 'T1573.001: Symmetric Cryptography'?",
+    "source": "relationships_uses_software",
+    "true_answer": "metaMain encrypts the data it sends and receives from the C2 server using an RC4 encryption algorithm.",
+    "generated_answer": "metaMain can encrypt the data that it sends and receives from the C2 server using an RC4 encryption algorithm.",
+    "references": [
+      "ba458c33b02bd731"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How many mitigation strategies can be used against attack technique 'T1591: Gather Victim Org Information'? Name them all.",
+    "source": "relationships_mitigations_summaries",
+    "true_answer": "The following 1 mitigation strategies mitigate attack technique 'T1591: Gather Victim Org Information': M1056: Pre-compromise",
+    "generated_answer": "1 mitigation strategy: M1056: Pre-compromise",
+    "references": [
+      "4dc7a0eb3314aa4c"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What attack groups used software 'S0366: WannaCry'?",
+    "source": "relationships_groups_for_software",
+    "true_answer": "The attack groups that used software 'S0366: WannaCry' were: 'G0032: Lazarus Group'",
+    "generated_answer": "G0032: Lazarus Group",
+    "references": [
+      "f8e78ab7e8e505f8"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What are the specific data components used to detect the attack technique 'T1074.001: Data Staged: Local Data Staging'?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The specific data components used to detect the attack technique 'T1074.001: Data Staged: Local Data Staging' are Command Execution, File Access, File Creation, and Windows Registry Key Modification. These data components are used to monitor and analyze system activities.",
+    "generated_answer": "Command Execution, File Access, File Creation, Windows Registry Key Modification",
+    "references": [
+      "27e361d2a72145ed"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What attack techniques are used by software 'S0092: Agent.btz'?",
+    "source": "relationships_techniques_for_software",
+    "true_answer": "The attack techniques used by software 'S0092: Agent.btz' are: 'T1016: System Network Configuration Discovery', 'T1033: System Owner/User Discovery', 'T1052.001: Exfiltration over USB', 'T1091: Replication Through Removable Media', 'T1105: Ingress Tool Transfer', 'T1560.003: Archive via Custom Method'",
+    "generated_answer": "T1016, T1033, T1052.001, T1091, T1105, T1560.003",
+    "references": [
+      "90cbcbf6ad27f52a"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S1088: Disco' use attack technique 'T1105: Ingress Tool Transfer'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Disco can download files to targeted systems via SMB.",
+    "generated_answer": "Disco can download files to targeted systems via SMB.",
+    "references": [
+      "bb895b691f2df15c"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What are the mitigation strategies that can be used to prevent the 'T1218.004: System Binary Proxy Execution: InstallUtil' attack technique?",
+    "source": "relationships_mitigations_summaries",
+    "true_answer": "The two mitigation strategies that can be used to prevent the 'T1218.004: System Binary Proxy Execution: InstallUtil' attack technique are M1042: Disable or Remove Feature or Program and M1038: Execution Prevention.",
+    "generated_answer": "M1042: Disable or Remove Feature or Program, M1038: Execution Prevention",
+    "references": [
+      "cff2385f32f107a8"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What type of network connections should be monitored to detect the 'T1568: Dynamic Resolution' attack technique?",
+    "source": "relationships_detects",
+    "true_answer": "Newly constructed network connections should be monitored to detect the 'T1568: Dynamic Resolution' attack technique, specifically those sent or received by untrusted hosts.",
+    "generated_answer": "Newly constructed network connections sent or received by untrusted hosts",
+    "references": [
+      "ec7c3381c3a794a9"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "Describe attack technique 'T1548.006: Abuse Elevation Control Mechanism: TCC Manipulation'",
+    "source": "techniques",
+    "true_answer": "T1548.006: Abuse Elevation Control Mechanism: TCC Manipulation is an attack technique that allows adversaries to execute malicious applications with elevated permissions by manipulating or abusing the Transparency, Consent, & Control (TCC) service or database. This can be done by using privileged system applications to execute malicious payloads or manipulating the database to grant their application TCC permissions. For instance, adversaries can use Finder, which has Full Disk Access (FDA) permissions by default, to execute malicious AppleScript while preventing a user prompt.",
+    "generated_answer": "Attack technique 'T1548.006: Abuse Elevation Control Mechanism: TCC Manipulation' is a sub-technique of 'T1548: Abuse Elevation Control Mechanism' and is used for Defense Evasion and Privilege Escalation, which can be detected using Command Execution, File Modification, and Process Creation data components.",
+    "references": [
+      "088fb70a5bda9ae4",
+      "3b691cdebae3f61c",
+      "6f832cd883b8e681"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 8
+  },
+  {
+    "question": "Describe attack software 'S1035: Small Sieve'",
+    "source": "software",
+    "true_answer": "S1035: Small Sieve is an attack software that is a Telegram Bot API-based Python backdoor distributed using a Nullsoft Scriptable Install System (NSIS) Installer. It has been used by MuddyWater since at least January 2022.",
+    "generated_answer": "Small Sieve is a Telegram Bot API-based Python backdoor that has been distributed using a Nullsoft Scriptable Install System (NSIS) Installer.",
+    "references": [
+      "4395e786362553cd"
+    ],
+    "hard_accuracy": 9,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What attack techniques are used by software 'S0508: ngrok'?",
+    "source": "relationships_techniques_for_software",
+    "true_answer": "The attack techniques used by software 'S0508: ngrok' are: 'T1090: Proxy', 'T1102: Web Service', 'T1567: Exfiltration Over Web Service', 'T1568.002: Domain Generation Algorithms', 'T1572: Protocol Tunneling'",
+    "generated_answer": "T1090: Proxy, T1102: Web Service, T1567: Exfiltration Over Web Service, T1568.002: Domain Generation Algorithms, T1572: Protocol Tunneling",
+    "references": [
+      "f6457445d10f004f"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How can mitigation strategy 'M1031: Network Intrusion Prevention' be used to mitigate attack technique 'T1204: User Execution'?",
+    "source": "relationships_mitigations",
+    "true_answer": "Network intrusion prevention systems and systems designed to scan and remove malicious downloads can be used to block activity if a link is being visited by a user.",
+    "generated_answer": "Network intrusion prevention systems and systems designed to scan and remove malicious downloads can be used to block activity when a link is being visited by a user.",
+    "references": [
+      "e8b620ad2d41b418"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What is the importance of correlation with process monitoring and command line in detecting 'T1071.002: File Transfer Protocols' attack technique?",
+    "source": "relationships_detects",
+    "true_answer": "Correlation with process monitoring and command line is important in detecting 'T1071.002: File Transfer Protocols' attack technique because it allows for the detection of anomalous processes execution and command line arguments associated with traffic patterns, such as monitoring anomalies in the use of files that do not normally initiate connections for respective protocol(s).",
+    "generated_answer": "Correlation with process monitoring and command line is important to detect anomalous processes execution and command line arguments associated to traffic patterns.",
+    "references": [
+      "74d37edaadeafba5",
+      "14cf9445b4880340"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "What types of protocols may be used by adversaries to communicate with systems under their control?",
+    "source": "techniques",
+    "true_answer": "Protocols such as SMTP/S, POP3/S, and IMAP that carry electronic mail may be very common in environments.",
+    "generated_answer": "Adversaries may utilize many different protocols, including those used for web browsing, transferring files, electronic mail, or DNS, as well as non-application layer protocols such as ICMP, UDP, and SOCKS.",
+    "references": [
+      "634cd371410d4856",
+      "8041c652d175aa3b"
+    ],
+    "hard_accuracy": 8,
+    "faithfulness": 8,
+    "answer_relevancy": 8
+  },
+  {
+    "question": "What is the purpose of monitoring for accounts assigned to high-privileged cluster roles?",
+    "source": "relationships_detects",
+    "true_answer": "The purpose is to identify unusual activity in the assignment of roles to user accounts, as high-privileged cluster roles can be indicative of an attack technique 'T1098.006: Additional Container Cluster Roles'.",
+    "generated_answer": "To identify unusual activity in the assignment of roles to those accounts and detect potential attack techniques such as T1098.006: Additional Container Cluster Roles",
+    "references": [
+      "37373b191ef8aa27"
+    ],
+    "hard_accuracy": 9,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S0533: SLOTHFULMEDIA' use attack technique 'T1082: System Information Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "SLOTHFULMEDIA collects system name, OS version, adapter information, memory usage, and disk information from a victim machine.",
+    "generated_answer": "SLOTHFULMEDIA has collected system name, OS version, adapter information, memory usage, and disk information from a victim machine.",
+    "references": [
+      "e77efc0a8c4915a7"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  },
+  {
+    "question": "How does attack software 'S1090: NightClub' use attack technique 'T1056.001: Keylogging'?",
+    "source": "relationships_uses_software",
+    "true_answer": "NightClub can use a plugin for keylogging.",
+    "generated_answer": "NightClub can use a plugin for keylogging.",
+    "references": [
+      "d214432462c83c85"
+    ],
+    "hard_accuracy": 10,
+    "faithfulness": 10,
+    "answer_relevancy": 10
+  }
+]

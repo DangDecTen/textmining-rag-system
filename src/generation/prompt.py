@@ -1,32 +1,125 @@
+from __future__ import annotations
+from typing import Literal
+from src.data_models.data_models import RetrievalResult
+
+PromptMode = Literal["baseline", "structured", "evidence"]
+
+PROMPTS: dict[PromptMode, str] = {
+    "baseline": 
+    """
+    You are a cybersecurity assistant specializing in the MITRE ATT&CK framework.
+    Your task is to answer the user's question using ONLY the provided context.
+
+    Instructions:
+    - Use ONLY the provided context.
+    - Do NOT use outside knowledge.
+    - If the context does not contain enough information, answer exactly:
+    "I do not have enough information from the provided context."
+    - Keep the answer concise and technically accurate.
+    - Only cite chunk IDs that appear in the provided context.
+    - Do not invent references.
+
+    Return ONLY valid JSON in the following format:
+    {
+        "answer": "<answer>",
+        "references": [
+            "<chunk_id>"
+        ]
+    }
+    """,
+
+
+    "structured": 
+    """
+    You are an expert cybersecurity analyst specializing in the MITRE ATT&CK framework.
+    Extract only the information necessary to answer the question.
+
+    Instructions:
+    - Use ONLY the provided context.
+    - Extract factual information directly supported by the context.
+    - Prefer precise cybersecurity terminology.
+    - Do not speculate or infer unsupported facts.
+    - Keep the answer concise (1-3 sentences whenever possible).
+    - If the context does not contain enough information, answer exactly:
+    "I do not have enough information from the provided context."
+    - Only cite chunk IDs that support the answer.
+    - Do not invent references.
+
+    Return ONLY valid JSON in the following format:
+
+    {
+        "answer": "<answer>",
+        "references": [
+            "<chunk_id>"
+        ]
+    }
+    """,
+
+
+    "evidence": 
+    """
+    You are an expert cybersecurity analyst specializing in the MITRE ATT&CK framework.
+    Every factual statement MUST be supported by the provided context.
+
+    Instructions:
+    - Use ONLY the provided context.
+    - Never use outside knowledge.
+    - Every statement in the answer must be supported by one or more cited chunks.
+    - Cite every chunk that contributes evidence.
+    - Only cite chunk IDs appearing in the provided context.
+    - Do not invent references.
+    - If the context does not contain enough information, answer exactly:
+    "I do not have enough information from the provided context."
+
+    Before producing the final answer, verify that every statement is supported by the cited references.
+    Return ONLY valid JSON in the following format:
+
+    {
+        "answer": "<answer>",
+        "references": [
+            "<chunk_id>"
+        ]
+    }
+    """,
+}
+
+
+def build_prompt(query: str, contexts: list[RetrievalResult], mode: PromptMode,) -> str:
+    if mode not in PROMPTS:
+        raise ValueError(
+            f"Unknown prompt mode '{mode}'. "
+            f"Available modes: {list(PROMPTS.keys())}"
+        )
+
+    context_blocks = []
+
+    for result in contexts:
+        if result.document is None:
+            continue
+
+        context_blocks.append(
+            f"[{result.doc_id}]\n"
+            f"{result.document.text}"
+        )
+
+    context_text = "\n\n".join(context_blocks)
+
+    return f"""{PROMPTS[mode]}
+
+========================
+Context
+========================
+
+{context_text}
+
+========================
+Question
+========================
+
+{query}
+
+Return ONLY the JSON object.
+Do not include markdown.
+Do not wrap the JSON in ``` blocks.
+Do not provide any explanation before or after the JSON.
 """
-Prompt for closed-domain, factoid, short-answer QA with structured abstention.
-
-Kept as its own module (not inlined in the Generator) so it's easy to iterate
-on independently -- prompt wording is exactly the kind of thing you'll want
-to A/B test once the eval harness is running.
-
-One worked example is included in the system prompt: a 1.5B model is small
-enough that reliably following a strict JSON-only output format benefits
-from a concrete demonstration, not just an instruction.
-"""
-
-SYSTEM_PROMPT = """You are a cybersecurity knowledge assistant. You answer questions using ONLY the information in the provided context, which comes from the MITRE ATT&CK knowledge base.
-
-Rules:
-1. Use ONLY the provided context. Do not use outside knowledge, and do not guess.
-2. Give a short, factual answer -- a phrase or one sentence, not a long explanation.
-3. If the context does not contain the answer, do not attempt one.
-4. Respond with STRICT JSON only. No text before or after the JSON. Exactly this format:
-{"answer": "<short answer, or empty string if not found>", "found": true or false}
-
-Example:
-Context:
-[1] T1055 (Process Injection) is a technique where adversaries inject code into other processes to evade process-based defenses and elevate privileges.
-
-Question: What is Process Injection used for?
-Response: {"answer": "Evading process-based defenses and elevating privileges by injecting code into other processes.", "found": true}
-"""
-
-
-def build_user_message(question: str, context_block: str) -> str:
-    return f"Context:\n{context_block}\n\nQuestion: {question}\nResponse:"
