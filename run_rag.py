@@ -1,43 +1,27 @@
-from pathlib import Path
+import argparse
 from src.data_models.io import load_corpus_lookup
-from src.indexing.bm25_index import BM25Index
 from src.pipeline import Pipeline
-
 from src.retrieval.base import Retriever
-from src.retrieval.bm25_retriever import BM25Retriever
+from src.retrieval.retriever_factory import RetrieverFactory
 
 from src.generation.base import Generator
-from src.generation.qwen_generator import QwenGenerator
 from src.generation.llama_generator import LlamaGenerator
 
 
-INDEX_DIR = "data/index/bm25"
-
-
-def get_index() -> BM25Index: 
-    index_dir_p = Path(INDEX_DIR)    
-    index = BM25Index.load(str(index_dir_p))
-    return index
-
-
-def get_retriever() -> Retriever:
+def get_retriever(retriever_type: str = "hybrid") -> Retriever:
     corpus_lookup = load_corpus_lookup()
-
-    print(f"Loading retriever (bm25) at {INDEX_DIR}...")
-    index = get_index()
-    retriever = BM25Retriever(index=index, corpus_lookup=corpus_lookup)
-    return retriever
+    print(f"Loading retriever ({retriever_type})...")
+    return RetrieverFactory.create(retriever_type, corpus_lookup=corpus_lookup)
 
 
 def get_generator() -> Generator:
     print("Loading generator (llama-3.3-70b-versatile)...")
-    generator = LlamaGenerator()
-    return generator
+    return LlamaGenerator()
 
 
 def my_app(question: str, top_k: int, pipeline: Pipeline):
     answer, generation_result = pipeline.answer_with_debug(question, top_k=top_k)
- 
+
     print("\n----------")
     print(f"Q: {question}")
     print(f"A: {answer.text}")
@@ -46,8 +30,9 @@ def my_app(question: str, top_k: int, pipeline: Pipeline):
         print("\n----------")
         print("Retrieved contexts...\n")
         for c in answer.citations:
-            print(f"[{c.subject_id} - {c.subject_name}] Facts taken from {c.field + ", " if c.field else ""}{c.source}.")
-            print(f"- Related: {c.relation_name if c.relation_name else "None"}")
+            field_str = f"{c.field}, " if c.field else ""
+            print(f"[{c.subject_id} - {c.subject_name}] Facts taken from {field_str}{c.source}.")
+            print(f"- Related: {c.relation_name if c.relation_name else 'None'}")
             print(f"- References: {c.references}")
             print(f"- URL: {c.url}\n")
 
@@ -58,16 +43,19 @@ def my_app(question: str, top_k: int, pipeline: Pipeline):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--retriever", default="hybrid", choices=["dense", "bm25", "hybrid"])
+    args = parser.parse_args()
+
     question = input("Enter question: ").strip()
-    top_k = int(input("Enter k: ").strip())
+    top_k_str = input("Enter k (default 5): ").strip()
+    top_k = int(top_k_str) if top_k_str else 5
+
     if not question:
         print("question cannot be empty")
         return
-    if not top_k:
-        print("invalid k")
-        return
 
-    retriever = get_retriever()
+    retriever = get_retriever(args.retriever)
     generator = get_generator()
     rag_pipeline = Pipeline(retriever, generator)
     my_app(question, top_k, rag_pipeline)

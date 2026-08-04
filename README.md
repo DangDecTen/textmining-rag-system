@@ -98,6 +98,26 @@ Report on some experiments.
 |-|-|-|-|-|
 |`IndexFlatIP`|~32 min|2,533 (dev)|mrr: 0.847<br>recall@1: 0.797<br>recall@5: 0.914<br>recall@10: 0.940|model: `BAAI/bge-small-en-v1.5`<br>batch: 64|
 
+### Hybrid Retrieval (Dense + BM25)
+
+Combines Dense FAISS (`BAAI/bge-small-en-v1.5`) and Lexical `bm25s` using Reciprocal Rank Fusion (RRF).
+
+```bash
+# Guide
+python -m src.run_hybrid --help
+
+# Evaluation of hybrid retrieval
+python -m src.run_hybrid --split dev
+python -m src.run_hybrid --split test
+```
+
+Report on some experiments.
+
+|Index & Retriever|QA Examples|Metrics|Hyperparameters|
+|-|-|-|-|
+|`Hybrid (Dense + BM25)`|2,533 (dev)|mrr: 0.810<br>recall@1: 0.750<br>recall@5: 0.887<br>recall@10: 0.931|method: RRF<br>k: 60<br>alpha: 0.5|
+|`Hybrid (Dense + BM25)`|2,538 (test)|mrr: 0.804<br>recall@1: 0.746<br>recall@5: 0.881<br>recall@10: 0.920|method: RRF<br>k: 60<br>alpha: 0.5|
+
 ## Generator
 
 Using `RetrievalResult` from retrieval stage as inputs, the generator is forced to output in JSON format (config with system prompt and/or API interface) which then is parsed into `GenerationResult` for a structured answer.

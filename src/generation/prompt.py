@@ -4,6 +4,31 @@ from src.data_models.data_models import RetrievalResult
 
 PromptMode = Literal["baseline", "structured", "evidence"]
 
+SYSTEM_PROMPT = """You are an expert cybersecurity analyst specializing in the MITRE ATT&CK framework.
+Your task is to answer the user's question accurately using ONLY the provided context.
+
+Instructions:
+- Use ONLY the provided context. Do NOT use outside knowledge.
+- If the context does not contain enough information, set found=false and answer with "I do not have enough information from the provided context."
+- Keep the answer concise, technical, and precise.
+
+Return ONLY valid JSON matching the following format:
+{
+    "answer": "<answer text>",
+    "found": true | false
+}
+"""
+
+
+def build_user_message(question: str, context_block: str) -> str:
+    return f"""Context:
+{context_block}
+
+Question:
+{question}
+"""
+
+
 PROMPTS: dict[PromptMode, str] = {
     "baseline": 
     """
