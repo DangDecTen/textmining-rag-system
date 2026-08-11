@@ -1,3 +1,11 @@
+> This file covers retrieval **design decisions** (tokenization, embedding
+> choices, index type). For the `Retriever` interface, the registry pattern,
+> and how to add a new retriever, see `src/retrieval/README.md`. For the
+> generation side, see `src/generation/README.md`. For the end-to-end
+> architecture and how everything is wired together, see the root
+> `README.md`. Paths, model names, and hyperparameters referenced below are
+> all defined once in `src/config.py`, not hardcoded per-script.
+
 # Lexical Retrieval (BM25)
 
 Design decisions:

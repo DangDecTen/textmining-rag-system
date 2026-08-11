@@ -17,11 +17,13 @@ from src.generation.base import Generator
 from src.generation.context_builder import ContextBuilder
 from src.generation.output_parser import parse_structured_output
 from src.generation.prompt import SYSTEM_PROMPT, build_user_message
+from src.generation.registry import register_generator
 
 
 load_dotenv()
 
 
+@register_generator("llama")
 class LlamaGenerator(Generator):
     def __init__(
         self,

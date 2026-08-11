@@ -10,8 +10,10 @@ from __future__ import annotations
 from src.data_models.data_models import Document, RetrievalResult
 from src.indexing.dense_index import DenseIndex
 from src.retrieval.base import Retriever
+from src.retrieval.registry import register_retriever
 
 
+@register_retriever("dense")
 class DenseRetriever(Retriever):
     def __init__(self, index: DenseIndex, corpus_lookup: dict[str, Document]):
         self.index = index

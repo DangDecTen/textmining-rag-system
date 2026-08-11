@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 from typing import Literal
+from src.config import settings
 from src.data_models.io import load_corpus_lookup, load_qa_examples
 from src.data_models.io import Document
 from src.indexing.dense_index import DenseIndex
@@ -15,9 +16,11 @@ from src.retrieval.dense_retriever import DenseRetriever
 from src.eval.retrieval_eval import evaluate_retriever, print_report
 
 
-INDEX_DIR = "data/index/dense"
-MODEL_NAME = "BAAI/bge-small-en-v1.5"
-BATCH_SIZE = 64
+# Index dir + model config live in src/config.py (single source of truth,
+# shared with the API) -- not redefined here.
+INDEX_DIR = settings.dense_index_dir
+MODEL_NAME = settings.dense_model_name
+BATCH_SIZE = settings.dense_batch_size
 
 
 def build_index(corpus: list[Document], rebuild: bool = False) -> DenseIndex:

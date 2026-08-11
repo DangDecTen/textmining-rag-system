@@ -1,0 +1,33 @@
+[project]
+name = "textmining-rag-system"
+version = "1.0.0"
+description = "A RAG system over the AttackQA (MITRE ATT&CK) dataset: ingestion, BM25/dense retrieval, LLM generation, FastAPI + Streamlit app."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas",
+    "numpy",
+    "pydantic>=2",
+    "pydantic-settings>=2",
+    "python-dotenv",
+    "bm25s",
+    "faiss-cpu",
+    "sentence-transformers",
+    "groq",
+    "transformers",
+    "torch",
+    "fastapi",
+    "uvicorn[standard]",
+    "streamlit",
+    "requests",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["src*", "app*"]

@@ -9,8 +9,10 @@ from __future__ import annotations
 from src.data_models.data_models import Document, RetrievalResult
 from src.indexing.bm25_index import BM25Index
 from src.retrieval.base import Retriever
+from src.retrieval.registry import register_retriever
 
 
+@register_retriever("bm25")
 class BM25Retriever(Retriever):
     def __init__(self, index: BM25Index, corpus_lookup: dict[str, Document]):
         """corpus_lookup: doc_id -> Document, typically loaded from corpus.jsonl."""

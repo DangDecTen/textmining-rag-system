@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 from typing import Literal
+from src.config import settings
 from src.data_models.io import load_corpus_lookup, load_qa_examples
 from src.indexing.bm25_index import BM25Index
 from src.retrieval.bm25_retriever import BM25Retriever
@@ -16,12 +17,9 @@ from src.data_models.data_models import Document
 from src.eval.retrieval_eval import evaluate_retriever, print_report
 
 
-INDEX_DIR = "data/index/bm25"
-
-# BM25 hyper-parameters
-BM25_METHOD = "lucene"
-BM25_K1 = 1.5
-BM25_B = 0.75
+# Index dir + BM25 hyperparameters live in src/config.py (single source of
+# truth, shared with the API) -- not redefined here.
+INDEX_DIR = settings.bm25_index_dir
 
 
 def build_index(corpus: list[Document], rebuild: bool = False) -> BM25Index:
@@ -29,7 +27,7 @@ def build_index(corpus: list[Document], rebuild: bool = False) -> BM25Index:
     
     if rebuild or not index_dir_p.exists():
         print("Building BM25 index...")
-        index = BM25Index(method=BM25_METHOD, k1=BM25_K1, b=BM25_B)
+        index = BM25Index(method=settings.bm25_method, k1=settings.bm25_k1, b=settings.bm25_b)
         index.build(corpus)
         index.save(str(index_dir_p))
         print(f"Saved index to {index_dir_p}/")
