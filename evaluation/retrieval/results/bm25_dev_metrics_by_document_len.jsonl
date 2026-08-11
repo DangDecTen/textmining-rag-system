@@ -1,0 +1,5 @@
+{"group_by": "document_len", "group": "overall", "n": 2533, "mrr": 0.7239948552127786, "recall@1": 0.638768258981445, "recall@5": 0.8310303987366758, "recall@10": 0.8863008290564548, "retriever": "bm25", "split": "dev"}
+{"group_by": "document_len", "group": "q2", "n": 639, "mrr": 0.8802419455001615, "recall@1": 0.8231611893583725, "recall@5": 0.9530516431924883, "recall@10": 0.9765258215962441, "retriever": "bm25", "split": "dev"}
+{"group_by": "document_len", "group": "q3", "n": 637, "mrr": 0.6672516259250953, "recall@1": 0.5368916797488226, "recall@5": 0.8414442700156985, "recall@10": 0.9120879120879121, "retriever": "bm25", "split": "dev"}
+{"group_by": "document_len", "group": "q4", "n": 635, "mrr": 0.41768841394825645, "recall@1": 0.2992125984251969, "recall@5": 0.5574803149606299, "recall@10": 0.6677165354330709, "retriever": "bm25", "split": "dev"}
+{"group_by": "document_len", "group": "q1", "n": 622, "mrr": 0.9342973255754606, "recall@1": 0.9003215434083601, "recall@5": 0.9742765273311897, "recall@10": 0.9903536977491961, "retriever": "bm25", "split": "dev"}

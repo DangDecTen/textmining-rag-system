@@ -17,6 +17,7 @@ or an explicit "I don't know" if the answer isn't in the knowledge base.
 - [Generation](#generation)
   - [Llama Generator](#llama-generator)
   - [Qwen Generator](#qwen-generator)
+- [Evaluation](#evaluation)
 - [Running the app (API + Streamlit)](#running-the-app-api--streamlit)
 - [Configuration](#configuration)
 - [Repository Structure](#repository-structure)
@@ -184,6 +185,10 @@ HF_TOKEN=<YOUR_API_KEY>
 
 Limits: 128k context tokens, 8k max output tokens, ~15 min latency on CPU.
 
+## Evaluation
+
+About retrieval evaluation and analysis, refers to `evaluation/retrieval/README.md`.
+
 ## Running the app (API + Streamlit)
 
 Two processes, in two terminals.
@@ -194,18 +199,37 @@ Two processes, in two terminals.
 python -m uvicorn app.backend.api:app --reload
 ```
 
-Try it directly:
+Query directly on Linux/macOS:
 
 ```bash
 curl -X POST http://127.0.0.1:8000/query \
   -H "Content-Type: application/json" \
-  -d '{"query": "mitigations for command and control", "k": 5, "retriever": "bm25", "generator": "llama"}'
+  -d '{"query": "What campaigns used attack technique ’T1562.001: Disable or Modify Tools’?", "k": 5, "retriever": "bm25", "generator": "llama"}'
+```
+
+On Windows PowerShell:
+
+```shell
+# Define a small helper
+function query-rag($q) {
+    irm http://127.0.0.1:8000/query -Method Post -ContentType "application/json" -Body (@{
+        query=$q
+        k=5
+        retriever="bm25"
+        generator="llama"
+    } | ConvertTo-Json)
+}
+
+# Then query
+query-rag "What campaigns used attack technique ’T1562.001: Disable or Modify Tools’?"
 ```
 
 `GET /` lists every currently-registered retriever and generator — useful
 after adding a new one. `GET /health` reports whether the default
 retriever's index exists on disk. `POST /retrieve` runs retrieval only, for
-debugging retrieval quality without paying for generation.
+debugging retrieval quality without paying for generation. More details, visit:
+- Swagger UI → http://127.0.0.1:8000/docs
+- ReDoc → http://127.0.0.1:8000/redoc
 
 **2. Start the frontend, in a separate terminal:**
 
@@ -325,14 +349,12 @@ frontend, eval scripts — doesn't need to change at all.
 
 | I want to... | Look at |
 |---|---|
-| Understand the end-to-end flow | this file, [How it fits together](#how-it-fits-together) |
 | Change a path, model name, or default | `src/config.py`, `.env.example` |
 | See how a question turns into an object graph | `src/factory.py` |
 | Add a new retriever / vector store | `src/retrieval/README.md` |
 | Add a new generator / LLM provider | `src/generation/README.md` |
 | Understand ingestion dedup/split logic | `src/ingestion/README.md` |
 | Run or extend the API / Streamlit app | `app/README.md` |
-| Understand retrieval evaluation metrics | `src/eval/retrieval_eval.py` |
 
 ## References
 
