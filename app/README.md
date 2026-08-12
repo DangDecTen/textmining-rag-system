@@ -34,7 +34,7 @@ Service info, plus what's currently registered:
 ```json
 {
   "message": "Textmining RAG System API",
-  "available_retrievers": ["bm25", "dense"],
+  "available_retrievers": ["bm25", "dense", "hybrid"],
   "available_generators": ["llama", "qwen"],
   "defaults": {"retriever": "bm25", "generator": "llama"}
 }
@@ -44,6 +44,12 @@ The frontend calls this on load to populate its retriever/generator
 dropdowns — so a new `@register_retriever(...)` / `@register_generator(...)`
 (see `src/retrieval/README.md`, `src/generation/README.md`) shows up there
 with no frontend changes.
+
+Reranking isn't in this response and isn't a request field — it's
+config-controlled only (`RERANK_ENABLED` in `.env`, see
+`src/reranking/README.md`), not selectable per-request like retriever/
+generator are. `GET /` always reflects the current retriever/generator
+registries regardless of whether reranking is on.
 
 ### `GET /health`
 
@@ -59,6 +65,15 @@ doesn't exist yet — build it first (see the root README's
 
 Retrieval only — useful for debugging retrieval quality without paying for
 generation.
+
+**Bypasses reranking**, even when `RERANK_ENABLED=true` — it calls the
+named retriever directly, not `Pipeline`. If you're comparing this
+endpoint's ordering against `/query`'s `retrieved_context` and they don't
+match, that's why: `/query` goes through the full pipeline (retrieve →
+rerank → generate), so its `retrieved_context` reflects the *post-rerank*
+order when reranking is on, while `/retrieve` always shows the raw
+retriever output. Useful distinction when diagnosing whether a bad answer
+came from retrieval or from reranking.
 
 Request:
 ```json
@@ -117,6 +132,9 @@ Two different fields carry retrieval information, on purpose:
   (including document text and scores) that were handed to the generator.
   Use this for a "show me the actual retrieved chunks" debug view — that's
   what the Streamlit app's "🔍 Retrieved chunks (debug)" expander does.
+  When `RERANK_ENABLED=true` (the default), these are the *reranked*
+  results and scores (cross-encoder logits, not BM25/cosine scores) — see
+  the `/retrieve` note above if you need the pre-rerank view instead.
 
 If `abstained` is `true`, `answer` is a fixed "I don't have enough
 information..." message and `citations` is empty — the retrieval attempt
@@ -128,6 +146,9 @@ diagnosing *why* it abstained: was the right document even retrieved?).
 - **New retriever/generator**: nothing to change here — see
   [Extending the System](../README.md#extending-the-system) in the root
   README. It'll appear in `GET /` and the Streamlit dropdown automatically.
+- **New reranker**: same idea, see `src/reranking/README.md` — but note it
+  won't appear here, since reranking is config-controlled rather than a
+  request field (see the `GET /` note above).
 - **New endpoint**: add it to `app/backend/api.py`, building objects via
   `src.factory` (don't construct `Retriever`/`Generator`/`Pipeline` objects
   directly — that's exactly the duplication that caused the API and CLI to

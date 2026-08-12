@@ -20,10 +20,43 @@ replacement as long as it honors this signature.
 |---|---|---|---|
 | `bm25` | `BM25Retriever` (`bm25_retriever.py`) | `BM25Index` (`src/indexing/bm25_index.py`, `bm25s`) | lowercase + `[a-z0-9]+` tokenization, no stopwords/stemming |
 | `dense` | `DenseRetriever` (`dense_retriever.py`) | `DenseIndex` (`src/indexing/dense_index.py`, FAISS `IndexFlatIP`) | `BAAI/bge-small-en-v1.5` via `sentence-transformers` |
+<<<<<<< HEAD
+| `hybrid` | `HybridRetriever` (`hybrid_retriever.py`) | composes `dense` + `bm25` retrievers (no index of its own) | fuses both rankings via RRF by default, or min-max normalized weighted sum (`use_rrf=False`); see below |
+
+Design notes for bm25/dense (tokenization choices, embedding/pooling
+details, why `IndexFlatIP` is the right call at this corpus size) are in
+the root `src/README.md`.
+
+### Hybrid (`hybrid_retriever.py`)
+
+Composes an already-built `DenseRetriever` and `BM25Retriever` rather than
+loading its own index. For each query it pulls `max(top_k * 3, 50)`
+candidates from each side, then fuses:
+
+- **RRF (default, `use_rrf=True`)**: `score = alpha / (k + rank_dense) +
+  (1 - alpha) / (k + rank_bm25)`, summed over docs appearing in either
+  list. `rrf_k` is the RRF constant (default 60, the usual literature
+  value); `alpha` weights dense vs. bm25 (default 0.5, i.e. equal weight).
+- **Weighted sum (`use_rrf=False`)**: min-max normalizes each retriever's
+  raw scores to `[0, 1]` independently, then combines as
+  `alpha * dense_norm + (1 - alpha) * bm25_norm`. Sensitive to score
+  distribution outliers in a way RRF isn't -- RRF only uses rank, not raw
+  score, so it's the safer default across different corpora/queries.
+
+Config knobs (`src/config.py`, overridable via `.env`): `hybrid_alpha`,
+`hybrid_rrf_k`, `hybrid_use_rrf`.
+
+Note the constructor's fusion formula weights *both* terms by `alpha`
+(dense) / `1 - alpha` (bm25) even in RRF mode -- this is a deliberate
+variant on "textbook" RRF (which is unweighted, `1/(k+rank)` for each
+list) added so relative trust in dense vs. lexical can be tuned per-corpus
+without switching fusion strategies entirely.
+=======
 
 Design notes for both (tokenization choices, embedding/pooling details,
 why `IndexFlatIP` is the right call at this corpus size) are in the root
 `src/README.md`.
+>>>>>>> main
 
 ## The registry (`registry.py`)
 

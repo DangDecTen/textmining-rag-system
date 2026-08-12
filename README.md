@@ -14,6 +14,8 @@ or an explicit "I don't know" if the answer isn't in the knowledge base.
 - [Indexing & Retrieval](#indexing--retrieval)
   - [Lexical Retrieval (BM25)](#lexical-retrieval-bm25)
   - [Dense Retrieval (FAISS)](#dense-retrieval-faiss)
+  - [Hybrid Retrieval (BM25 + Dense)](#hybrid-retrieval-bm25--dense)
+- [Reranking](#reranking)
 - [Generation](#generation)
   - [Llama Generator](#llama-generator)
   - [Qwen Generator](#qwen-generator)
@@ -45,9 +47,12 @@ Index on disk (data/index/bm25 or data/index/dense)
 question + top_k
         │
         ▼
-Pipeline(Retriever, Generator)          <- src/pipeline.py
+Pipeline(Retriever, Generator, Reranker?)   <- src/pipeline.py
         │
-        ├─ Retriever.search()          <- src/retrieval/  (bm25 or dense)
+        ├─ Retriever.search()          <- src/retrieval/  (bm25, dense, or hybrid)
+        ├─ Reranker.rerank()           <- src/reranking/  (cross-encoder; on by
+        │                                  default, config-controlled — see
+        │                                  [Reranking](#reranking))
         ├─ Generator.generate()        <- src/generation/ (llama or qwen)
         └─ ResponseBuilder.build()     <- turns raw model output into a
                                            clean, citation-bearing Answer
@@ -55,9 +60,14 @@ Pipeline(Retriever, Generator)          <- src/pipeline.py
 Answer (text, abstained?, citations)
 ```
 
-Everything that turns a *name* ("bm25", "dense", "llama", "qwen") into a
-working object goes through **one** module, `src/factory.py`, which reads
-its defaults from **one** config module, `src/config.py`. The CLI
+When reranking is on (the default), the retriever is asked for a wider
+candidate set than `top_k` (`rerank_candidate_k`, default 50) so the
+reranker has a meaningful pool to narrow down from — see
+[Reranking](#reranking).
+
+Everything that turns a *name* ("bm25", "dense", "hybrid", "llama", "qwen")
+into a working object goes through **one** module, `src/factory.py`, which
+reads its defaults from **one** config module, `src/config.py`. The CLI
 (`run_rag.py`), the FastAPI backend (`app/backend/api.py`), and the eval
 scripts (`src/run_bm25.py`, `src/run_dense.py`) all call into the same
 factory, so they can't drift out of sync with each other — see
@@ -94,7 +104,7 @@ directly.
 
 ## Indexing & Retrieval
 
-Both retrievers implement the same `Retriever` interface
+Every retriever implements the same `Retriever` interface
 (`src/retrieval/base.py`: `.search(query, top_k) -> list[RetrievalResult]`),
 so they're interchangeable everywhere in the system — the CLI, the API, and
 the eval scripts all just take a retriever *name*. See
@@ -144,6 +154,56 @@ python -m src.run_dense --split dev
 Index directories, model names, and hyperparameters all live in
 `src/config.py` — see [Configuration](#configuration) to change them without
 editing code.
+
+### Hybrid Retrieval (BM25 + Dense)
+
+Fuses BM25 and dense rankings via Reciprocal Rank Fusion (RRF) by default
+(a min-max normalized weighted-sum mode is also available). Doesn't build
+its own index — it composes an already-built `BM25Retriever` and
+`DenseRetriever`, so both indexes above need to exist first.
+
+```bash
+python run_rag.py --retriever hybrid
+```
+
+|Index & Retriever|Indexing|QA Examples|Metrics|Hyperparameters|
+|-|-|-|-|-|
+|`Hybrid`|Reused|2,533 (dev)|mrr: 0.810<br>recall@1: 0.750<br>recall@5: 0.887<br>recall@10: 0.931|method: RRF<br>k: 60<br>alpha: 0.5|
+|`Hybrid`|Reused|2,538 (test)|mrr: 0.804<br>recall@1: 0.746<br>recall@5: 0.881<br>recall@10: 0.920|method: RRF<br>k: 60<br>alpha: 0.5|
+
+See `src/retrieval/README.md` for the fusion formulas and why RRF is the
+safer default (BM25 and cosine-similarity scores are on unrelated scales,
+so combining them directly would let whichever has larger numbers dominate;
+RRF fuses on rank instead).
+
+## Reranking
+
+A cross-encoder pass between retrieval and generation. Unlike bm25/dense,
+which score query and document independently (so document representations
+can be precomputed offline), a cross-encoder scores query+document
+*jointly* — more accurate, but too slow to run over the whole corpus. So it
+only reranks the candidates a retriever already narrowed down, not the
+corpus itself: `Retriever.search(top_k=rerank_candidate_k)` →
+`Reranker.rerank(top_k=requested_top_k)`.
+
+**On by default**, config-controlled (`RERANK_ENABLED` in `.env`) rather
+than a per-request field like `retriever`/`generator` — every `run_rag.py`
+run and every `POST /query` gets reranked results unless you turn it off.
+`POST /retrieve` (retrieval-only debugging endpoint) always bypasses it —
+see `app/README.md`.
+
+```bash
+# Disable for a run, e.g. to compare against reranked output or for a faster eval
+RERANK_ENABLED=false python run_rag.py
+```
+
+|Reranker|Model|Notes|
+|-|-|-|
+|`cross_encoder`|`BAAI/bge-reranker-base` via `sentence_transformers.CrossEncoder`|scores raw logits — order-only, don't compare against retriever scores|
+
+Same registry pattern as retrieval/generation (`Reranker` interface,
+`@register_reranker`, self-installing). See `src/reranking/README.md` for
+design rationale and how to add a new reranker.
 
 ## Generation
 
@@ -255,6 +315,7 @@ for the full list, e.g.:
 DEFAULT_RETRIEVER=dense
 DEFAULT_TOP_K=8
 BM25_INDEX_DIR=data/index/bm25_v2
+RERANK_ENABLED=false
 ```
 
 ## Repository Structure
@@ -280,7 +341,13 @@ textmining-rag-system/
 │   │   ├── registry.py            # @register_retriever + build_retriever()
 │   │   ├── bm25_retriever.py
 │   │   ├── dense_retriever.py
+│   │   ├── hybrid_retriever.py    # RRF/weighted fusion of bm25 + dense
 │   │   └── README.md              # how retrieval works + how to add a retriever
+│   ├── reranking/
+│   │   ├── base.py                # abstract Reranker interface
+│   │   ├── registry.py            # @register_reranker + build_reranker()
+│   │   ├── cross_encoder_reranker.py
+│   │   └── README.md              # how reranking works + how to add a reranker
 │   ├── generation/
 │   │   ├── base.py                # abstract Generator interface
 │   │   ├── registry.py            # @register_generator + build_generator()
@@ -310,13 +377,13 @@ textmining-rag-system/
 
 ## Extending the System
 
-The three abstract interfaces (`Index`, `Retriever`, `Generator`) plus two
-registries (`src/retrieval/registry.py`, `src/generation/registry.py`) are
-what make adding new tech mostly additive instead of requiring edits
-scattered across the CLI, the API, and a factory file — which is exactly how
-this codebase drifted the first time (a factory that imported a module that
-no longer existed, a constructor signature that no longer matched, a
-frontend expecting fields the API never sent).
+The three abstract interfaces (`Index`, `Retriever`, `Generator`) plus
+three registries (`src/retrieval/registry.py`, `src/generation/registry.py`,
+`src/reranking/registry.py`) are what make adding new tech mostly additive
+instead of requiring edits scattered across the CLI, the API, and a factory
+file — which is exactly how this codebase drifted the first time (a factory
+that imported a module that no longer existed, a constructor signature that
+no longer matched, a frontend expecting fields the API never sent).
 
 **Add a new retriever** (e.g. a hybrid BM25+dense retriever, or one backed
 by a different vector store):
@@ -340,6 +407,14 @@ pattern in `src/generation/`, decorate with `@register_generator("your_name")`,
 add the import in `src/factory.py`, and any new settings in
 `src/config.py`. Full walkthrough in `src/generation/README.md`.
 
+**Add a new reranker** (e.g. an LLM-based reranker, or a different
+cross-encoder checkpoint): same pattern in `src/reranking/`, decorate with
+`@register_reranker("your_name")`, add the import in `src/factory.py`, and
+teach `get_reranker()` there how to build one. Unlike retrievers/generators,
+reranker selection is config-only (`DEFAULT_RERANKER` / `RERANK_ENABLED` in
+`.env`), not a per-request API field — see `src/reranking/README.md` for the
+full walkthrough and why.
+
 **Swap a piece of infrastructure entirely** (e.g. a different vector DB, a
 different embedding provider): implement it behind the existing `Index` or
 `Retriever` interface so the rest of the system — pipeline, API,
@@ -352,9 +427,11 @@ frontend, eval scripts — doesn't need to change at all.
 | Change a path, model name, or default | `src/config.py`, `.env.example` |
 | See how a question turns into an object graph | `src/factory.py` |
 | Add a new retriever / vector store | `src/retrieval/README.md` |
+| Add a new reranker | `src/reranking/README.md` |
 | Add a new generator / LLM provider | `src/generation/README.md` |
 | Understand ingestion dedup/split logic | `src/ingestion/README.md` |
 | Run or extend the API / Streamlit app | `app/README.md` |
+| Run or extend retrieval evaluation | `src/eval/retrieval_eval.py`, `src/retrieval/README.md#evaluating-a-retriever` |
 
 ## References
 

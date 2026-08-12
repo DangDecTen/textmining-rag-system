@@ -26,20 +26,26 @@ from src.pipeline import Pipeline
 # Side-effect imports: populate the registries.
 import src.retrieval.bm25_retriever  # noqa: F401
 import src.retrieval.dense_retriever  # noqa: F401
+import src.retrieval.hybrid_retriever  # noqa: F401
+import src.reranking.cross_encoder_reranker  # noqa: F401
 import src.generation.llama_generator  # noqa: F401
 import src.generation.qwen_generator  # noqa: F401
 
 from src.retrieval.registry import build_retriever, available_retrievers
 from src.generation.registry import build_generator, available_generators
+from src.reranking.registry import build_reranker, available_rerankers
 from src.retrieval.base import Retriever
 from src.generation.base import Generator
+from src.reranking.base import Reranker
 
 __all__ = [
     "get_retriever",
     "get_generator",
+    "get_reranker",
     "get_pipeline",
     "available_retrievers",
     "available_generators",
+    "available_rerankers",
 ]
 
 
@@ -67,6 +73,18 @@ def get_retriever(name: str | None = None) -> Retriever:
         from src.indexing.dense_index import DenseIndex
 
         index = DenseIndex.load(settings.dense_index_dir)
+    elif name == "hybrid":
+        # Not index-backed itself -- composes the already-built bm25 and
+        # dense retrievers (which go through this same cached function, so
+        # no index gets loaded twice).
+        return build_retriever(
+            name,
+            dense_retriever=get_retriever("dense"),
+            bm25_retriever=get_retriever("bm25"),
+            alpha=settings.hybrid_alpha,
+            rrf_k=settings.hybrid_rrf_k,
+            use_rrf=settings.hybrid_use_rrf,
+        )
     else:
         raise ValueError(f"Unknown retriever '{name}'. Available: {available_retrievers()}")
 
@@ -97,4 +115,28 @@ def get_generator(name: str | None = None) -> Generator:
 
 def get_pipeline(retriever_name: str | None = None, generator_name: str | None = None) -> Pipeline:
     """Build a full Pipeline. This is what the CLI and API both call."""
-    return Pipeline(retriever=get_retriever(retriever_name), generator=get_generator(generator_name))
+    return Pipeline(
+        retriever=get_retriever(retriever_name),
+        generator=get_generator(generator_name),
+        reranker=get_reranker() if settings.rerank_enabled else None,
+    )
+
+
+@lru_cache(maxsize=1)
+def get_reranker(name: str | None = None) -> Reranker:
+    """Load (and cache) a reranker by name, e.g. 'cross_encoder'.
+
+    Only called when `settings.rerank_enabled` is True (see `get_pipeline`).
+    Kept as its own cached function -- same reasoning as `get_retriever` /
+    `get_generator` -- so the model is loaded once and reused across
+    requests rather than once per `Pipeline`.
+    """
+    name = (name or settings.default_reranker).lower()
+
+    if name == "cross_encoder":
+        return build_reranker(
+            name,
+            model_name=settings.cross_encoder_model_name,
+            batch_size=settings.cross_encoder_batch_size,
+        )
+    raise ValueError(f"Unknown reranker '{name}'. Available: {available_rerankers()}")
