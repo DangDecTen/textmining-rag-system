@@ -66,3 +66,44 @@ if you see a meaningful fraction of dev questions falling into the
 fail-safe-abstain path due to malformed output (not genuine "not found"), that's
 worth flagging back to me — the fix is probably a stronger worked example in
 the prompt, not a bigger model.
+
+## Registry (`registry.py`) and adding a new generator
+
+Both `LlamaGenerator` and `QwenGenerator` implement the `Generator`
+interface (`base.py`: `.generate(question, contexts) -> GenerationResult`)
+and are registered with a decorator:
+
+```python
+@register_generator("llama")
+class LlamaGenerator(Generator):
+    ...
+```
+
+`build_generator(name, **kwargs)` instantiates a registered class by name;
+`available_generators()` lists every registered name (what powers `GET /` in
+the API and the Streamlit dropdown). See `src/retrieval/README.md` for the
+full rationale on why this is a self-registering registry rather than a
+hand-maintained `if/elif` factory — the short version: the old factory
+silently drifted out of sync with the classes it was supposed to build, and
+a registry makes that class of bug structurally impossible, since the class
+declares its own name at the point it's defined.
+
+**To add a new generator** (a different hosted LLM API, a different local
+model):
+
+1. New file, e.g. `src/generation/openai_generator.py`, subclassing
+   `Generator` and reusing `ContextBuilder` / `output_parser.parse_structured_output`
+   / `prompt.SYSTEM_PROMPT` exactly as `llama_generator.py` and
+   `qwen_generator.py` do — the prompt, context-budgeting, and fail-safe JSON
+   parsing are all model-agnostic; a new generator should not need to
+   reimplement them.
+2. Decorate the class: `@register_generator("your_name")`.
+3. Add one import line to the "side-effect imports" block in
+   `src/factory.py` so the decorator actually runs.
+4. Add a branch in `get_generator()` in `src/factory.py` (mirroring the
+   `llama`/`qwen` branches) for which config fields it needs, and add any
+   new fields (model name, API key env var, etc.) to `src/config.py`.
+
+After that, `python run_rag.py --generator your_name`, `POST /query
+{"generator": "your_name", ...}`, and the Streamlit dropdown all work with
+no further changes.

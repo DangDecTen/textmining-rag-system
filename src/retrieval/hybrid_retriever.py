@@ -9,8 +9,10 @@ from src.data_models.data_models import Document, RetrievalResult
 from src.retrieval.base import Retriever
 from src.retrieval.bm25_retriever import BM25Retriever
 from src.retrieval.dense_retriever import DenseRetriever
+from src.retrieval.registry import register_retriever
 
 
+@register_retriever("hybrid")
 class HybridRetriever(Retriever):
     def __init__(
         self,

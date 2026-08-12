@@ -1,16 +1,24 @@
-sentence-transformers>=3.0
-faiss-cpu>=1.8
-transformers>=4.44
-accelerate>=0.33
-bitsandbytes>=0.43
-torch>=2.2
-fastapi>=0.111
-uvicorn>=0.30
-streamlit>=1.37
-requests>=2.32
-pydantic>=2.7
-numpy>=1.26
-stix2>=3.0
-python-dotenv>=1.1
-groq>=0.31
+# Data / core
+pandas
+numpy
+pydantic>=2
+pydantic-settings>=2
+python-dotenv
+
+# Lexical retrieval
 bm25s
+
+# Dense retrieval
+faiss-cpu
+sentence-transformers
+
+# Generation
+groq
+transformers
+torch
+
+# App
+fastapi
+uvicorn[standard]
+streamlit
+requests

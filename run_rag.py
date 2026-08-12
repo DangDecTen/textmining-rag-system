@@ -1,25 +1,24 @@
+"""
+Interactive CLI for the full RAG pipeline (Retriever + Generator).
+
+Usage:
+    python run_rag.py                                  # defaults from src/config.py
+    python run_rag.py --retriever dense --generator qwen
+
+Retriever/generator names come from the registries in
+src/retrieval/registry.py and src/generation/registry.py -- run with
+--list to see what's currently registered.
+"""
+from __future__ import annotations
+
 import argparse
-from src.data_models.io import load_corpus_lookup
+
+from src.config import settings
+from src.factory import available_generators, available_retrievers, get_pipeline
 from src.pipeline import Pipeline
-from src.retrieval.base import Retriever
-from src.retrieval.retriever_factory import RetrieverFactory
-
-from src.generation.base import Generator
-from src.generation.llama_generator import LlamaGenerator
 
 
-def get_retriever(retriever_type: str = "hybrid") -> Retriever:
-    corpus_lookup = load_corpus_lookup()
-    print(f"Loading retriever ({retriever_type})...")
-    return RetrieverFactory.create(retriever_type, corpus_lookup=corpus_lookup)
-
-
-def get_generator() -> Generator:
-    print("Loading generator (llama-3.3-70b-versatile)...")
-    return LlamaGenerator()
-
-
-def my_app(question: str, top_k: int, pipeline: Pipeline):
+def run_query(question: str, top_k: int, pipeline: Pipeline) -> None:
     answer, generation_result = pipeline.answer_with_debug(question, top_k=top_k)
 
     print("\n----------")
@@ -30,8 +29,7 @@ def my_app(question: str, top_k: int, pipeline: Pipeline):
         print("\n----------")
         print("Retrieved contexts...\n")
         for c in answer.citations:
-            field_str = f"{c.field}, " if c.field else ""
-            print(f"[{c.subject_id} - {c.subject_name}] Facts taken from {field_str}{c.source}.")
+            print(f"[{c.subject_id} - {c.subject_name}] Facts taken from {c.field + ', ' if c.field else ''}{c.source}.")
             print(f"- Related: {c.relation_name if c.relation_name else 'None'}")
             print(f"- References: {c.references}")
             print(f"- URL: {c.url}\n")
@@ -42,23 +40,30 @@ def my_app(question: str, top_k: int, pipeline: Pipeline):
     )
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--retriever", default="hybrid", choices=["dense", "bm25", "hybrid"])
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--retriever", default=settings.default_retriever, help="Retriever name (see --list)")
+    parser.add_argument("--generator", default=settings.default_generator, help="Generator name (see --list)")
+    parser.add_argument("--top-k", type=int, default=settings.default_top_k)
+    parser.add_argument("--question", default=None, help="Skip the interactive prompt and ask this directly")
+    parser.add_argument("--list", action="store_true", help="List available retrievers/generators and exit")
     args = parser.parse_args()
 
-    question = input("Enter question: ").strip()
-    top_k_str = input("Enter k (default 5): ").strip()
-    top_k = int(top_k_str) if top_k_str else 5
+    if args.list:
+        print(f"Retrievers: {available_retrievers()}")
+        print(f"Generators: {available_generators()}")
+        return
 
+    question = args.question or input("Enter question: ").strip()
     if not question:
         print("question cannot be empty")
         return
 
-    retriever = get_retriever(args.retriever)
-    generator = get_generator()
-    rag_pipeline = Pipeline(retriever, generator)
-    my_app(question, top_k, rag_pipeline)
+    print(f"Loading retriever ({args.retriever})...")
+    print(f"Loading generator ({args.generator})...")
+    pipeline = get_pipeline(retriever_name=args.retriever, generator_name=args.generator)
+
+    run_query(question, args.top_k, pipeline)
 
 
 if __name__ == "__main__":
