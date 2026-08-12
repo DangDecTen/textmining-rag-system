@@ -247,12 +247,7 @@ Limits: 128k context tokens, 8k max output tokens, ~15 min latency on CPU.
 
 ## Evaluation
 
-Retrieval evaluation (recall@k, MRR, overall and per-`source`) lives in
-`src/eval/retrieval_eval.py` — any registered retriever can be scored this
-way, including `hybrid`. `src/run_bm25.py` and `src/run_dense.py` are the
-existing worked examples (see the tables above for their current numbers);
-see `src/retrieval/README.md#evaluating-a-retriever` for how to point it at
-a new retriever.
+About retrieval evaluation and analysis, refers to `evaluation/retrieval/README.md`.
 
 ## Running the app (API + Streamlit)
 

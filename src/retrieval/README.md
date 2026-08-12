@@ -20,6 +20,7 @@ replacement as long as it honors this signature.
 |---|---|---|---|
 | `bm25` | `BM25Retriever` (`bm25_retriever.py`) | `BM25Index` (`src/indexing/bm25_index.py`, `bm25s`) | lowercase + `[a-z0-9]+` tokenization, no stopwords/stemming |
 | `dense` | `DenseRetriever` (`dense_retriever.py`) | `DenseIndex` (`src/indexing/dense_index.py`, FAISS `IndexFlatIP`) | `BAAI/bge-small-en-v1.5` via `sentence-transformers` |
+<<<<<<< HEAD
 | `hybrid` | `HybridRetriever` (`hybrid_retriever.py`) | composes `dense` + `bm25` retrievers (no index of its own) | fuses both rankings via RRF by default, or min-max normalized weighted sum (`use_rrf=False`); see below |
 
 Design notes for bm25/dense (tokenization choices, embedding/pooling
@@ -50,6 +51,12 @@ Note the constructor's fusion formula weights *both* terms by `alpha`
 variant on "textbook" RRF (which is unweighted, `1/(k+rank)` for each
 list) added so relative trust in dense vs. lexical can be tuned per-corpus
 without switching fusion strategies entirely.
+=======
+
+Design notes for both (tokenization choices, embedding/pooling details,
+why `IndexFlatIP` is the right call at this corpus size) are in the root
+`src/README.md`.
+>>>>>>> main
 
 ## The registry (`registry.py`)
 

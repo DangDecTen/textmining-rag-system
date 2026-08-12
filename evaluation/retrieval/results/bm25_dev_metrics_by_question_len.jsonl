@@ -1,0 +1,5 @@
+{"group_by": "question_len", "group": "overall", "n": 2533, "mrr": 0.7239948552127786, "recall@1": 0.638768258981445, "recall@5": 0.8310303987366758, "recall@10": 0.8863008290564548, "retriever": "bm25", "split": "dev"}
+{"group_by": "question_len", "group": "q3", "n": 660, "mrr": 0.8709794372294372, "recall@1": 0.8212121212121212, "recall@5": 0.9257575757575758, "recall@10": 0.953030303030303, "retriever": "bm25", "split": "dev"}
+{"group_by": "question_len", "group": "q4", "n": 638, "mrr": 0.6511935861073792, "recall@1": 0.4952978056426332, "recall@5": 0.8730407523510971, "recall@10": 0.9137931034482759, "retriever": "bm25", "split": "dev"}
+{"group_by": "question_len", "group": "q1", "n": 630, "mrr": 0.6090583270345176, "recall@1": 0.526984126984127, "recall@5": 0.7, "recall@10": 0.7936507936507936, "retriever": "bm25", "split": "dev"}
+{"group_by": "question_len", "group": "q2", "n": 605, "mrr": 0.7601062573789846, "recall@1": 0.7074380165289256, "recall@5": 0.8198347107438017, "recall@10": 0.8809917355371901, "retriever": "bm25", "split": "dev"}

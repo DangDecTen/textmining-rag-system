@@ -1,0 +1,3 @@
+{"group_by": "human_question", "group": "overall", "n": 2533, "mrr": 0.7239948552127786, "recall@1": 0.638768258981445, "recall@5": 0.8310303987366758, "recall@10": 0.8863008290564548, "retriever": "bm25", "split": "dev"}
+{"group_by": "human_question", "group": true, "n": 1755, "mrr": 0.7610247365802921, "recall@1": 0.6905982905982906, "recall@5": 0.8478632478632478, "recall@10": 0.8883190883190883, "retriever": "bm25", "split": "dev"}
+{"group_by": "human_question", "group": false, "n": 778, "mrr": 0.6404634390174236, "recall@1": 0.5218508997429306, "recall@5": 0.7930591259640103, "recall@10": 0.8817480719794345, "retriever": "bm25", "split": "dev"}
