@@ -31,7 +31,7 @@ def simple_tokenize(text: str) -> list[str]:
 
 
 class BM25Index(Index):
-    def __init__(self, method: str = "lucene", k1: float = 1.5, b: float = 0.75):
+    def __init__(self, method: str = "lucene", k1: float = 1.0, b: float = 0.25):
         self.method = method
         self.k1 = k1
         self.b = b
