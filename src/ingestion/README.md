@@ -1,4 +1,21 @@
-# Stage 01 — Ingestion
+# Ingestion
+
+Parses AttackQA into a corpus (`corpus.jsonl`) for indexing, and QA pairs
+with train/dev/test splits (default 80/10/10) for evaluation.
+
+```bash
+python -m src.ingestion.run_ingestion
+
+# See src/config.py for where to add attackqa.parquet and where to get
+# processed data.
+```
+
+No chunking in the current implementation — AttackQA has already done that.
+See `src/ingestion/README.md` for dedup/split design decisions, or explore
+the [AttackQA dataset](https://huggingface.co/datasets/sambanovasystems/attackqa/blob/main/Getting%20Started%20with%20MITRE%20QA%20Dataset.ipynb)
+directly.
+
+## Data Ingestion
 
 Turns `data/benchmark/attackqa.parquet` into three artifacts under
 `data/processed/`:
@@ -29,13 +46,6 @@ Turns `data/benchmark/attackqa.parquet` into three artifacts under
   split proportionally but flagged in the console output as "thin", so you
   know dev/test metrics on that slice will be noisy.
 
-## Run
-
-```bash
-python -m src.ingestion.run_ingestion \
-    --input data/benchmark/attackqa.parquet \
-    --output-dir data/processed
-```
 
 Prints a summary: raw row count, unique document count + dedup rate, split
 sizes, any thin `source` categories, and whether the dup_report flagged

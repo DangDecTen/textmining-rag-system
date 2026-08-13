@@ -16,6 +16,7 @@ import pandas as pd
 
 from src.data_models.data_models import Document, QAExample
 from src.ingestion.core import build_corpus, build_qa_examples, stratified_split
+from src.config import settings
 
 
 def _row_to_document(row: dict) -> Document:
@@ -96,7 +97,7 @@ def run(input_path: str, output_dir: str) -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input", default="data/benchmark/attackqa.parquet")
-    parser.add_argument("--output-dir", default="data/processed")
+    parser.add_argument("--input", default=settings.dataset)
+    parser.add_argument("--output-dir", default=settings.processed_data_dir)
     args = parser.parse_args()
     run(args.input, args.output_dir)
