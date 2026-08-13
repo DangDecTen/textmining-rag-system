@@ -20,12 +20,68 @@ replacement as long as it honors this signature.
 |---|---|---|---|
 | `bm25` | `BM25Retriever` (`bm25_retriever.py`) | `BM25Index` (`src/indexing/bm25_index.py`, `bm25s`) | lowercase + `[a-z0-9]+` tokenization, no stopwords/stemming |
 | `dense` | `DenseRetriever` (`dense_retriever.py`) | `DenseIndex` (`src/indexing/dense_index.py`, FAISS `IndexFlatIP`) | `BAAI/bge-small-en-v1.5` via `sentence-transformers` |
-<<<<<<< HEAD
 | `hybrid` | `HybridRetriever` (`hybrid_retriever.py`) | composes `dense` + `bm25` retrievers (no index of its own) | fuses both rankings via RRF by default, or min-max normalized weighted sum (`use_rrf=False`); see below |
 
 Design notes for bm25/dense (tokenization choices, embedding/pooling
 details, why `IndexFlatIP` is the right call at this corpus size) are in
 the root `src/README.md`.
+
+## Lexical Retrieval (BM25)
+
+Uses [`bm25s`](https://github.com/xhluca/bm25s) for indexing and retrieval.
+
+```bash
+# Guide
+python -m src.indexing.build_index --help
+
+# Build the index (skips if data/index/bm25 already has one)
+python -m src.indexing.build_index --retriever bm25
+
+# Force a rebuild, e.g. after changing a hyperparameter
+python -m src.indexing.build_index --retriever bm25 --bm25-k1 1.2 --bm25-b 0.6 --rebuild
+```
+
+Then evaluate on a split with `evaluation.retrieval.run_eval` (a separate
+package — see its README):
+
+```bash
+python -m evaluation.retrieval.run_eval --retriever bm25 --split dev
+```
+
+|Index & Retriever|Indexing|QA Examples|Metrics|Hyperparameters|
+|-|-|-|-|-|
+|`bm25s`|~15 min|2,533 (dev)|mrr: 0.724<br>recall@1: 0.639<br>recall@5: 0.831<br>recall@10: 0.886|method: lucene<br>k1: 1.5<br>b: 0.75|
+
+## Dense Retrieval (FAISS)
+
+Uses [Sentence Transformers](https://sbert.net/index.html) to embed
+documents and questions, and
+[`facebookresearch/faiss`](https://github.com/facebookresearch/faiss/wiki/)
+(`IndexFlatIP`, exact search — appropriate at this corpus size) for the
+index itself.
+
+```bash
+# Optional, set a HF_TOKEN in .env to enable faster model downloads.
+
+# Build the index (skips if data/index/dense already has one; this embeds
+# every document, so expect it to take a while on CPU)
+python -m src.indexing.build_index --retriever dense
+
+# Force a rebuild with a different model
+python -m src.indexing.build_index --retriever dense --dense-model-name BAAI/bge-base-en-v1.5 --rebuild
+```
+
+Then evaluate the same way as bm25 above (`--retriever dense`).
+
+|Index & Retriever|Indexing|QA Examples|Metrics|Hyperparameters|
+|-|-|-|-|-|
+|`IndexFlatIP`|~32 min|2,533 (dev)|mrr: 0.847<br>recall@1: 0.797<br>recall@5: 0.914<br>recall@10: 0.940|model: `BAAI/bge-small-en-v1.5`<br>batch: 64|
+
+Index directories, model names, and hyperparameters all live in
+`src/config.py` — see [Configuration](#configuration) to change the
+persistent defaults, or pass `--bm25-*`/`--dense-*` flags to
+`build_index.py` to override just one build without touching `.env`. See
+`src/indexing/README.md` for the full flag reference and design notes.
 
 ### Hybrid (`hybrid_retriever.py`)
 
@@ -51,12 +107,6 @@ Note the constructor's fusion formula weights *both* terms by `alpha`
 variant on "textbook" RRF (which is unweighted, `1/(k+rank)` for each
 list) added so relative trust in dense vs. lexical can be tuned per-corpus
 without switching fusion strategies entirely.
-=======
-
-Design notes for both (tokenization choices, embedding/pooling details,
-why `IndexFlatIP` is the right call at this corpus size) are in the root
-`src/README.md`.
->>>>>>> main
 
 ## The registry (`registry.py`)
 

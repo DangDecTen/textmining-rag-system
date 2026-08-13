@@ -25,6 +25,10 @@ By default the frontend expects the API at `http://localhost:8000`
 (`API_URL` at the top of `app/frontend/app.py` — change it if you deploy the
 API elsewhere).
 
+More details, visit:
+- Swagger UI → http://127.0.0.1:8000/docs
+- ReDoc → http://127.0.0.1:8000/redoc
+
 ## API contract (`app/backend/api.py`)
 
 ### `GET /`

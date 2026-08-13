@@ -1,18 +1,42 @@
 # Stage 03/04 — Generation
 
-Closed-domain, factoid, short-answer QA with structured abstention.
+Takes `list[RetrievalResult]` from the retrieval stage, builds a bounded
+context window, and forces the model to answer in strict JSON
+(`{"answer": ..., "found": bool}`), which is then parsed into a
+`GenerationResult` and turned into a citation-bearing `Answer`. If the model
+can't find the answer in context, it abstains explicitly rather than
+guessing. See `src/generation/README.md` for the full design rationale and
+how to add a new generator.
 
-## Pipeline (logical, not 1:1 with classes)
-
+```bash
+# Interactive CLI: pick a retriever + generator, ask a question
+python run_rag.py
+python run_rag.py --retriever dense --generator qwen
+python run_rag.py --list          # show every registered retriever/generator
 ```
-RetrievalResult(s) → [ContextBuilder, internal to Generator] → Generator → GenerationResult → ResponseBuilder → Answer
+
+## Llama Generator
+
+Groq API, [`llama-3.3-70b-versatile`](https://console.groq.com/docs/model/llama-3.3-70b-versatile).
+
+```dotenv
+# Set in .env to use this generator.
+GROQ_API_KEY=<YOUR_API_KEY>
 ```
 
-`ContextBuilder` is a plain utility composed inside `Generator` (same
-architectural role as `Embedder`/tokenizer elsewhere), not a separate stage
-in the `Generator.generate(question, contexts)` interface — that interface
-takes raw `list[RetrievalResult]`, so any intermediate formatting has to
-happen inside the implementation, not before it.
+Limits: 131,072 context tokens, 32,768 max output tokens, ~1s latency.
+
+## Qwen Generator
+
+Local, [`Qwen/Qwen2.5-1.5B-Instruct`](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct)
+via raw `transformers`.
+
+```dotenv
+# Optional, set in .env to enable faster model downloads.
+HF_TOKEN=<YOUR_API_KEY>
+```
+
+Limits: 128k context tokens, 8k max output tokens, ~15 min latency on CPU.
 
 ## Design decisions (confirmed)
 
