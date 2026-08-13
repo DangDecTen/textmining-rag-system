@@ -22,12 +22,14 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
     # --- Data ---
+    dataset: str = "data/benchmark/attackqa.parquet"
+    processed_data_dir: str = "data/processed"
     corpus_path: str = "data/processed/corpus.jsonl"
     qa_path_template: str = "data/processed/qa_{split}.jsonl"
 
     # --- Indexes ---
-    bm25_index_dir: str = "data/index/bm25"
-    dense_index_dir: str = "data/index/dense"
+    bm25_index_dir: str = "data/index/bm25_k1_b25"
+    dense_index_dir: str = "data/index/dense_bge_small"
 
     # --- Retrieval ---
     default_retriever: str = "bm25"
@@ -35,17 +37,17 @@ class Settings(BaseSettings):
 
     # BM25 hyperparameters
     bm25_method: str = "lucene"
-    bm25_k1: float = 1.5
-    bm25_b: float = 0.75
+    bm25_k1: float = 1.0
+    bm25_b: float = 0.25
 
     # Dense retrieval
-    dense_model_name: str = "BAAI/bge-small-en-v1.5"
+    dense_model_name: str = "BAAI/bge-small-en-v1.5"  # "BAAI/bge-base-en-v1.5"
     dense_batch_size: int = 64
 
     # Hybrid retrieval (RRF / weighted-sum fusion of bm25 + dense)
     hybrid_alpha: float = 0.5  # weight given to dense; (1 - alpha) to bm25
-    hybrid_rrf_k: int = 60
-    hybrid_use_rrf: bool = True
+    hybrid_rrf_k: int = 10
+    hybrid_use_rrf: bool = False
 
     # --- Generation ---
     default_generator: str = "llama"
@@ -62,7 +64,7 @@ class Settings(BaseSettings):
     # How many candidates the retriever is asked for before reranking cuts
     # down to the requested top_k. Wider than top_k on purpose -- reranking
     # only helps if it has more to choose from than the final count.
-    rerank_candidate_k: int = 50
+    rerank_candidate_k: int = 20
 
     def index_dir_for(self, retriever_name: str) -> str:
         return {"bm25": self.bm25_index_dir, "dense": self.dense_index_dir}[retriever_name.lower()]

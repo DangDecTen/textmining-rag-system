@@ -114,15 +114,22 @@ def aggregate(
         raise ValueError("records is empty -- nothing to aggregate.")
 
     def _row(group_name: str, group_records: list[dict[str, Any]]) -> dict[str, Any]:
-        n = len(group_records)
+        def _mean(records: list[dict], key: str) -> float:
+            return sum(r[key] for r in records) / len(records)
+
         row = {
             "group_by": group_by,
             "group": group_name,
-            "n": n,
-            "mrr": sum(r["reciprocal_rank"] for r in group_records) / n,
+            "n": len(group_records),
+            "mrr": _mean(group_records, 'reciprocal_rank'),
         }
+        
         for k in k_values:
-            row[f"recall@{k}"] = sum(r[f"hit@{k}"] for r in group_records) / n
+            row[f"recall@{k}"] = _mean(group_records, f'hit@{k}')
+        
+        row['avg_retrieve_ms'] = _mean(group_records, 'retrieve_time_ms')
+        row['avg_rerank_ms'] = _mean(group_records, 'rerank_time_ms')
+        row['avg_ms'] = _mean(group_records, 'total_time_ms')
         return row
 
     rows = [_row("overall", records)]
