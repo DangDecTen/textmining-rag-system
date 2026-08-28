@@ -50,5 +50,59 @@
     "hard_accuracy": 8.0,
     "faithfulness": 8.0,
     "answer_relevancy": 8.0
+  },
+  {
+    "question": "What are the two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware'?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware' are Malware Content and Malware Metadata.",
+    "generated_answer": "<think>\nThe user wants to know the two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware' based on the provided context.\nLooking at Chunk 1 (ID: c2464d4168d0db49):\n\"The following 2 data components can be used to detect attack technique 'T1588.001: Obtain Capabilities: Malware': Malware Content, Malware Metadata\"\n\nSo the answer should state that the two data components are Malware Content and Malware Metadata.\nReference: c2464d4168d0db49\n\nFormat:\n{\n    \"answer\": \"The two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware' are Malware Content and Malware Metadata.\",\n    \"references\": [\"c2464d4168d0db49\"]\n}\n\nCheck constraints:\n- ONLY valid JSON\n- No markdown formatting outside JSON\n- Use ONLY facts from context\n- Precise technical terminology\n\nEverything matches. Proceed. \nOutput matches exactly.\nDone. \nSelf-Correction/Verification during thought:\nCheck chunk ID: c2464d4168d0db49\nCheck technique: T1588.001: Obtain Capabilities: Malware\nCheck components: Malware Content, Malware Metadata\nMatches exactly.\nReady. \nOutput matches requested format.\nProceeds. \nOutput Generation. \n```json\n{\n    \"answer\": \"The two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware' are Malware Content and Malware Metadata.\",\n    \"references\": [\"c2464d4168d0db49\"]\n}\n```\nWait, the prompt says \"Return ONLY the JSON object. Do not include markdown formatting or explanation outside JSON.\"\nSo I will output just the raw JSON string without markdown code blocks.\nLet's construct it carefully.\n{\n    \"answer\": \"The two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware' are Malware Content and Malware Metadata.\",\n    \"references\": [\"c2464d4",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0083: Misdat' use attack technique 'T1041: Exfiltration Over C2 Channel'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Misdat has been observed to upload files and data to its C2 servers.",
+    "generated_answer": "Misdat uses T1041: Exfiltration Over C2 Channel by uploading files and data to its C2 servers.",
+    "references": [
+      "85e22dc8bcba34a4"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "Describe attack technique 'T1584.005: Compromise Infrastructure: Botnet'",
+    "source": "techniques",
+    "true_answer": "T1584.005: Compromise Infrastructure: Botnet is an attack technique that involves compromising numerous third-party systems to form a botnet, which is a network of compromised systems that can be instructed to perform coordinated tasks. Instead of purchasing or renting a botnet from a booter/stresser service, adversaries may build their own botnet by compromising numerous third-party systems.",
+    "generated_answer": "<think>\nHere's a thinking process:\n\n1.  **Analyze User Input:**\n   - **Role:** Principal cybersecurity intelligence analyst.\n   - **Task:** Answer MITRE ATT&CK queries with extreme accuracy and precise technical terminology based ONLY on the provided context.\n   - **Input Context:** 5 chunks describing T1584.005, T1584, T1583.005, and their relationships.\n   - **Question:** Describe attack technique 'T1584.005: Compromise Infrastructure: Botnet'\n   - **Output Format:** Strict JSON with \"answer\" and \"references\" keys. No markdown, no extra text.\n\n2.  **Extract Relevant Information from Context:**\n   - Chunk 1 (ID: 51cd26401e5efb08) directly describes T1584.005:\n     - \"Adversaries may compromise numerous third-party systems to form a botnet that can be used during targeting.\"\n     - \"A botnet is a network of compromised systems that can be instructed to perform coordinated tasks.\"\n     - \"Instead of purchasing/renting a botnet from a booter/stresser service, adversaries may build their own botnet by compromising numerous third-party systems.\"\n     - \"Adversaries may also conduct a takeover of an existing botnet, such as redirecting bots to adversary-controlled C2 servers.\"\n     - \"With a botnet at their disposal, adversaries may perform follow-on activity such as large-scale Phishing or Distributed Denial of Service (DDoS).\"\n   - Chunk 4 (ID: 30efe4033b44ca1c) states the parent technique is T1584.\n   - Chunk 2 (ID: d8ba7b96f599663c) describes the parent technique T1584, which provides context but the question specifically asks for T1584.005. I'll stick primarily to Chunk 1 for the direct description, but can incorporate relevant details if needed. The prompt says \"based ONLY on the provided context\", so I will synthesize the exact description from Chunk 1.\n\n3.  **Formulate Answer:**\n   - Need to describe T1584.005 accurately using only the context.\n   - Draft:",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What software procedures use attack technique 'T1136.003: Cloud Account'?",
+    "source": "relationships_software_for_technique",
+    "true_answer": "The software procedures that use attack technique 'T1136.003: Cloud Account' are: 'S0677: AADInternals'",
+    "generated_answer": "<think>\nThe user wants to know which software procedures use the attack technique 'T1136.003: Cloud Account' based on the provided context.\nI need to scan the context for 'T1136.003: Cloud Account'.\nChunk 1 says: \"The software procedures that use attack technique 'T1136.003: Cloud Account' are: 'S0677: AADInternals'\"\nSo the answer should be 'S0677: AADInternals'.\nThe reference should be [\"d4872a6a1216258d\"].\nFormat must be strictly JSON.\nCheck constraints: \"Return ONLY valid JSON in the following format: { \"answer\": \"<answer>\", \"references\": [\"<chunk_id\"] }\"\nConstruct JSON:\n{\n    \"answer\": \"The software procedure that uses attack technique 'T1136.003: Cloud Account' is 'S0677: AADInternals'.\",\n    \"references\": [\"d4872a6a1216258d\"]\n}\nDouble check context: Chunk 1 matches exactly.\nReady. Output matches requirement. No extra text.\nProceed. \nSelf-Correction/Verification during thought:\nCheck exact wording in context: \"The software procedures that use attack technique 'T1136.003: Cloud Account' are: 'S0677: AADInternals'\"\nAnswer should directly state this.\nJSON format matches example.\nAll good.✅\nOutput matches exactly. \nProceeds. \nOutput Generation. \n```json\n{\n    \"answer\": \"The software procedure that uses attack technique 'T1136.003: Cloud Account' is 'S0677: AADInternals'.\",\n    \"references\": [\"d4872a6a1216258d\"]\n}\n```\nWait, the prompt says \"Return ONLY the JSON object. Do not include markdown formatting or explanation outside JSON.\"\nSo I will output just the raw JSON string without markdown code blocks if possible, or just standard JSON. The prompt says \"Return ONLY valid JSON in the following format: { ... }\". I will provide exactly that.\nDone. \nProceeds. \nOutput Generation. \n(Self-Cor",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0680: LitePower' use attack technique 'T1053.005: Scheduled Task'?",
+    "source": "relationships_uses_software",
+    "true_answer": "LitePower can create a scheduled task to enable persistence mechanisms.",
+    "generated_answer": "LitePower can create a scheduled task to enable persistence mechanisms.",
+    "references": [
+      "aaf6468faab5cfa6"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
   }
 ]
