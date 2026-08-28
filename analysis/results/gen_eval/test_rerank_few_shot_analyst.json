@@ -104,5 +104,27 @@
     "hard_accuracy": 8.0,
     "faithfulness": 8.0,
     "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0534: Bazar' use attack technique 'T1057: Process Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Bazar can identify the current process on a compromised host, which is a characteristic of the 'T1057: Process Discovery' attack technique.",
+    "generated_answer": "<think>\nThe user wants to know how 'S0534: Bazar' uses 'T1057: Process Discovery' based on the provided context.\nI need to find the chunk that mentions 'S0534: Bazar' and 'T1057: Process Discovery'.\nChunk 1 (ID: 483f6f848801ccaa) says: \"How attack software 'S0534: Bazar' uses attack technique 'T1057: Process Discovery': Bazar can identity the current process on a compromised host.\"\nI will formulate the answer based strictly on this chunk.\nAnswer: Bazar uses Process Discovery (T1057) to identify the current process on a compromised host.\nReferences: [\"483f6f848801ccaa\"]\nFormat: JSON only.\nCheck constraints: \"Return ONLY valid JSON in the following format: { \"answer\": \"<answer>\", \"references\": [\"<chunk_id\"] }\"\nWait, the prompt says:\n{\n    \"answer\": \"<answer>\",\n    \"references\": [\"<chunk_id>\"]\n}\nI will construct the JSON exactly.\nDouble check the exact wording in Chunk 1: \"Bazar can identity the current process on a compromised host.\" (Note: typo \"identity\" instead of \"identify\" in context, I will use the context's wording or correct it slightly for grammar, but stick to facts).\nI'll write: \"Bazar uses Process Discovery (T1057) to identify the current process on a compromised host.\"\nReferences: [\"483f6f848801ccaa\"]\nReady.✅\nOutput matches requirements.✅\nProceed. \nJSON structure:\n{\n    \"answer\": \"Bazar uses Process Discovery (T1057) to identify the current process on a compromised host.\",\n    \"references\": [\"483f6f848801ccaa\"]\n}\nCheck format: exactly as requested. No markdown.\nDone. \nSelf-Correction/Verification during thought:\nThe prompt says \"Return ONLY the JSON object. Do not include markdown formatting or explanation outside JSON.\"\nI will output raw JSON.\nContext chunk ID: 483f6f848801ccaa\nQuestion: How does attack software",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0148: RTM' use attack technique 'T1059.003: Windows Command Shell'?",
+    "source": "relationships_uses_software",
+    "true_answer": "RTM uses the command line and rundll32.exe to execute commands.",
+    "generated_answer": "Attack software 'S0148: RTM' uses the Windows Command Shell (T1059.003) by utilizing the command line and rundll32.exe to execute.",
+    "references": [
+      "02a641428802218e"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
   }
 ]
