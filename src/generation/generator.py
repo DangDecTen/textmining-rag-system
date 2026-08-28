@@ -14,7 +14,7 @@ class Generator:
         self,
         model: str = "qwen/qwen3.6-27b",
         temperature: float = 0.2,
-        max_tokens: int = 512,
+        max_tokens: int = 1024,
     ):
         api_key = os.getenv("GROQ_API_KEY")
         self.client = None
