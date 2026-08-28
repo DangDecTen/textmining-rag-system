@@ -1,11 +1,9 @@
 """
 Usage:
-
-python -m src.run_generator_eval --prompt baseline
-python -m src.run_generator_eval --prompt structured
-python -m src.run_generator_eval --prompt evidence
-
-python -m src.run_generator_eval --prompt evidence --limit 200
+    python -m src.run_generator_eval --prompt baseline --retriever rerank --limit 50
+    python -m src.run_generator_eval --prompt cot_verification --retriever rerank --limit 50
+    python -m src.run_generator_eval --prompt few_shot_analyst --retriever rerank --limit 50
+    python -m src.run_generator_eval --prompt concise_extract --retriever rerank --limit 50
 """
 
 from __future__ import annotations
@@ -15,53 +13,18 @@ from pathlib import Path
 from typing import Literal
 
 from src.data_models.io import load_corpus_lookup, load_qa_examples
-from src.data_models.io import Document
-from src.indexing.dense_index import DenseIndex
-from src.retrieval.dense_retriever import DenseRetriever
+from src.retrieval.retriever_factory import RetrieverFactory
 from src.generation.generator import Generator
 from src.eval.generation_eval import evaluate_generator, print_report
 
-INDEX_DIR = "data/index/dense"
-MODEL_NAME = "BAAI/bge-small-en-v1.5"
-BATCH_SIZE = 64
-
-
-def build_index(corpus: list[Document], rebuild: bool = False) -> DenseIndex:
-
-    index_dir = Path(INDEX_DIR)
-
-    if rebuild or not index_dir.exists():
-
-        print(f"Building dense index with {MODEL_NAME}...")
-
-        index = DenseIndex(
-            model_name=MODEL_NAME,
-            batch_size=BATCH_SIZE,
-        )
-
-        index.build(corpus)
-        index.save(str(index_dir))
-
-        print(f"Saved index to {index_dir}/")
-
-    else:
-
-        print(f"Loading existing index from {index_dir}/")
-
-        index = DenseIndex.load(str(index_dir))
-
-    return index
-
 
 def main(
-    rebuild_index: bool,
     split: Literal["train", "dev", "test"],
+    retriever_type: str,
     prompt_mode: str,
     limit: int | None,
 ):
-
     corpus_lookup = load_corpus_lookup()
-
     qa_examples = load_qa_examples(split=split)
 
     if limit is not None:
@@ -71,32 +34,26 @@ def main(
         f"Loaded {len(corpus_lookup)} documents, "
         f"{len(qa_examples)} QA examples ({split})"
     )
-
+    print(f"Retriever: {retriever_type} | Prompt Mode: {prompt_mode}")
     print()
 
-    index = build_index(
-        corpus=list(corpus_lookup.values()),
-        rebuild=rebuild_index,
-    )
-
-    retriever = DenseRetriever(
-        index=index,
+    retriever = RetrieverFactory.create(
+        retriever_type=retriever_type,
         corpus_lookup=corpus_lookup,
     )
 
     generator = Generator()
 
-    cache_path = (
-        f"src/eval/"
-        f"{split}_{prompt_mode}.json"
-    )
+    cache_dir = Path("analysis/results/gen_eval")
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    cache_path = cache_dir / f"{split}_{retriever_type}_{prompt_mode}.json"
 
     report = evaluate_generator(
         retriever=retriever,
         generator=generator,
         qa_examples=qa_examples,
         prompt_mode=prompt_mode,
-        cache_path=cache_path,
+        cache_path=str(cache_path),
         top_k=5,
     )
 
@@ -104,19 +61,19 @@ def main(
 
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser()
-
-    parser.add_argument(
-        "--rebuild",
-        action="store_true",
-        help="Rebuild dense index.",
-    )
 
     parser.add_argument(
         "--split",
         default="test",
         choices=["train", "dev", "test"],
+    )
+
+    parser.add_argument(
+        "--retriever",
+        default="rerank",
+        choices=["dense", "bm25", "hybrid", "rerank"],
+        help="Retriever type for candidate context generation.",
     )
 
     parser.add_argument(
@@ -126,6 +83,10 @@ if __name__ == "__main__":
             "baseline",
             "structured",
             "evidence",
+            "cot_verification",
+            "few_shot_analyst",
+            "concise_extract",
+            "rerank_aware",
         ],
         help="Prompt template to evaluate.",
     )
@@ -140,8 +101,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main(
-        rebuild_index=args.rebuild,
         split=args.split,
+        retriever_type=args.retriever,
         prompt_mode=args.prompt,
         limit=args.limit,
     )

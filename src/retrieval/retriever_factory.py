@@ -33,7 +33,7 @@ class RetrieverFactory:
             bm25_index = BM25Index.load(str(bm25_dir))
             return BM25Retriever(index=bm25_index, corpus_lookup=corpus_lookup)
 
-        elif retriever_type == "hybrid":
+        elif retriever_type in ("hybrid", "hybrid_rrf"):
             dense_index = DenseIndex.load(str(dense_dir))
             dense_retriever = DenseRetriever(index=dense_index, corpus_lookup=corpus_lookup)
             bm25_index = BM25Index.load(str(bm25_dir))
@@ -44,4 +44,14 @@ class RetrieverFactory:
                 alpha=alpha,
             )
 
-        raise ValueError(f"Unknown retriever type: {retriever_type}. Expected 'dense', 'bm25', or 'hybrid'.")
+        elif retriever_type in ("cross_encoder", "rerank", "reranker", "hybrid_rerank"):
+            from src.retrieval.cross_encoder_retriever import CrossEncoderRetriever
+            base_retriever = RetrieverFactory.create("hybrid", corpus_lookup=corpus_lookup, dense_dir=dense_dir, bm25_dir=bm25_dir, alpha=alpha)
+            return CrossEncoderRetriever(
+                base_retriever=base_retriever,
+                model_name="cross-encoder/ms-marco-MiniLM-L-6-v2",
+                candidate_k=50,
+                corpus_lookup=corpus_lookup,
+            )
+
+        raise ValueError(f"Unknown retriever type: {retriever_type}. Expected 'dense', 'bm25', 'hybrid', or 'rerank'.")

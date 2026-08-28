@@ -1,0 +1,246 @@
+[
+  {
+    "question": "What is the purpose of Mark-of-the-Web (MOTW) controls in Windows?",
+    "source": "techniques",
+    "true_answer": "Mark-of-the-Web (MOTW) controls in Windows are designed to protect files downloaded from the Internet by tagging them with a hidden NTFS Alternate Data Stream (ADS) named Zone.Identifier with a specific value, thereby preventing certain actions from being performed.",
+    "generated_answer": "...",
+    "references": [
+      "..."
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What is the purpose of ASPXSpy?",
+    "source": "software",
+    "true_answer": "The purpose of ASPXSpy is to create a Web shell that has been modified by Threat Group-3390 actors to create the ASPXTool version.",
+    "generated_answer": "<think>\nThe user wants to know the purpose of ASPXSpy based on the provided context.\nLooking at the context:\nChunk 1: \"ASPXSpy is a Web shell. It has been modified by Threat Group-3390 actors to create the ASPXTool version.\"\nChunk 2: \"ASPXSpy is a Web shell. The ASPXTool version used by Threat Group-3390 has been deployed to accessible servers running Internet Information Services (IIS).\"\nChunk 5: \"The attack techniques used by software 'S0073: ASPXSpy' are: 'T1505.003: Web Shell'\"\n\nSo the purpose/type of ASPXSpy is a Web shell.\nI will formulate the answer stating that ASPXSpy is a Web shell.\nReferences: Chunk 1, Chunk 2, Chunk 5. I'll just use Chunk 1 or 2.\nFormat: JSON with \"answer\" and \"references\".\nAnswer: ASPXSpy is a Web shell.\nReferences: [\"8689c03a5dfe214e\", \"c3796bde4ded92cf\"]\nCheck constraints: ONLY valid JSON, no markdown.\nDone. \nLet's construct the JSON.\n{\"answer\": \"ASPXSpy is a Web shell.\", \"references\": [\"8689c03a5dfe214e\", \"c3796bde4ded92cf\"]}\nWait, should I include more details? \"It has been modified by Threat Group-3390 actors to create the ASPXTool version.\" The question asks for the purpose. \"Web shell\" is the purpose/type.\nI'll stick to \"ASPXSpy is a Web shell.\"\nCheck format: exactly JSON.\nDone. \nOutput matches requirement.✅\nProceeds. \nSelf-Correction/Verification during thought:\nThe prompt says \"Return ONLY valid JSON in the following format: { \"answer\": \"<answer>\", \"references\": [ \"<chunk_id>\" ] }\"\nI will output exactly that.\nNo extra text.\nReady. \nOutput Generation. \n{\"answer\": \"ASPXSpy is a Web shell.\", \"references\": [\"8689c03a5dfe214e\", \"c3796bde4ded92cf\"]}\nMatches constraints",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What are the specific data components that can be used to detect the attack technique 'T1556.006: Modify Authentication Process: Multi-Factor Authentication'?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The specific data components that can be used to detect the attack technique 'T1556.006: Modify Authentication Process: Multi-Factor Authentication' are Active Directory Object Modification, Application Log Content, Logon Session Creation, User Account Authentication, and User Account Modification.",
+    "generated_answer": "Active Directory Object Modification, Application Log Content, Logon Session Creation, User Account Authentication, User Account Modification",
+    "references": [
+      "210d357ed4713597"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0107: Cherry Picker' use attack technique 'T1070.004: File Deletion'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Recent versions of Cherry Picker delete files and registry keys created by the malware.",
+    "generated_answer": "Recent versions of Cherry Picker delete files and registry keys created by the malware.",
+    "references": [
+      "9ec71120304a0e85"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What is the recommended approach to manage accounts and permissions in trusted relationships?",
+    "source": "relationships_mitigations",
+    "true_answer": "Properly manage accounts and permissions used by parties in trusted relationships to minimize potential abuse by the party and if the party is compromised by an adversary. In Office 365 environments, partner relationships and roles can be viewed under the 'Partner Relationships' page.",
+    "generated_answer": "<think>\nThe user wants to know the recommended approach to manage accounts and permissions in trusted relationships based on the provided context.\nI need to look for information about managing accounts and permissions in trusted relationships.\nChunk 1 mentions: \"How mitigation strategy 'M1018: User Account Management' mitigates attack technique 'T1199: Trusted Relationship': Properly manage accounts and permissions used by parties in trusted relationships to minimize potential abuse by the party and if the party is compromised by an adversary. In Office 365 environments, partner relationships and roles can be viewed under the “Partner Relationships” page.\"\nChunk 5 describes T1199 Trusted Relationship.\n\nThe question asks: \"What is the recommended approach to manage accounts and permissions in trusted relationships?\"\nFrom Chunk 1: \"Properly manage accounts and permissions used by parties in trusted relationships to minimize potential abuse by the party and if the party is compromised by an adversary.\"\nAlso, it mentions viewing partner relationships and roles under the \"Partner Relationships\" page in Office 365.\n\nI will formulate the answer based on Chunk 1.\nAnswer: Properly manage accounts and permissions used by parties in trusted relationships to minimize potential abuse by the party and if the party is compromised by an adversary. In Office 365 environments, partner relationships and roles can be viewed under the “Partner Relationships” page.\nReference: 776c90b5f8c99063\n\nCheck constraints:\n- Use ONLY provided context.\n- Return ONLY valid JSON.\n- Format: {\"answer\": \"...\", \"references\": [\"...\"]}\n\nConstruct JSON:\n{\n    \"answer\": \"Properly manage accounts and permissions used by parties in trusted relationships to minimize potential abuse by the party and if the party is compromised by an adversary. In Office 365 environments, partner relationships and roles can be viewed under the “Partner Relationships” page.\",\n    \"references\": [\n        \"776c90b5f8c99063\"\n    ]\n}\nCheck if it matches exactly. Yes.\nReady. \nOutput matches requirements. No extra text. JSON only.\nDone. \nSelf-Correction/Verification during thought:\nThe prompt asks \"What is the recommended approach to manage accounts and permissions in trusted relationships?\"\nChunk 1 says: \"Properly manage accounts and permissions used by parties in trusted relationships to",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What are the two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware'?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware' are Malware Content and Malware Metadata.",
+    "generated_answer": "<think>\nThe user wants to know the two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware'.\nI need to look at the provided context.\nChunk 1 says: \"The following 2 data components can be used to detect attack technique 'T1588.001: Obtain Capabilities: Malware': Malware Content, Malware Metadata\"\nSo the answer is \"Malware Content, Malware Metadata\".\nThe reference is Chunk 1 (ID: c2464d4168d0db49).\nFormat: JSON with \"answer\" and \"references\".\nCheck constraints: ONLY valid JSON, no markdown formatting outside JSON.\nConstruct JSON:\n{\n    \"answer\": \"Malware Content, Malware Metadata\",\n    \"references\": [\n        \"c2464d4168d0db49\"\n    ]\n}\nDone. All constraints met.\nDouble check context: Chunk 1 matches exactly.\nReady. \nOutput matches exactly.\nProceed. \nSelf-Correction/Verification during thought:\n- Check if any other chunks mention T1588.001. Only Chunk 1.\n- Format matches requested.\n- No extra text.\n- JSON structure correct.\nAll good. \nOutput generation. \n```json\n{\n    \"answer\": \"Malware Content, Malware Metadata\",\n    \"references\": [\n        \"c2464d4168d0db49\"\n    ]\n}\n```\nWait, the prompt says \"Return ONLY the JSON object. Do not include markdown formatting or explanation outside JSON.\" So I will just output the raw JSON string without markdown code blocks if possible, or just standard JSON. I'll output raw JSON to be safe.\nActually, the prompt says \"Return ONLY valid JSON in the following format:\". I will provide exactly that.\nDone. \nProceeds. \nOutput matches response. \n[Final Check]\nQuestion: What are the two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware'?\nContext 1: \"The following 2 data components can be used to detect attack technique 'T1588.001: Obtain Capabilities: Malware': Malware Content, Malware Metadata\"",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0083: Misdat' use attack technique 'T1041: Exfiltration Over C2 Channel'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Misdat has been observed to upload files and data to its C2 servers.",
+    "generated_answer": "<think>\nThinking Process:\n1.  **Analyze User Input:**\n   - Question: How does attack software 'S0083: Misdat' use attack technique 'T1041: Exfiltration Over C2 Channel'?\n   - Constraint: Use ONLY provided context. Return ONLY valid JSON with \"answer\" and \"references\".\n   - Context provided: 5 chunks. Chunk 1 specifically addresses S0083: Misdat and T1041.\n\n2.  **Scan Context for Keywords:**\n   - Keywords: \"S0083: Misdat\", \"T1041: Exfiltration Over C2 Channel\"\n   - Chunk 1: \"How attack software 'S0083: Misdat' uses attack technique 'T1041: Exfiltration Over C2 Channel': Misdat has uploaded files and data to its C2 servers.\"\n   - Matches exactly.\n\n3.  **Formulate Answer:**\n   - Extract the exact description from Chunk 1: \"Misdat has uploaded files and data to its C2 servers.\"\n   - Keep it concise.\n\n4.  **Format Output:**\n   - JSON structure: `{\"answer\": \"Misdat has uploaded files and data to its C2 servers.\", \"references\": [\"85e22dc8bcba34a4\"]}`\n   - Check constraints: ONLY valid JSON, no markdown, no extra text.\n\n   Double-check chunk ID: `85e22dc8bcba34a4` matches Chunk 1.\n   Answer matches context exactly.\n   Ready.✅\n   Output matches requirement.📝\n   Proceed. \n   Self-Correction/Verification during thought: \n   The prompt says \"Return ONLY the JSON object. Do not include markdown formatting or explanation outside JSON.\" I will strictly output just the JSON string.\n   Format:\n   {\n       \"answer\": \"Misdat has uploaded files and data to its C2 servers.\",\n       \"references\": [\n           \"85e22dc8bcba34a4\"\n       ]\n   }\n   All constraints met.✅\n   Output generation. \n   [Done] \n   *Self-Correction/Note during generation prep*: I will make sure the JSON is perfectly formatted and contains no markdown backticks as requested (\"Do not include markdown formatting",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "Describe attack technique 'T1584.005: Compromise Infrastructure: Botnet'",
+    "source": "techniques",
+    "true_answer": "T1584.005: Compromise Infrastructure: Botnet is an attack technique that involves compromising numerous third-party systems to form a botnet, which is a network of compromised systems that can be instructed to perform coordinated tasks. Instead of purchasing or renting a botnet from a booter/stresser service, adversaries may build their own botnet by compromising numerous third-party systems.",
+    "generated_answer": "Attack technique 'T1584.005: Compromise Infrastructure: Botnet' is a sub-technique of 'T1584: Compromise Infrastructure'. It falls under the 'Resource Development' tactic and can be mitigated by 'M1056: Pre-compromise'.",
+    "references": [
+      "30efe4033b44ca1c",
+      "2e32a42ebafb08a7",
+      "ceb2f583936506f5"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What software procedures use attack technique 'T1136.003: Cloud Account'?",
+    "source": "relationships_software_for_technique",
+    "true_answer": "The software procedures that use attack technique 'T1136.003: Cloud Account' are: 'S0677: AADInternals'",
+    "generated_answer": "S0677: AADInternals",
+    "references": [
+      "d4872a6a1216258d"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0680: LitePower' use attack technique 'T1053.005: Scheduled Task'?",
+    "source": "relationships_uses_software",
+    "true_answer": "LitePower can create a scheduled task to enable persistence mechanisms.",
+    "generated_answer": "LitePower can create a scheduled task to enable persistence mechanisms.",
+    "references": [
+      "aaf6468faab5cfa6"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0534: Bazar' use attack technique 'T1057: Process Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Bazar can identify the current process on a compromised host, which is a characteristic of the 'T1057: Process Discovery' attack technique.",
+    "generated_answer": "<think>\nThe user wants to know how 'S0534: Bazar' uses 'T1057: Process Discovery' based on the provided context.\nLooking at the context:\nChunk 1: \"How attack software 'S0534: Bazar' uses attack technique 'T1057: Process Discovery': Bazar can identity the current process on a compromised host.\"\nThis directly answers the question.\nI will formulate the answer based on Chunk 1.\nAnswer: Bazar can identify the current process on a compromised host.\nReference: 483f6f848801ccaa\nFormat: JSON.\nCheck constraints: ONLY valid JSON, no markdown, concise.\nDone. \nConstruct JSON:\n{\n    \"answer\": \"Bazar can identify the current process on a compromised host.\",\n    \"references\": [\n        \"483f6f848801ccaa\"\n    ]\n}\nWait, the prompt says \"identity\" in the context, but I should probably correct the typo or quote it exactly. I'll stick to the exact wording or slightly correct it for readability, but it's safer to use the exact wording or a close paraphrase. \"Bazar can identify the current process on a compromised host.\" is fine.\nCheck format: Return ONLY valid JSON. Do not include markdown formatting.\nI will output just the JSON string.\nDone. \nProceed. \nOutput matches requirement. \nSelf-Correction/Verification during thought:\nContext says: \"Bazar can identity the current process on a compromised host.\"\nI will use exactly that or fix the typo. I'll use \"Bazar can identify the current process on a compromised host.\"\nJSON structure matches exactly.\nReady. \nOutput generation. \n```json\n{\n    \"answer\": \"Bazar can identify the current process on a compromised host.\",\n    \"references\": [\n        \"483f6f848801ccaa\"\n    ]\n}\n```\nWait, the prompt says \"Do not include markdown formatting or explanation outside JSON.\" So I will just output the raw JSON text without backticks.\nDone. \nProceeds. \nOutput matches. \nFinal check of the prompt: \"Return ONLY valid JSON in the following format: { ... }\"\nI will provide exactly that.\nAll good. \nOutput generation.",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0148: RTM' use attack technique 'T1059.003: Windows Command Shell'?",
+    "source": "relationships_uses_software",
+    "true_answer": "RTM uses the command line and rundll32.exe to execute commands.",
+    "generated_answer": "RTM uses the command line and rundll32.exe to execute.",
+    "references": [
+      "02a641428802218e"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S1033: DCSrv' use attack technique 'T1027.013: Encrypted/Encoded File'?",
+    "source": "relationships_uses_software",
+    "true_answer": "DCSrv's configuration is encrypted, which enables the attack software to conceal its settings and operations.",
+    "generated_answer": "DCSrv's configuration is encrypted.",
+    "references": [
+      "4a97cde01d215b1b"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0451: LoudMiner' use attack technique 'T1543.003: Windows Service'?",
+    "source": "relationships_uses_software",
+    "true_answer": "LoudMiner can automatically launch a Linux virtual machine as a service at startup if the AutoStart option is enabled in the VBoxVmService configuration file.",
+    "generated_answer": "<think>\nThe user wants to know how 'S0451: LoudMiner' uses 'T1543.003: Windows Service' based on the provided context.\nI need to find the chunk that discusses this specific mapping.\nChunk 1 explicitly states: \"How attack software 'S0451: LoudMiner' uses attack technique 'T1543.003: Windows Service': LoudMiner can automatically launch a Linux virtual machine as a service at startup if the AutoStart option is enabled in the VBoxVmService configuration file.\"\nI will extract this information and format it into the required JSON structure.\nThe answer should be concise.\nReferences should only include the chunk ID: \"d4dbe8d8b61113c5\".\nJSON format:\n{\n    \"answer\": \"LoudMiner can automatically launch a Linux virtual machine as a service at startup if the AutoStart option is enabled in the VBoxVmService configuration file.\",\n    \"references\": [\n        \"d4dbe8d8b61113c5\"\n    ]\n}\nCheck constraints: ONLY valid JSON, no markdown, no outside knowledge, concise.\nMatches perfectly.\nProceed. \nOutput matches the required format exactly.\nDone. \nSelf-Correction/Verification during thought:\n- Check chunk ID: d4dbe8d8b61113c5\n- Check technique: T1543.003: Windows Service\n- Check software: S0451: LoudMiner\n- Answer matches context exactly.\n- JSON structure is correct.\n- No extra text.\nReady. \nOutput generation. \n```json\n{\n    \"answer\": \"LoudMiner can automatically launch a Linux virtual machine as a service at startup if the AutoStart option is enabled in the VBoxVmService configuration file.\",\n    \"references\": [\n        \"d4dbe8d8b61113c5\"\n    ]\n}\n```\nMatches instructions. Proceeds. \nOutput matches response. \nDone. \n[Final Check]\n- Format: JSON only.\n- Content: Accurate to context.\n- References: Correct chunk ID.\n- Constraints met.\nProceeds. \nOutput Generation. \n(Self-Correction/Note during generation prep: I will ensure no markdown formatting surrounds the JSON",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0386: Ursnif' use attack technique 'T1106: Native API'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Ursnif has used the CreateProcessW function to create child processes, which is an example of utilizing the Native API technique 'T1106'.",
+    "generated_answer": "Ursnif has used CreateProcessW to create child processes.",
+    "references": [
+      "2d44bd3627e538e3"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What type of network connections should be monitored to detect the 'T1104: Multi-Stage Channels' attack technique?",
+    "source": "relationships_detects",
+    "true_answer": "Newly constructed network connections should be monitored to detect the 'T1104: Multi-Stage Channels' attack technique, specifically those sent or received by untrusted hosts.",
+    "generated_answer": "[Groq API Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `qwen/qwen3.6-27b` in organization `org_01kz6r6qwhexk8y55x9b9c6ga9` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199146, Requested 1066. Please try again in 1m31.584s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]\n\nTop Retrieved Contexts:\n\n[1] (3b162fb59f139f9b) The following 2 data components can be used to detect attack technique 'T1104: Multi-Stage Channels': Network Connection Creation, Network Traffic Flow\n\n[2] (dfc70d557dff619c) How data component 'Network Connection Creation' can be used to detect attack technique 'T1104: Multi-Stage Channels':\nMonitor for newly constructed network connections that are sent or received by untrusted hosts. \n\n[3] (55d3e428366b3169) The following 1 mitigation strategies mitigate attack technique 'T1104: Multi-Stage Channels': M1031: Network Intrusion Prevention\n\n[4] (4499785580e79284) Tactics used in attack technique 'T1104: Multi-Stage Channels':\nCommand and Control\n\n[5] (4f94b2087256a174) How attack software 'S0031: BACKSPACE' uses attack technique 'T1104: Multi-Stage Channels':\nBACKSPACE attempts to avoid detection by checking a first stage command and control server to determine if it should connect to the second stage server, which performs \"louder\" interactions with the malware.",
+    "references": [
+      "3b162fb59f139f9b",
+      "dfc70d557dff619c",
+      "55d3e428366b3169",
+      "4499785580e79284",
+      "4f94b2087256a174"
+    ],
+    "hard_accuracy": 7.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What attack techniques were used in campaign 'C0017: C0017'?",
+    "source": "relationships_techniques_for_campaign",
+    "true_answer": "The attack techniques used in campaign 'C0017: C0017' were: 'T1001.003: Protocol Impersonation', 'T1003.002: Security Account Manager', 'T1005: Data from Local System', 'T1016: System Network Configuration Discovery', 'T1027.002: Software Packing', 'T1027: Obfuscated Files or Information', 'T1033: System Owner/User Discovery', 'T1036.004: Masquerade Task or Service', 'T1036.005: Match Legitimate Name or Location', 'T1041: Exfiltration Over C2 Channel', 'T1048.003: Exfiltration Over Unencrypted Non-C2 Protocol', 'T1053.005: Scheduled Task', 'T1059.003: Windows Command Shell', 'T1059.007: JavaScript', 'T1068: Exploitation for Privilege Escalation', 'T1071.001: Web Protocols', 'T1074.001: Local Data Staging', 'T1082: System Information Discovery', 'T1090: Proxy', 'T1102.001: Dead Drop Resolver', 'T1102: Web Service', 'T1105: Ingress Tool Transfer', 'T1134: Access Token Manipulation', 'T1140: Deobfuscate/Decode Files or Information', 'T1190: Exploit Public-Facing Application', 'T1505.003: Web Shell', 'T1560.003: Archive via Custom Method', 'T1567: Exfiltration Over Web Service', 'T1574: Hijack Execution Flow', 'T1588.002: Tool'",
+    "generated_answer": "I do not have enough information from the provided context.",
+    "references": [],
+    "hard_accuracy": 7.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0386: Ursnif' use attack technique 'T1059.005: Visual Basic'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Ursnif droppers use VBA macros to download and execute the malware's full executable payload.",
+    "generated_answer": "[Groq API Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `qwen/qwen3.6-27b` in organization `org_01kz6r6qwhexk8y55x9b9c6ga9` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199740, Requested 1110. Please try again in 6m7.2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]\n\nTop Retrieved Contexts:\n\n[1] (b20504f9aeee6753) How attack software 'S0386: Ursnif' uses attack technique 'T1059.005: Visual Basic':\nUrsnif droppers have used VBA macros to download and execute the malware's full executable payload.\n\n[2] (2eb13b8a0ca7d2ee) How attack software 'S1086: Snip3' uses attack technique 'T1059.005: Visual Basic':\nSnip3 can use visual basic scripts for first-stage execution.\n\n[3] (91e64934e8a0a74f) How attack software 'S0679: Ferocious' uses attack technique 'T1059.005: Visual Basic':\nFerocious has the ability to use Visual Basic scripts for execution.\n\n[4] (1890ae3c3a059050) How attack software 'S0689: WhisperGate' uses attack technique 'T1059.005: Visual Basic':\nWhisperGate can use a Visual Basic script to exclude the `C:\\` drive from Windows Defender.\n\n[5] (9686836cdb31b3c1) How attack software 'S0240: ROKRAT' uses attack technique 'T1059.005: Visual Basic':\nROKRAT has used Visual Basic for execution.",
+    "references": [
+      "b20504f9aeee6753",
+      "2eb13b8a0ca7d2ee",
+      "91e64934e8a0a74f",
+      "1890ae3c3a059050",
+      "9686836cdb31b3c1"
+    ],
+    "hard_accuracy": 7.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What software are used by attack group 'G0090: WIRTE'?",
+    "source": "relationships_software_for_group",
+    "true_answer": "The software used by attack group 'G0090: WIRTE' are: 'S0363: Empire', 'S0679: Ferocious', 'S0680: LitePower'",
+    "generated_answer": "[Groq API Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `qwen/qwen3.6-27b` in organization `org_01kz6r6qwhexk8y55x9b9c6ga9` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199479, Requested 1160. Please try again in 4m36.048s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]\n\nTop Retrieved Contexts:\n\n[1] (f06de8dc00ed85c3) The software used by attack group 'G0090: WIRTE' are: 'S0363: Empire', 'S0679: Ferocious', 'S0680: LitePower'\n\n[2] (dd54c82177b1211c) Description of attack group 'G0090: WIRTE':\nWIRTE is a threat group that has been active since at least August 2018. WIRTE has targeted government, diplomatic, financial, military, legal, and technology organizations in the Middle East and Europe.\n\n[3] (6774c6746b1b69ec) The attack groups that used software 'S0680: LitePower' were: 'G0090: WIRTE'\n\n[4] (0b863a4185b73f51) The attack groups that used software 'S0679: Ferocious' were: 'G0090: WIRTE'\n\n[5] (9fbbe53ef390fd46) The groups that used attack technique 'T1218.010: Regsvr32' are: 'G0009: Deep Panda', 'G0050: APT32', 'G0065: Leviathan', 'G0073: APT19', 'G0080: Cobalt Group', 'G0090: WIRTE', 'G0094: Kimsuky', 'G0100: Inception', 'G0108: Blue Mockingbird', 'G0127: TA551'",
+    "references": [
+      "f06de8dc00ed85c3",
+      "dd54c82177b1211c",
+      "6774c6746b1b69ec",
+      "0b863a4185b73f51",
+      "9fbbe53ef390fd46"
+    ],
+    "hard_accuracy": 7.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How can data component 'Process Modification' be used to detect attack technique 'T1055.004: Asynchronous Procedure Call'?",
+    "source": "relationships_detects",
+    "true_answer": "Monitor for changes made to processes that may inject malicious code into processes via the asynchronous procedure call (APC) queue in order to evade process-based defenses as well as possibly elevate privileges.",
+    "generated_answer": "[Groq API Error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `qwen/qwen3.6-27b` in organization `org_01kz6r6qwhexk8y55x9b9c6ga9` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199219, Requested 1133. Please try again in 2m32.064s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}]\n\nTop Retrieved Contexts:\n\n[1] (965ad10dd4dc3cd7) The following 3 data components can be used to detect attack technique 'T1055.004: Process Injection: Asynchronous Procedure Call': OS API Execution, Process Access, Process Modification\n\n[2] (bbc1a6f1adb675a2) How data component 'Process Modification' can be used to detect attack technique 'T1055.004: Asynchronous Procedure Call':\nMonitor for changes made to processes that may inject malicious code into processes via the asynchronous procedure call (APC) queue in order to evade process-based defenses as well as possibly elevate privileges.\n\n[3] (72ca40cf927ac92e) How data component 'Process Access' can be used to detect attack technique 'T1055.004: Asynchronous Procedure Call':\nMonitor for processes being viewed that may inject malicious code into processes via the asynchronous procedure call (APC) queue in order to evade process-based defenses as well as possibly elevate privileges.\n\n[4] (87512b292f91f42a) How attack software 'S1039: Bumblebee' uses attack technique 'T1055.004: Asynchronous Procedure Call':\nBumblebee can use asynchronous procedure call (APC) injection to execute commands received from C2.\n\n[5] (9c2ce1c924cf118d) The parent technique of attack technique 'T1055.004: Process Injection: Asynchronous Procedure Call' is 'T1055: Process Injection'",
+    "references": [
+      "965ad10dd4dc3cd7",
+      "bbc1a6f1adb675a2",
+      "72ca40cf927ac92e",
+      "87512b292f91f42a",
+      "9c2ce1c924cf118d"
+    ],
+    "hard_accuracy": 7.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  }
+]

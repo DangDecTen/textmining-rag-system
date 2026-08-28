@@ -22,10 +22,10 @@ class BM25Retriever(Retriever):
         # out-of-vocabulary and contribute no match -- correct IR behavior,
         # not a bug. Explicit here even though the Tokenizer's default is
         # already "only update vocab on first call" (which was the corpus).
-        query_tokens = self.index.tokenizer.tokenize([query], update_vocab=False)
+        query_tokens = self.index.tokenizer.tokenize([query], update_vocab=False, show_progress=False)
 
         results, scores = self.index.model.retrieve(
-            query_tokens, corpus=self.index.doc_ids, k=top_k, return_as="tuple"
+            query_tokens, corpus=self.index.doc_ids, k=top_k, return_as="tuple", show_progress=False
         )
         doc_ids_row, scores_row = results[0], scores[0]
 

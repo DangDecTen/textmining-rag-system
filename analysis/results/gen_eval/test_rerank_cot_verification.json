@@ -1,0 +1,222 @@
+[
+  {
+    "question": "What is the purpose of Mark-of-the-Web (MOTW) controls in Windows?",
+    "source": "techniques",
+    "true_answer": "Mark-of-the-Web (MOTW) controls in Windows are designed to protect files downloaded from the Internet by tagging them with a hidden NTFS Alternate Data Stream (ADS) named Zone.Identifier with a specific value, thereby preventing certain actions from being performed.",
+    "generated_answer": "<think>\nHere's a thinking process:\n\n1.  **Analyze the Request:**\n   - **Role:** Expert SOC lead and cybersecurity threat analyst specializing in MITRE ATT&CK.\n   - **Task:** Step-by-step evaluation of context, then generate a JSON output with `reasoning`, `answer`, and `references`.\n   - **Instructions:** Rely EXCLUSIVELY on context. If insufficient, state exactly \"I do not have enough information from the provided context.\" Keep it technically precise. Return ONLY valid JSON.\n   - **Question:** What is the purpose of Mark-of-the-Web (MOTW) controls in Windows?\n\n2.  **Step 1: Analyze the question and locate relevant factual passages in the context.**\n   - Question asks for the *purpose* of MOTW controls in Windows.\n   - Scan context for \"Mark-of-the-Web\", \"MOTW\", \"purpose\", \"protect\", \"controls\".\n   - Chunk 1: \"In Windows, when files are downloaded from the Internet, they are tagged with a hidden NTFS Alternate Data Stream (ADS) named Zone.Identifier with a specific value known as the MOTW. Files that are tagged with MOTW are protected and cannot perform certain actions. For example, starting in MS Office 10, if a MS Office file has the MOTW, it will open in Protected View. Executables tagged with the MOTW will be processed by Windows Defender SmartScreen that compares files with an allowlist of well-known executables. If the file is not known/trusted, SmartScreen will prevent the execution and warn the user not to run it.\"\n   - This directly answers the purpose: to protect files downloaded from the Internet by restricting certain actions (e.g., opening in Protected View, triggering SmartScreen checks to prevent execution of untrusted files).\n\n3.  **Step 2: Verify whether the retrieved chunks fully support an answer.**\n   - Chunk 1 explicitly states the purpose: tagging downloaded files to protect them and restrict actions (Protected View for Office files, SmartScreen checks for executables to prevent execution of untrusted files).\n   - The context is sufficient.\n\n4.  **Step 3: Draft a concise, factually grounded answer.**\n   - Purpose: To protect files downloaded from the Internet by tagging them with a hidden NTFS Alternate Data Stream (Zone.Identifier). This tagging restricts certain actions, such as forcing MS Office files to open in",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What is the purpose of ASPXSpy?",
+    "source": "software",
+    "true_answer": "The purpose of ASPXSpy is to create a Web shell that has been modified by Threat Group-3390 actors to create the ASPXTool version.",
+    "generated_answer": "...",
+    "references": [
+      "..."
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What are the specific data components that can be used to detect the attack technique 'T1556.006: Modify Authentication Process: Multi-Factor Authentication'?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The specific data components that can be used to detect the attack technique 'T1556.006: Modify Authentication Process: Multi-Factor Authentication' are Active Directory Object Modification, Application Log Content, Logon Session Creation, User Account Authentication, and User Account Modification.",
+    "generated_answer": "The specific data components that can be used to detect attack technique 'T1556.006: Modify Authentication Process: Multi-Factor Authentication' are: Active Directory Object Modification, Application Log Content, Logon Session Creation, User Account Authentication, and User Account Modification.",
+    "references": [
+      "210d357ed4713597"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0107: Cherry Picker' use attack technique 'T1070.004: File Deletion'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Recent versions of Cherry Picker delete files and registry keys created by the malware.",
+    "generated_answer": "<think>\nThe user wants to know how the attack software 'S0107: Cherry Picker' uses the attack technique 'T1070.004: File Deletion' based on the provided context.\n\nStep 1: Analyze the question and locate relevant factual passages.\nQuestion: How does attack software 'S0107: Cherry Picker' use attack technique 'T1070.004: File Deletion'?\nContext Chunk 1: \"How attack software 'S0107: Cherry Picker' uses attack technique 'T1070.004: File Deletion': Recent versions of Cherry Picker delete files and registry keys created by the malware.\"\nContext Chunk 2: Lists techniques used by Cherry Picker, including T1070.004.\nContext Chunk 3: Describes T1048.003 usage.\nContext Chunk 4: Describes HermeticWiper.\nContext Chunk 5: Describes Dtrack.\n\nStep 2: Verify whether retrieved chunks fully support an answer.\nChunk 1 directly answers the question. It states that recent versions of Cherry Picker delete files and registry keys created by the malware.\n\nStep 3: Draft a concise, factually grounded answer.\nAnswer: Recent versions of Cherry Picker delete files and registry keys created by the malware.\n\nFormat: JSON with reasoning, answer, references.\nReasoning: Step 1 identified Chunk 1 as directly addressing the question. Step 2 confirmed Chunk 1 provides the exact mechanism: recent versions delete files and registry keys created by the malware. Step 3 formulated the answer based solely on this chunk.\nReferences: [\"9ec71120304a0e85\"]\nCheck constraints: Return ONLY valid JSON. No markdown formatting outside JSON.\nStructure matches requested format.\nProceed. \nOutput matches exactly.\nLet's double check the exact wording in Chunk 1: \"Recent versions of Cherry Picker delete files and registry keys created by the malware.\"\nMatches perfectly.\nJSON structure:\n{\n    \"reasoning\": \"Step 1: The question asks how 'S0107: Cherry Picker' uses 'T1070.004: File Deletion'. Chunk 1 directly addresses this specific combination. Step 2: Chunk 1 fully supports the answer by stating that recent versions of the malware delete files and registry",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What is the recommended approach to manage accounts and permissions in trusted relationships?",
+    "source": "relationships_mitigations",
+    "true_answer": "Properly manage accounts and permissions used by parties in trusted relationships to minimize potential abuse by the party and if the party is compromised by an adversary. In Office 365 environments, partner relationships and roles can be viewed under the 'Partner Relationships' page.",
+    "generated_answer": "<think>\nHere's a thinking process:\n\n1.  **Analyze the Question:** The user asks: \"What is the recommended approach to manage accounts and permissions in trusted relationships?\"\n2.  **Scan Context for Keywords:** Keywords: \"manage accounts and permissions\", \"trusted relationships\", \"recommended approach\".\n3.  **Evaluate Chunks:**\n   - Chunk 1: Mentions mitigation strategy 'M1018: User Account Management' mitigates 'T1199: Trusted Relationship'. It says: \"Properly manage accounts and permissions used by parties in trusted relationships to minimize potential abuse by the party and if the party is compromised by an adversary. In Office 365 environments, partner relationships and roles can be viewed under the “Partner Relationships” page.\"\n   - Chunk 3: Lists mitigations for T1199: Trusted Relationship: M1032, M1030, M1018.\n   - Chunk 5: Mentions M1032 for T1199: \"Require MFA for all delegated administrator accounts.\"\n   - The question specifically asks about the approach to \"manage accounts and permissions in trusted relationships\". This directly matches Chunk 1's description of M1018: User Account Management.\n4.  **Formulate Reasoning:**\n   - Step 1: Locate relevant passages. Chunk 1 explicitly addresses managing accounts and permissions in trusted relationships under mitigation strategy M1018: User Account Management.\n   - Step 2: Verify support. Chunk 1 states that the approach is to \"Properly manage accounts and permissions used by parties in trusted relationships to minimize potential abuse by the party and if the party is compromised by an adversary.\" It also notes that in Office 365, partner relationships/roles can be viewed under the “Partner Relationships” page.\n   - Step 3: Draft answer. The recommended approach is to properly manage accounts and permissions used by parties in trusted relationships to minimize potential abuse, especially if a party is compromised. In Office 365 environments, this can be done by viewing partner relationships and roles under the “Partner Relationships” page. This aligns with mitigation strategy M1018: User Account Management.\n5.  **Check Constraints:**\n   - Rely EXCLUSIVELY on context.\n   - Return ONLY valid JSON.\n   - Format: `{\"reasoning\": \"...\", \"",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What are the two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware'?",
+    "source": "relationships_detections_summaries",
+    "true_answer": "The two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware' are Malware Content and Malware Metadata.",
+    "generated_answer": "<think>\nThe user wants to know the two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware' based on the provided context.\n\nStep 1: Analyze the question and locate relevant factual passages.\nQuestion asks for data components for 'T1588.001: Obtain Capabilities: Malware'.\nLooking at the context:\nChunk 1 says: \"The following 2 data components can be used to detect attack technique 'T1588.001: Obtain Capabilities: Malware': Malware Content, Malware Metadata\"\n\nStep 2: Verify whether the retrieved chunks fully support an answer.\nChunk 1 explicitly lists the two data components: Malware Content, Malware Metadata.\n\nStep 3: Draft a concise, factually grounded answer.\nAnswer: Malware Content and Malware Metadata.\n\nFormat: JSON with reasoning, answer, references.\nReasoning: Step 1: The question asks for the data components used to detect 'T1588.001: Obtain Capabilities: Malware'. Step 2: Chunk 1 explicitly states that the two data components for this technique are 'Malware Content' and 'Malware Metadata'. Step 3: The context fully supports the answer.\nAnswer: Malware Content and Malware Metadata.\nReferences: [\"c2464d4168d0db49\"]\n\nCheck constraints: Return ONLY valid JSON. No markdown formatting outside JSON.\nDone. \nConstruct JSON.\n{\n    \"reasoning\": \"Step 1: The question asks for the two data components used to detect attack technique 'T1588.001: Obtain Capabilities: Malware'. Step 2: Chunk 1 explicitly states that the two data components for this specific technique are 'Malware Content' and 'Malware Metadata'. Step 3: The provided context fully supports the answer without requiring external information.\",\n    \"answer\": \"Malware Content and Malware Metadata\",\n    \"references\": [\"c2464d4168d0db49\"]\n}\nCheck format: matches exactly. No extra text. Proceeds. \nOutput matches requirement.✅\n</think>\n\n{\n    \"reasoning\": \"Step 1: The question asks for the two data components used to detect attack technique 'T1588.",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0083: Misdat' use attack technique 'T1041: Exfiltration Over C2 Channel'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Misdat has been observed to upload files and data to its C2 servers.",
+    "generated_answer": "<think>\nThe user wants to know how the attack software 'S0083: Misdat' uses the technique 'T1041: Exfiltration Over C2 Channel' based on the provided context.\n\nStep 1: Analyze the question and locate relevant factual passages.\nQuestion: How does attack software 'S0083: Misdat' use attack technique 'T1041: Exfiltration Over C2 Channel'?\nContext Chunk 1 explicitly addresses this: \"How attack software 'S0083: Misdat' uses attack technique 'T1041: Exfiltration Over C2 Channel': Misdat has uploaded files and data to its C2 servers.\"\n\nStep 2: Verify whether the retrieved chunks fully support an answer.\nChunk 1 provides a direct answer.\n\nStep 3: Draft a concise, factually grounded answer.\nAnswer: Misdat has uploaded files and data to its C2 servers.\n\nFormat as JSON:\n{\n    \"reasoning\": \"Step 1: The question asks how 'S0083: Misdat' uses 'T1041: Exfiltration Over C2 Channel'. Step 2: Chunk 1 directly addresses this, stating that 'Misdat has uploaded files and data to its C2 servers.' Step 3: The context fully supports the answer.\",\n    \"answer\": \"Misdat has uploaded files and data to its C2 servers.\",\n    \"references\": [\"85e22dc8bcba34a4\"]\n}\nCheck constraints: Return ONLY valid JSON. No markdown formatting outside JSON.\nMatches perfectly. Proceed. \nSelf-Correction/Verification during thought:\n- Check exact wording in Chunk 1: \"Misdat has uploaded files and data to its C2 servers.\"\n- JSON structure matches requested format.\n- No extra text.\nReady. \nOutput matches the JSON.✅\n</think>\n\n{\n    \"reasoning\": \"Step 1: The question asks how 'S0083: Misdat' uses the technique 'T1041: Exfiltration Over C2 Channel'. Step 2: Chunk 1 directly addresses this query, stating that 'Misdat has uploaded files and data to its C2 servers.' Step 3: The provided context fully supports a direct and concise answer.\",\n    \"answer\": \"Misdat has uploaded files and data to its",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "Describe attack technique 'T1584.005: Compromise Infrastructure: Botnet'",
+    "source": "techniques",
+    "true_answer": "T1584.005: Compromise Infrastructure: Botnet is an attack technique that involves compromising numerous third-party systems to form a botnet, which is a network of compromised systems that can be instructed to perform coordinated tasks. Instead of purchasing or renting a botnet from a booter/stresser service, adversaries may build their own botnet by compromising numerous third-party systems.",
+    "generated_answer": "...",
+    "references": [
+      "..."
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What software procedures use attack technique 'T1136.003: Cloud Account'?",
+    "source": "relationships_software_for_technique",
+    "true_answer": "The software procedures that use attack technique 'T1136.003: Cloud Account' are: 'S0677: AADInternals'",
+    "generated_answer": "S0677: AADInternals",
+    "references": [
+      "d4872a6a1216258d"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0680: LitePower' use attack technique 'T1053.005: Scheduled Task'?",
+    "source": "relationships_uses_software",
+    "true_answer": "LitePower can create a scheduled task to enable persistence mechanisms.",
+    "generated_answer": "LitePower can create a scheduled task to enable persistence mechanisms.",
+    "references": [
+      "aaf6468faab5cfa6"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0534: Bazar' use attack technique 'T1057: Process Discovery'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Bazar can identify the current process on a compromised host, which is a characteristic of the 'T1057: Process Discovery' attack technique.",
+    "generated_answer": "Bazar can identify the current process on a compromised host.",
+    "references": [
+      "483f6f848801ccaa"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0148: RTM' use attack technique 'T1059.003: Windows Command Shell'?",
+    "source": "relationships_uses_software",
+    "true_answer": "RTM uses the command line and rundll32.exe to execute commands.",
+    "generated_answer": "RTM uses the command line and rundll32.exe to execute.",
+    "references": [
+      "02a641428802218e"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S1033: DCSrv' use attack technique 'T1027.013: Encrypted/Encoded File'?",
+    "source": "relationships_uses_software",
+    "true_answer": "DCSrv's configuration is encrypted, which enables the attack software to conceal its settings and operations.",
+    "generated_answer": "DCSrv's configuration is encrypted.",
+    "references": [
+      "4a97cde01d215b1b"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0451: LoudMiner' use attack technique 'T1543.003: Windows Service'?",
+    "source": "relationships_uses_software",
+    "true_answer": "LoudMiner can automatically launch a Linux virtual machine as a service at startup if the AutoStart option is enabled in the VBoxVmService configuration file.",
+    "generated_answer": "LoudMiner can automatically launch a Linux virtual machine as a service at startup if the AutoStart option is enabled in the VBoxVmService configuration file.",
+    "references": [
+      "d4dbe8d8b61113c5"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0386: Ursnif' use attack technique 'T1106: Native API'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Ursnif has used the CreateProcessW function to create child processes, which is an example of utilizing the Native API technique 'T1106'.",
+    "generated_answer": "<think>\nThe user wants to know how the attack software 'S0386: Ursnif' uses the attack technique 'T1106: Native API' based on the provided context.\n\nStep 1: Analyze the question and locate the relevant factual passages in the context.\nQuestion: How does attack software 'S0386: Ursnif' use attack technique 'T1106: Native API'?\nContext search: Look for 'S0386: Ursnif' and 'T1106: Native API'.\nChunk 1: \"How attack software 'S0386: Ursnif' uses attack technique 'T1106: Native API': Ursnif has used CreateProcessW to create child processes.\"\nChunk 5 mentions S0386: Ursnif but for T1056.004: Credential API Hooking. Not relevant to T1106.\n\nStep 2: Verify whether the retrieved chunks fully support an answer.\nChunk 1 directly answers the question. It states that Ursnif has used CreateProcessW to create child processes.\n\nStep 3: Draft a concise, factually grounded answer.\nAnswer: Ursnif has used CreateProcessW to create child processes.\n\nFormat: JSON with reasoning, answer, references.\nReasoning: Step 1: The question asks how 'S0386: Ursnif' uses 'T1106: Native API'. Step 2: Chunk 1 explicitly states that \"Ursnif has used CreateProcessW to create child processes.\" Step 3: The answer is directly supported by Chunk 1.\nAnswer: Ursnif has used CreateProcessW to create child processes.\nReferences: [\"2d44bd3627e538e3\"]\n\nCheck constraints: Return ONLY valid JSON. No markdown formatting outside JSON.\nJSON structure:\n{\n    \"reasoning\": \"Step 1: The question asks how attack software 'S0386: Ursnif' uses attack technique 'T1106: Native API'. Step 2: Chunk 1 explicitly states that 'Ursnif has used CreateProcessW to create child processes.' Step 3: The provided context fully supports the answer.\",\n    \"answer\": \"Ursnif has used CreateProcessW to create child processes",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What type of network connections should be monitored to detect the 'T1104: Multi-Stage Channels' attack technique?",
+    "source": "relationships_detects",
+    "true_answer": "Newly constructed network connections should be monitored to detect the 'T1104: Multi-Stage Channels' attack technique, specifically those sent or received by untrusted hosts.",
+    "generated_answer": "<think>\nThe user wants to know what type of network connections should be monitored to detect the 'T1104: Multi-Stage Channels' attack technique, based on the provided context.\n\nStep 1: Analyze the question and locate relevant factual passages.\nQuestion: What type of network connections should be monitored to detect the 'T1104: Multi-Stage Channels' attack technique?\nContext search: Look for mentions of \"T1104: Multi-Stage Channels\" and \"network connections\" or \"Network Connection Creation\".\nChunk 1: \"How data component 'Network Connection Creation' can be used to detect attack technique 'T1104: Multi-Stage Channels': Monitor for newly constructed network connections that are sent or received by untrusted hosts.\"\nChunk 2: Mentions data components for T1104.\nChunk 3: Mentions Network Traffic Flow for T1104.\nChunk 4: Mentions mitigation for T1104.\nChunk 5: Mentions Network Connection Creation for T1102.002.\n\nStep 2: Verify whether the retrieved chunks fully support an answer.\nChunk 1 explicitly states: \"Monitor for newly constructed network connections that are sent or received by untrusted hosts.\" This directly answers the question regarding the type of network connections to monitor for T1104.\n\nStep 3: Draft a concise, factually grounded answer.\nAnswer: Newly constructed network connections that are sent or received by untrusted hosts.\n\nFormat: JSON with reasoning, answer, references.\nReasoning: Step 1 identifies Chunk 1 as the relevant passage linking 'Network Connection Creation' to 'T1104: Multi-Stage Channels'. Step 2 confirms that Chunk 1 explicitly states to \"Monitor for newly constructed network connections that are sent or received by untrusted hosts.\" Step 3 formulates the answer based strictly on this text.\nReferences: [\"dfc70d557dff619c\"]\n\nCheck constraints: Return ONLY valid JSON. No markdown.\nStructure:\n{\n    \"reasoning\": \"Step 1: The question asks what type of network connections should be monitored to detect 'T1104: Multi-Stage Channels'. Chunk 1 directly addresses how the 'Network Connection Creation' data component detects this technique. Step 2: Chunk 1 explicitly states to 'Monitor for newly constructed network connections",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What attack techniques were used in campaign 'C0017: C0017'?",
+    "source": "relationships_techniques_for_campaign",
+    "true_answer": "The attack techniques used in campaign 'C0017: C0017' were: 'T1001.003: Protocol Impersonation', 'T1003.002: Security Account Manager', 'T1005: Data from Local System', 'T1016: System Network Configuration Discovery', 'T1027.002: Software Packing', 'T1027: Obfuscated Files or Information', 'T1033: System Owner/User Discovery', 'T1036.004: Masquerade Task or Service', 'T1036.005: Match Legitimate Name or Location', 'T1041: Exfiltration Over C2 Channel', 'T1048.003: Exfiltration Over Unencrypted Non-C2 Protocol', 'T1053.005: Scheduled Task', 'T1059.003: Windows Command Shell', 'T1059.007: JavaScript', 'T1068: Exploitation for Privilege Escalation', 'T1071.001: Web Protocols', 'T1074.001: Local Data Staging', 'T1082: System Information Discovery', 'T1090: Proxy', 'T1102.001: Dead Drop Resolver', 'T1102: Web Service', 'T1105: Ingress Tool Transfer', 'T1134: Access Token Manipulation', 'T1140: Deobfuscate/Decode Files or Information', 'T1190: Exploit Public-Facing Application', 'T1505.003: Web Shell', 'T1560.003: Archive via Custom Method', 'T1567: Exfiltration Over Web Service', 'T1574: Hijack Execution Flow', 'T1588.002: Tool'",
+    "generated_answer": "<think>\nThe user wants to know the attack techniques used in campaign 'C0017: C0017'.\nI need to look at the context provided.\nChunk 1 explicitly lists the attack techniques used in campaign 'C0017: C0017'.\nThe list is: 'T1001.003: Protocol Impersonation', 'T1003.002: Security Account Manager', 'T1005: Data from Local System', 'T1016: System Network Configuration Discovery', 'T1027.002: Software Packing', 'T1027: Obfuscated Files or Information', 'T1033: System Owner/User Discovery', 'T1036.004: Masquerade Task or Service', 'T1036.005: Match Legitimate Name or Location', 'T1041: Exfiltration Over C2 Channel', 'T1048.003: Exfiltration Over Unencrypted Non-C2 Protocol', 'T1053.005: Scheduled Task', 'T1059.003: Windows Command Shell', 'T1059.007: JavaScript', 'T1068: Exploitation for Privilege Escalation', 'T1071.001: Web Protocols', 'T1074.001: Local Data Staging', 'T1082: System Information Discovery', 'T1090: Proxy', 'T1102.001: Dead Drop Resolver', 'T1102: Web Service', 'T1105: Ingress Tool Transfer', 'T1134: Access Token Manipulation', 'T1140: Deobfuscate/Decode Files or Information', 'T1190: Exploit Public-Facing Application', 'T1505.003: Web Shell', 'T1560.003: Archive via Custom Method', 'T1567: Exfiltration Over Web Service', 'T1574: Hijack Execution Flow', 'T1588.002: Tool'\n\nStep 1: Locate relevant factual passages. Chunk 1 contains the exact list.\nStep 2",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0386: Ursnif' use attack technique 'T1059.005: Visual Basic'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Ursnif droppers use VBA macros to download and execute the malware's full executable payload.",
+    "generated_answer": "<think>\nThe user wants to know how 'S0386: Ursnif' uses 'T1059.005: Visual Basic' based on the provided context.\nI need to follow the steps:\nStep 1: Analyze the question and locate relevant factual passages.\nQuestion: How does attack software 'S0386: Ursnif' use attack technique 'T1059.005: Visual Basic'?\nContext Chunk 1 explicitly addresses this: \"How attack software 'S0386: Ursnif' uses attack technique 'T1059.005: Visual Basic': Ursnif droppers have used VBA macros to download and execute the malware's full executable payload.\"\n\nStep 2: Verify whether the retrieved chunks fully support an answer.\nChunk 1 fully supports the answer.\n\nStep 3: Draft a concise, factually grounded answer.\nAnswer: Ursnif droppers have used VBA macros to download and execute the malware's full executable payload.\n\nFormat: JSON with \"reasoning\", \"answer\", \"references\".\nReasoning should be step-by-step verification.\nReferences should be [\"b20504f9aeee6753\"].\n\nCheck constraints:\n- Rely EXCLUSIVELY on provided context.\n- Return ONLY valid JSON.\n- No markdown formatting outside JSON.\n\nDraft JSON:\n{\n    \"reasoning\": \"Step 1: The question asks how 'S0386: Ursnif' uses 'T1059.005: Visual Basic'. Chunk 1 directly addresses this specific software and technique combination. Step 2: Chunk 1 states that 'Ursnif droppers have used VBA macros to download and execute the malware's full executable payload,' which fully supports the answer. Step 3: The answer is drafted directly from the factual statement in Chunk 1.\",\n    \"answer\": \"Ursnif droppers have used VBA macros to download and execute the malware's full executable payload.\",\n    \"references\": [\"b20504f9aeee6753\"]\n}\n\nCheck format constraints: \"Return ONLY valid JSON in the following format: {...}\"\nEverything matches. Proceed. \nSelf-Correction/Verification during thought:\n- Ensure JSON is strictly valid.\n- Ensure no extra text.\n-",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What software are used by attack group 'G0090: WIRTE'?",
+    "source": "relationships_software_for_group",
+    "true_answer": "The software used by attack group 'G0090: WIRTE' are: 'S0363: Empire', 'S0679: Ferocious', 'S0680: LitePower'",
+    "generated_answer": "The software used by attack group 'G0090: WIRTE' are 'S0363: Empire', 'S0679: Ferocious', and 'S0680: LitePower'.",
+    "references": [
+      "f06de8dc00ed85c3"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How can data component 'Process Modification' be used to detect attack technique 'T1055.004: Asynchronous Procedure Call'?",
+    "source": "relationships_detects",
+    "true_answer": "Monitor for changes made to processes that may inject malicious code into processes via the asynchronous procedure call (APC) queue in order to evade process-based defenses as well as possibly elevate privileges.",
+    "generated_answer": "<think>\nThe user wants to know how the data component 'Process Modification' can be used to detect the attack technique 'T1055.004: Asynchronous Procedure Call' based on the provided context.\n\nStep 1: Analyze the question and locate relevant factual passages.\nQuestion: How can data component 'Process Modification' be used to detect attack technique 'T1055.004: Asynchronous Procedure Call'?\nContext search: Look for \"Process Modification\" and \"T1055.004: Asynchronous Procedure Call\".\nChunk 1 matches exactly: \"How data component 'Process Modification' can be used to detect attack technique 'T1055.004: Asynchronous Procedure Call': Monitor for changes made to processes that may inject malicious code into processes via the asynchronous procedure call (APC) queue in order to evade process-based defenses as well as possibly elevate privileges.\"\n\nStep 2: Verify whether the retrieved chunks fully support an answer.\nChunk 1 provides the exact answer.\n\nStep 3: Draft a concise, factually grounded answer.\nAnswer: Monitor for changes made to processes that may inject malicious code into processes via the asynchronous procedure call (APC) queue in order to evade process-based defenses as well as possibly elevate privileges.\n\nFormat: JSON with reasoning, answer, references.\nReasoning: Step 1: The question asks how 'Process Modification' can detect 'T1055.004: Asynchronous Procedure Call'. Step 2: Chunk 1 explicitly addresses this combination. Step 3: The answer is directly extracted from Chunk 1.\nReferences: [\"bbc1a6f1adb675a2\"]\n\nCheck constraints: Return ONLY valid JSON. No markdown formatting outside JSON.\nConstruct JSON.\n{\n    \"reasoning\": \"Step 1: The question asks how the data component 'Process Modification' can be used to detect 'T1055.004: Asynchronous Procedure Call'. Step 2: Chunk 1 explicitly provides the answer for this exact combination. Step 3: The answer is directly extracted from the context without extrapolation.\",\n    \"answer\": \"Monitor for changes made to processes that may inject malicious code into processes via the asynchronous procedure call (APC) queue in order to evade process-based defenses as well as possibly elevate privileges.\",\n    \"references\": [\"bbc1a6f1adb6",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  }
+]
