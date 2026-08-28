@@ -8,8 +8,19 @@ from src.retrieval.bm25_retriever import BM25Retriever
 from src.retrieval.dense_retriever import DenseRetriever
 from src.retrieval.hybrid_retriever import HybridRetriever
 
-DEFAULT_DENSE_INDEX_DIR = Path("data/index/dense")
-DEFAULT_BM25_INDEX_DIR = Path("data/index/bm25")
+DEFAULT_DENSE_INDEX_DIR = Path("data/index/dense_bge_small")
+DEFAULT_BM25_INDEX_DIR = Path("data/index/bm25_k1_b25")
+
+
+def _resolve_index_dir(path: Path | str, fallbacks: list[str]) -> Path:
+    p = Path(path)
+    if p.exists():
+        return p
+    for fb in fallbacks:
+        fb_p = Path(fb)
+        if fb_p.exists():
+            return fb_p
+    return p
 
 
 class RetrieverFactory:
@@ -22,6 +33,8 @@ class RetrieverFactory:
         alpha: float = 0.5,
     ) -> Retriever:
         retriever_type = retriever_type.lower()
+        dense_dir = _resolve_index_dir(dense_dir, ["data/index/dense_bge_small", "data/index/dense_bge_base", "data/index/dense"])
+        bm25_dir = _resolve_index_dir(bm25_dir, ["data/index/bm25_k1_b25", "data/index/bm25"])
         if corpus_lookup is None:
             corpus_lookup = load_corpus_lookup()
 
