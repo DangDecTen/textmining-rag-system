@@ -126,5 +126,95 @@
     "hard_accuracy": 8.0,
     "faithfulness": 8.0,
     "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S1033: DCSrv' use attack technique 'T1027.013: Encrypted/Encoded File'?",
+    "source": "relationships_uses_software",
+    "true_answer": "DCSrv's configuration is encrypted, which enables the attack software to conceal its settings and operations.",
+    "generated_answer": "<think>\nHere's a thinking process:\n\n1.  **Analyze User Input:**\n   - **Role:** Principal cybersecurity intelligence analyst.\n   - **Task:** Answer MITRE ATT&CK queries with extreme accuracy and precise technical terminology based ONLY on the provided context.\n   - **Format:** JSON with \"answer\" and \"references\" keys.\n   - **Constraints:** Use ONLY facts from context. No outside knowledge. Return ONLY valid JSON. No markdown formatting outside JSON.\n   - **Context Provided:** 5 chunks.\n   - **Question:** How does attack software 'S1033: DCSrv' use attack technique 'T1027.013: Encrypted/Encoded File'?\n\n2.  **Scan Context for Keywords:**\n   - Keywords: \"S1033: DCSrv\", \"T1027.013: Encrypted/Encoded File\"\n   - Chunk 1: `[Chunk 1 - ID: 4a97cde01d215b1b]` -> \"How attack software 'S1033: DCSrv' uses attack technique 'T1027.013: Encrypted/Encoded File': DCSrv's configuration is encrypted.\"\n   - Chunk 2: Mentions S1033 and T1486.\n   - Chunk 3: Lists techniques for S1033.\n   - Chunk 4: Mentions S0662 and T1027.013.\n   - Chunk 5: Mentions S1033 and T1106.\n\n3.  **Extract Relevant Information:**\n   - From Chunk 1: DCSrv's configuration is encrypted.\n   - This directly answers the question.\n\n4.  **Formulate Answer:**\n   - Must be precise and based ONLY on context.\n   - \"DCSrv uses the Encrypted/Encoded File technique (T1027.013) by encrypting its configuration.\"\n   - Check against constraints: Uses exact terminology, references chunk ID.\n\n5.  **Construct JSON:**\n   ```json\n   {\n       \"answer\": \"DCSrv uses the Encrypted/Encoded File technique (T1027.013) by encrypting its configuration.\",\n       \"references\": [\"4a9",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0451: LoudMiner' use attack technique 'T1543.003: Windows Service'?",
+    "source": "relationships_uses_software",
+    "true_answer": "LoudMiner can automatically launch a Linux virtual machine as a service at startup if the AutoStart option is enabled in the VBoxVmService configuration file.",
+    "generated_answer": "LoudMiner can automatically launch a Linux virtual machine as a service at startup if the AutoStart option is enabled in the VBoxVmService configuration file.",
+    "references": [
+      "d4dbe8d8b61113c5"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0386: Ursnif' use attack technique 'T1106: Native API'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Ursnif has used the CreateProcessW function to create child processes, which is an example of utilizing the Native API technique 'T1106'.",
+    "generated_answer": "Ursnif has used CreateProcessW to create child processes.",
+    "references": [
+      "2d44bd3627e538e3"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What type of network connections should be monitored to detect the 'T1104: Multi-Stage Channels' attack technique?",
+    "source": "relationships_detects",
+    "true_answer": "Newly constructed network connections should be monitored to detect the 'T1104: Multi-Stage Channels' attack technique, specifically those sent or received by untrusted hosts.",
+    "generated_answer": "<think>\nThe user wants to know what type of network connections should be monitored to detect 'T1104: Multi-Stage Channels' based on the provided context.\nLooking at the context:\nChunk 1: \"How data component 'Network Connection Creation' can be used to detect attack technique 'T1104: Multi-Stage Channels': Monitor for newly constructed network connections that are sent or received by untrusted hosts.\"\nChunk 2: Mentions Network Connection Creation and Network Traffic Flow.\nChunk 3: Mentions Network Traffic Flow.\nChunk 4: Mentions Network Intrusion Prevention.\nChunk 5: Mentions T1102.002.\n\nThe question specifically asks: \"What type of network connections should be monitored to detect the 'T1104: Multi-Stage Channels' attack technique?\"\nFrom Chunk 1: \"newly constructed network connections that are sent or received by untrusted hosts.\"\n\nI will formulate the answer based strictly on Chunk 1.\nAnswer: Newly constructed network connections that are sent or received by untrusted hosts.\nReferences: [\"dfc70d557dff619c\"]\n\nCheck format:\n{\n    \"answer\": \"Newly constructed network connections that are sent or received by untrusted hosts.\",\n    \"references\": [\"dfc70d557dff619c\"]\n}\nMatches instructions. No extra text. Valid JSON.\nProceed. \nSelf-Correction/Verification during thought:\nDoes Chunk 1 explicitly say this? Yes.\nIs there any other relevant info? Chunk 3 talks about Network Traffic Flow, but the question asks about \"network connections\". Chunk 1 is the exact match.\nI will construct the JSON. \nOutput matches exactly.✅\nProceeds. \nOutput Generation. \n```json\n{\n    \"answer\": \"Newly constructed network connections that are sent or received by untrusted hosts.\",\n    \"references\": [\"dfc70d557dff619c\"]\n}\n```\nWait, the prompt says \"Return ONLY the JSON object. Do not include markdown formatting or explanation outside JSON.\"\nSo I will output just the raw JSON string.\nDone. \nLet's double check the exact wording in Chunk 1: \"Monitor for newly constructed network connections that are sent or received by untrusted hosts.\"\nAnswer: \"Newly constructed network connections that",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What attack techniques were used in campaign 'C0017: C0017'?",
+    "source": "relationships_techniques_for_campaign",
+    "true_answer": "The attack techniques used in campaign 'C0017: C0017' were: 'T1001.003: Protocol Impersonation', 'T1003.002: Security Account Manager', 'T1005: Data from Local System', 'T1016: System Network Configuration Discovery', 'T1027.002: Software Packing', 'T1027: Obfuscated Files or Information', 'T1033: System Owner/User Discovery', 'T1036.004: Masquerade Task or Service', 'T1036.005: Match Legitimate Name or Location', 'T1041: Exfiltration Over C2 Channel', 'T1048.003: Exfiltration Over Unencrypted Non-C2 Protocol', 'T1053.005: Scheduled Task', 'T1059.003: Windows Command Shell', 'T1059.007: JavaScript', 'T1068: Exploitation for Privilege Escalation', 'T1071.001: Web Protocols', 'T1074.001: Local Data Staging', 'T1082: System Information Discovery', 'T1090: Proxy', 'T1102.001: Dead Drop Resolver', 'T1102: Web Service', 'T1105: Ingress Tool Transfer', 'T1134: Access Token Manipulation', 'T1140: Deobfuscate/Decode Files or Information', 'T1190: Exploit Public-Facing Application', 'T1505.003: Web Shell', 'T1560.003: Archive via Custom Method', 'T1567: Exfiltration Over Web Service', 'T1574: Hijack Execution Flow', 'T1588.002: Tool'",
+    "generated_answer": "<think>\nThe user wants to know the attack techniques used in campaign 'C0017: C0017' based on the provided context.\nLooking at Chunk 1:\n\"The attack techniques used in campaign 'C0017: C0017' were: 'T1001.003: Protocol Impersonation', 'T1003.002: Security Account Manager', 'T1005: Data from Local System', 'T1016: System Network Configuration Discovery', 'T1027.002: Software Packing', 'T1027: Obfuscated Files or Information', 'T1033: System Owner/User Discovery', 'T1036.004: Masquerade Task or Service', 'T1036.005: Match Legitimate Name or Location', 'T1041: Exfiltration Over C2 Channel', 'T1048.003: Exfiltration Over Unencrypted Non-C2 Protocol', 'T1053.005: Scheduled Task', 'T1059.003: Windows Command Shell', 'T1059.007: JavaScript', 'T1068: Exploitation for Privilege Escalation', 'T1071.001: Web Protocols', 'T1074.001: Local Data Staging', 'T1082: System Information Discovery', 'T1090: Proxy', 'T1102.001: Dead Drop Resolver', 'T1102: Web Service', 'T1105: Ingress Tool Transfer', 'T1134: Access Token Manipulation', 'T1140: Deobfuscate/Decode Files or Information', 'T1190: Exploit Public-Facing Application', 'T1505.003: Web Shell', 'T1560.003: Archive via Custom Method', 'T1567: Exfiltration Over Web Service', 'T1574: Hijack Execution Flow', 'T1588.002: Tool'\"\n\nI will list these techniques exactly as provided in the context.\nFormat: JSON with \"answer\" and \"references\".\nAnswer",
+    "references": [],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How does attack software 'S0386: Ursnif' use attack technique 'T1059.005: Visual Basic'?",
+    "source": "relationships_uses_software",
+    "true_answer": "Ursnif droppers use VBA macros to download and execute the malware's full executable payload.",
+    "generated_answer": "Ursnif droppers have used VBA macros to download and execute the malware's full executable payload.",
+    "references": [
+      "b20504f9aeee6753"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "What software are used by attack group 'G0090: WIRTE'?",
+    "source": "relationships_software_for_group",
+    "true_answer": "The software used by attack group 'G0090: WIRTE' are: 'S0363: Empire', 'S0679: Ferocious', 'S0680: LitePower'",
+    "generated_answer": "The software used by attack group 'G0090: WIRTE' are 'S0363: Empire', 'S0679: Ferocious', and 'S0680: LitePower'.",
+    "references": [
+      "f06de8dc00ed85c3"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
+  },
+  {
+    "question": "How can data component 'Process Modification' be used to detect attack technique 'T1055.004: Asynchronous Procedure Call'?",
+    "source": "relationships_detects",
+    "true_answer": "Monitor for changes made to processes that may inject malicious code into processes via the asynchronous procedure call (APC) queue in order to evade process-based defenses as well as possibly elevate privileges.",
+    "generated_answer": "Monitor for changes made to processes that may inject malicious code into processes via the asynchronous procedure call (APC) queue in order to evade process-based defenses as well as possibly elevate privileges.",
+    "references": [
+      "bbc1a6f1adb675a2"
+    ],
+    "hard_accuracy": 8.0,
+    "faithfulness": 8.0,
+    "answer_relevancy": 8.0
   }
 ]
