@@ -1,0 +1,1906 @@
+{
+  "metadata": {
+    "timestamp": "2026-09-09 12:38:31",
+    "corpus_docs": 17760,
+    "dev_samples": 2533,
+    "test_samples": 2534,
+    "k_values": [
+      1,
+      5,
+      10,
+      20
+    ]
+  },
+  "dev": {
+    "bm25": {
+      "n": 2533,
+      "mrr": 0.7867127734918103,
+      "recall@1": 0.6940386893012238,
+      "recall@5": 0.9009080142123964,
+      "recall@10": 0.9423608369522306,
+      "recall@20": 0.9703908409001184,
+      "avg_latency_ms": 0.5175028030064622,
+      "by_source": {
+        "relationships_uses_software": {
+          "n": 853,
+          "mrr": 0.9902305588120359,
+          "recall@1": 0.981242672919109,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.6071500585893915
+        },
+        "software": {
+          "n": 261,
+          "mrr": 0.6959389232208705,
+          "recall@1": 0.6091954022988506,
+          "recall@5": 0.789272030651341,
+          "recall@10": 0.8773946360153256,
+          "recall@20": 0.9655172413793104,
+          "avg_latency_ms": 0.4134344828023595
+        },
+        "relationships_detects": {
+          "n": 253,
+          "mrr": 0.6838552018445923,
+          "recall@1": 0.5533596837944664,
+          "recall@5": 0.841897233201581,
+          "recall@10": 0.9090909090909091,
+          "recall@20": 0.9446640316205533,
+          "avg_latency_ms": 0.5317047431349723
+        },
+        "relationships_mitigations": {
+          "n": 222,
+          "mrr": 0.6678317775647497,
+          "recall@1": 0.5315315315315315,
+          "recall@5": 0.8288288288288288,
+          "recall@10": 0.8873873873873874,
+          "recall@20": 0.9414414414414415,
+          "avg_latency_ms": 0.4829977478129057
+        },
+        "techniques": {
+          "n": 214,
+          "mrr": 0.7117834177001302,
+          "recall@1": 0.6355140186915887,
+          "recall@5": 0.8037383177570093,
+          "recall@10": 0.9065420560747663,
+          "recall@20": 0.9392523364485982,
+          "avg_latency_ms": 0.42170420557706045
+        },
+        "relationships_detections_summaries": {
+          "n": 143,
+          "mrr": 0.680017205017205,
+          "recall@1": 0.5174825174825175,
+          "recall@5": 0.8671328671328671,
+          "recall@10": 0.9300699300699301,
+          "recall@20": 0.972027972027972,
+          "avg_latency_ms": 0.5539167832212369
+        },
+        "relationships_mitigations_summaries": {
+          "n": 131,
+          "mrr": 0.42599793124602287,
+          "recall@1": 0.15267175572519084,
+          "recall@5": 0.8396946564885496,
+          "recall@10": 0.9007633587786259,
+          "recall@20": 0.9541984732824428,
+          "avg_latency_ms": 0.5240404580660672
+        },
+        "relationships_techniques_for_software": {
+          "n": 68,
+          "mrr": 0.6359885620915032,
+          "recall@1": 0.4852941176470588,
+          "recall@5": 0.8529411764705882,
+          "recall@10": 0.8970588235294118,
+          "recall@20": 0.9264705882352942,
+          "avg_latency_ms": 0.4697955880735261
+        },
+        "techniques_tactics": {
+          "n": 64,
+          "mrr": 0.5403831845238095,
+          "recall@1": 0.1875,
+          "recall@5": 0.953125,
+          "recall@10": 0.984375,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.49991718776709604
+        },
+        "groups": {
+          "n": 55,
+          "mrr": 0.8939393939393939,
+          "recall@1": 0.8181818181818182,
+          "recall@5": 0.9818181818181818,
+          "recall@10": 0.9818181818181818,
+          "recall@20": 0.9818181818181818,
+          "avg_latency_ms": 0.3897363637489351
+        },
+        "relationships_groups_for_software": {
+          "n": 50,
+          "mrr": 0.9159999999999999,
+          "recall@1": 0.86,
+          "recall@5": 0.98,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.3860819999681553
+        },
+        "techniques_parent": {
+          "n": 44,
+          "mrr": 0.9545454545454546,
+          "recall@1": 0.9090909090909091,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.524572727127551
+        },
+        "relationships_software_for_technique": {
+          "n": 43,
+          "mrr": 0.6614987080103358,
+          "recall@1": 0.5116279069767442,
+          "recall@5": 0.8372093023255814,
+          "recall@10": 0.8837209302325582,
+          "recall@20": 0.8837209302325582,
+          "avg_latency_ms": 0.4883813951807476
+        },
+        "relationships_groups_for_technique": {
+          "n": 42,
+          "mrr": 0.6232325875183018,
+          "recall@1": 0.4523809523809524,
+          "recall@5": 0.8333333333333334,
+          "recall@10": 0.9047619047619048,
+          "recall@20": 0.9761904761904762,
+          "avg_latency_ms": 0.4054238093626087
+        },
+        "relationships_campaigns_for_technique": {
+          "n": 22,
+          "mrr": 0.6931818181818182,
+          "recall@1": 0.5,
+          "recall@5": 0.9090909090909091,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.36345454579780134
+        },
+        "relationships_techniques_for_group": {
+          "n": 14,
+          "mrr": 0.5422077922077922,
+          "recall@1": 0.42857142857142855,
+          "recall@5": 0.6428571428571429,
+          "recall@10": 0.6428571428571429,
+          "recall@20": 0.7142857142857143,
+          "avg_latency_ms": 0.4785428573086392
+        },
+        "relationships_software_for_group": {
+          "n": 14,
+          "mrr": 0.9642857142857143,
+          "recall@1": 0.9285714285714286,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.5034642856896555
+        },
+        "campaigns": {
+          "n": 10,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.333830000818125
+        },
+        "techniques_sub": {
+          "n": 9,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.4371666663145233
+        },
+        "relationships_campaigns_for_software": {
+          "n": 8,
+          "mrr": 0.9375,
+          "recall@1": 0.875,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.5824500003654975
+        },
+        "tactics": {
+          "n": 5,
+          "mrr": 0.5,
+          "recall@1": 0.2,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.34015999917755835
+        },
+        "relationships_software_for_campaign": {
+          "n": 3,
+          "mrr": 0.5,
+          "recall@1": 0.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.41430000055697747
+        },
+        "relationships_techniques_for_campaign": {
+          "n": 3,
+          "mrr": 0.5111111111111111,
+          "recall@1": 0.3333333333333333,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.6931666648597457
+        },
+        "relationships_campaigns_for_group": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.4126999992877245
+        },
+        "relationships_groups_for_campaign": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.276099999609869
+        }
+      }
+    },
+    "dense": {
+      "n": 2533,
+      "mrr": 0.8479618198617349,
+      "recall@1": 0.7966837741808133,
+      "recall@5": 0.9139360442163442,
+      "recall@10": 0.9395973154362416,
+      "recall@20": 0.9589419660481643,
+      "avg_latency_ms": 10.952277220686863,
+      "by_source": {
+        "relationships_uses_software": {
+          "n": 853,
+          "mrr": 0.9700935239277423,
+          "recall@1": 0.9507620164126612,
+          "recall@5": 0.9917936694021102,
+          "recall@10": 0.9964830011723329,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "software": {
+          "n": 261,
+          "mrr": 0.8785111083792625,
+          "recall@1": 0.8314176245210728,
+          "recall@5": 0.9348659003831418,
+          "recall@10": 0.9693486590038314,
+          "recall@20": 0.9923371647509579,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "relationships_detects": {
+          "n": 253,
+          "mrr": 0.5813017806420503,
+          "recall@1": 0.4624505928853755,
+          "recall@5": 0.7509881422924901,
+          "recall@10": 0.8102766798418972,
+          "recall@20": 0.8656126482213439,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "relationships_mitigations": {
+          "n": 222,
+          "mrr": 0.6404396693870378,
+          "recall@1": 0.536036036036036,
+          "recall@5": 0.7927927927927928,
+          "recall@10": 0.8513513513513513,
+          "recall@20": 0.8918918918918919,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "techniques": {
+          "n": 214,
+          "mrr": 0.6553869806206255,
+          "recall@1": 0.5794392523364486,
+          "recall@5": 0.7383177570093458,
+          "recall@10": 0.7990654205607477,
+          "recall@20": 0.8364485981308412,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "relationships_detections_summaries": {
+          "n": 143,
+          "mrr": 0.9755244755244755,
+          "recall@1": 0.965034965034965,
+          "recall@5": 0.986013986013986,
+          "recall@10": 0.993006993006993,
+          "recall@20": 0.993006993006993,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "relationships_mitigations_summaries": {
+          "n": 131,
+          "mrr": 0.8886437989491425,
+          "recall@1": 0.8320610687022901,
+          "recall@5": 0.9541984732824428,
+          "recall@10": 0.9618320610687023,
+          "recall@20": 0.9770992366412213,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "relationships_techniques_for_software": {
+          "n": 68,
+          "mrr": 0.7424990171507199,
+          "recall@1": 0.6323529411764706,
+          "recall@5": 0.8823529411764706,
+          "recall@10": 0.9264705882352942,
+          "recall@20": 0.9411764705882353,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "techniques_tactics": {
+          "n": 64,
+          "mrr": 0.7967190361721612,
+          "recall@1": 0.703125,
+          "recall@5": 0.9375,
+          "recall@10": 0.96875,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "groups": {
+          "n": 55,
+          "mrr": 0.952584670231729,
+          "recall@1": 0.9454545454545454,
+          "recall@5": 0.9636363636363636,
+          "recall@10": 0.9636363636363636,
+          "recall@20": 0.9818181818181818,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "relationships_groups_for_software": {
+          "n": 50,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "techniques_parent": {
+          "n": 44,
+          "mrr": 0.9886363636363636,
+          "recall@1": 0.9772727272727273,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "relationships_software_for_technique": {
+          "n": 43,
+          "mrr": 0.9339147286821705,
+          "recall@1": 0.9069767441860465,
+          "recall@5": 0.9767441860465116,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "relationships_groups_for_technique": {
+          "n": 42,
+          "mrr": 0.9761904761904762,
+          "recall@1": 0.9523809523809523,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "relationships_campaigns_for_technique": {
+          "n": 22,
+          "mrr": 0.9090909090909091,
+          "recall@1": 0.8636363636363636,
+          "recall@5": 0.9545454545454546,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "relationships_techniques_for_group": {
+          "n": 14,
+          "mrr": 0.6181457431457432,
+          "recall@1": 0.5,
+          "recall@5": 0.7142857142857143,
+          "recall@10": 0.7857142857142857,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "relationships_software_for_group": {
+          "n": 14,
+          "mrr": 0.891156462585034,
+          "recall@1": 0.8571428571428571,
+          "recall@5": 0.9285714285714286,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "campaigns": {
+          "n": 10,
+          "mrr": 0.9,
+          "recall@1": 0.8,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "techniques_sub": {
+          "n": 9,
+          "mrr": 0.8703703703703703,
+          "recall@1": 0.7777777777777778,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "relationships_campaigns_for_software": {
+          "n": 8,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "tactics": {
+          "n": 5,
+          "mrr": 0.9,
+          "recall@1": 0.8,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "relationships_software_for_campaign": {
+          "n": 3,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686861
+        },
+        "relationships_techniques_for_campaign": {
+          "n": 3,
+          "mrr": 0.5666666666666667,
+          "recall@1": 0.3333333333333333,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686861
+        },
+        "relationships_campaigns_for_group": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        },
+        "relationships_groups_for_campaign": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.952277220686863
+        }
+      }
+    },
+    "hybrid_weighted": {
+      "n": 2533,
+      "mrr": 0.877235421702741,
+      "recall@1": 0.8239242005527043,
+      "recall@5": 0.9455191472562179,
+      "recall@10": 0.9676273193841295,
+      "recall@20": 0.9826292933280695,
+      "avg_latency_ms": 11.575754480874439,
+      "by_source": {
+        "relationships_uses_software": {
+          "n": 853,
+          "mrr": 0.9902305588120359,
+          "recall@1": 0.981242672919109,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.667350491483854
+        },
+        "software": {
+          "n": 261,
+          "mrr": 0.882446937906708,
+          "recall@1": 0.8275862068965517,
+          "recall@5": 0.9578544061302682,
+          "recall@10": 0.9770114942528736,
+          "recall@20": 0.9923371647509579,
+          "avg_latency_ms": 11.477516684383378
+        },
+        "relationships_detects": {
+          "n": 253,
+          "mrr": 0.6618635461572845,
+          "recall@1": 0.5098814229249012,
+          "recall@5": 0.849802371541502,
+          "recall@10": 0.9209486166007905,
+          "recall@20": 0.9565217391304348,
+          "avg_latency_ms": 11.588752319587945
+        },
+        "relationships_mitigations": {
+          "n": 222,
+          "mrr": 0.7000780246136283,
+          "recall@1": 0.5675675675675675,
+          "recall@5": 0.8783783783783784,
+          "recall@10": 0.9234234234234234,
+          "recall@20": 0.9684684684684685,
+          "avg_latency_ms": 11.535161905310646
+        },
+        "techniques": {
+          "n": 214,
+          "mrr": 0.7406080160753058,
+          "recall@1": 0.677570093457944,
+          "recall@5": 0.822429906542056,
+          "recall@10": 0.8925233644859814,
+          "recall@20": 0.9299065420560748,
+          "avg_latency_ms": 11.476812267374738
+        },
+        "relationships_detections_summaries": {
+          "n": 143,
+          "mrr": 0.9481629481629482,
+          "recall@1": 0.9230769230769231,
+          "recall@5": 0.9790209790209791,
+          "recall@10": 0.993006993006993,
+          "recall@20": 0.993006993006993,
+          "avg_latency_ms": 11.612645052822131
+        },
+        "relationships_mitigations_summaries": {
+          "n": 131,
+          "mrr": 0.8846782988004361,
+          "recall@1": 0.816793893129771,
+          "recall@5": 0.9618320610687023,
+          "recall@10": 0.9694656488549618,
+          "recall@20": 0.9770992366412213,
+          "avg_latency_ms": 11.581642106148871
+        },
+        "relationships_techniques_for_software": {
+          "n": 68,
+          "mrr": 0.8271650326797385,
+          "recall@1": 0.7794117647058824,
+          "recall@5": 0.8970588235294118,
+          "recall@10": 0.9264705882352942,
+          "recall@20": 0.9411764705882353,
+          "avg_latency_ms": 11.527396338197141
+        },
+        "techniques_tactics": {
+          "n": 64,
+          "mrr": 0.822427398989899,
+          "recall@1": 0.703125,
+          "recall@5": 0.96875,
+          "recall@10": 0.984375,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.556531908601226
+        },
+        "groups": {
+          "n": 55,
+          "mrr": 0.9695454545454546,
+          "recall@1": 0.9636363636363636,
+          "recall@5": 0.9818181818181818,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.448880857385005
+        },
+        "relationships_groups_for_software": {
+          "n": 50,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.435025220900041
+        },
+        "techniques_parent": {
+          "n": 44,
+          "mrr": 0.9886363636363636,
+          "recall@1": 0.9772727272727273,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.574306765850169
+        },
+        "relationships_software_for_technique": {
+          "n": 43,
+          "mrr": 0.8619186046511628,
+          "recall@1": 0.7906976744186046,
+          "recall@5": 0.9534883720930233,
+          "recall@10": 0.9534883720930233,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.549081871786955
+        },
+        "relationships_groups_for_technique": {
+          "n": 42,
+          "mrr": 0.9424603174603176,
+          "recall@1": 0.9047619047619048,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.457215315602374
+        },
+        "relationships_campaigns_for_technique": {
+          "n": 22,
+          "mrr": 0.9659090909090909,
+          "recall@1": 0.9545454545454546,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.414640857640121
+        },
+        "relationships_techniques_for_group": {
+          "n": 14,
+          "mrr": 0.6804421768707484,
+          "recall@1": 0.6428571428571429,
+          "recall@5": 0.7142857142857143,
+          "recall@10": 0.7857142857142857,
+          "recall@20": 0.9285714285714286,
+          "avg_latency_ms": 11.535720078219509
+        },
+        "relationships_software_for_group": {
+          "n": 14,
+          "mrr": 0.9642857142857143,
+          "recall@1": 0.9285714285714286,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.588484363970295
+        },
+        "campaigns": {
+          "n": 10,
+          "mrr": 0.95,
+          "recall@1": 0.9,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.375047221346374
+        },
+        "techniques_sub": {
+          "n": 9,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.485866109770921
+        },
+        "relationships_campaigns_for_software": {
+          "n": 8,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.673727221269854
+        },
+        "tactics": {
+          "n": 5,
+          "mrr": 0.8666666666666666,
+          "recall@1": 0.8,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.402937219437643
+        },
+        "relationships_software_for_campaign": {
+          "n": 3,
+          "mrr": 0.8333333333333334,
+          "recall@1": 0.6666666666666666,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.470543888909939
+        },
+        "relationships_techniques_for_campaign": {
+          "n": 3,
+          "mrr": 0.75,
+          "recall@1": 0.6666666666666666,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.778710553187997
+        },
+        "relationships_campaigns_for_group": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.463877219986369
+        },
+        "relationships_groups_for_campaign": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.298677220812731
+        }
+      }
+    },
+    "hybrid_rrf": {
+      "n": 2533,
+      "mrr": 0.8656841315114951,
+      "recall@1": 0.8085274378207659,
+      "recall@5": 0.9411764705882353,
+      "recall@10": 0.9636794315041453,
+      "recall@20": 0.9826292933280695,
+      "avg_latency_ms": 11.526293762382645,
+      "by_source": {
+        "relationships_uses_software": {
+          "n": 853,
+          "mrr": 0.9844665885111371,
+          "recall@1": 0.9706916764361079,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.617003715386803
+        },
+        "software": {
+          "n": 261,
+          "mrr": 0.8313921923117326,
+          "recall@1": 0.7509578544061303,
+          "recall@5": 0.946360153256705,
+          "recall@10": 0.9770114942528736,
+          "recall@20": 0.9961685823754789,
+          "avg_latency_ms": 11.423735075379952
+        },
+        "relationships_detects": {
+          "n": 253,
+          "mrr": 0.6546008406383594,
+          "recall@1": 0.5138339920948617,
+          "recall@5": 0.83399209486166,
+          "recall@10": 0.8932806324110671,
+          "recall@20": 0.9644268774703557,
+          "avg_latency_ms": 11.541103702972784
+        },
+        "relationships_mitigations": {
+          "n": 222,
+          "mrr": 0.693099909547278,
+          "recall@1": 0.5630630630630631,
+          "recall@5": 0.8513513513513513,
+          "recall@10": 0.9144144144144144,
+          "recall@20": 0.9504504504504504,
+          "avg_latency_ms": 11.489147491076729
+        },
+        "techniques": {
+          "n": 214,
+          "mrr": 0.7368866461011508,
+          "recall@1": 0.6682242990654206,
+          "recall@5": 0.8411214953271028,
+          "recall@10": 0.8878504672897196,
+          "recall@20": 0.9392523364485982,
+          "avg_latency_ms": 11.429214603880132
+        },
+        "relationships_detections_summaries": {
+          "n": 143,
+          "mrr": 0.903030303030303,
+          "recall@1": 0.8531468531468531,
+          "recall@5": 0.972027972027972,
+          "recall@10": 0.986013986013986,
+          "recall@20": 0.993006993006993,
+          "avg_latency_ms": 11.56375624174109
+        },
+        "relationships_mitigations_summaries": {
+          "n": 131,
+          "mrr": 0.8532442748091603,
+          "recall@1": 0.7633587786259542,
+          "recall@5": 0.9618320610687023,
+          "recall@10": 0.9694656488549618,
+          "recall@20": 0.9770992366412213,
+          "avg_latency_ms": 11.531612335415337
+        },
+        "relationships_techniques_for_software": {
+          "n": 68,
+          "mrr": 0.8356900452488688,
+          "recall@1": 0.7941176470588235,
+          "recall@5": 0.8970588235294118,
+          "recall@10": 0.9264705882352942,
+          "recall@20": 0.9411764705882353,
+          "avg_latency_ms": 11.479915455691732
+        },
+        "techniques_tactics": {
+          "n": 64,
+          "mrr": 0.8740327380952381,
+          "recall@1": 0.8125,
+          "recall@5": 0.96875,
+          "recall@10": 0.984375,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.509395970753229
+        },
+        "groups": {
+          "n": 55,
+          "mrr": 0.962121212121212,
+          "recall@1": 0.9454545454545454,
+          "recall@5": 0.9818181818181818,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.39574085702949
+        },
+        "relationships_groups_for_software": {
+          "n": 50,
+          "mrr": 0.9766666666666667,
+          "recall@1": 0.96,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.389491220662801
+        },
+        "techniques_parent": {
+          "n": 44,
+          "mrr": 0.9886363636363636,
+          "recall@1": 0.9772727272727273,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.530245402560434
+        },
+        "relationships_software_for_technique": {
+          "n": 43,
+          "mrr": 0.885897435897436,
+          "recall@1": 0.8604651162790697,
+          "recall@5": 0.9302325581395349,
+          "recall@10": 0.9534883720930233,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.49678419704141
+        },
+        "relationships_groups_for_technique": {
+          "n": 42,
+          "mrr": 0.9373015873015873,
+          "recall@1": 0.9047619047619048,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.412067696827362
+        },
+        "relationships_campaigns_for_technique": {
+          "n": 22,
+          "mrr": 0.9659090909090909,
+          "recall@1": 0.9545454545454546,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.36107722103552
+        },
+        "relationships_techniques_for_group": {
+          "n": 14,
+          "mrr": 0.6767857142857142,
+          "recall@1": 0.6428571428571429,
+          "recall@5": 0.7142857142857143,
+          "recall@10": 0.8571428571428571,
+          "recall@20": 0.8571428571428571,
+          "avg_latency_ms": 11.493270078244667
+        },
+        "relationships_software_for_group": {
+          "n": 14,
+          "mrr": 0.9642857142857143,
+          "recall@1": 0.9285714285714286,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.524427220839623
+        },
+        "campaigns": {
+          "n": 10,
+          "mrr": 0.95,
+          "recall@1": 0.9,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.333337221341406
+        },
+        "techniques_sub": {
+          "n": 9,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.440321664540813
+        },
+        "relationships_campaigns_for_software": {
+          "n": 8,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.603127221652738
+        },
+        "tactics": {
+          "n": 5,
+          "mrr": 0.9,
+          "recall@1": 0.8,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.340657218871836
+        },
+        "relationships_software_for_campaign": {
+          "n": 3,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.421377222575833
+        },
+        "relationships_techniques_for_campaign": {
+          "n": 3,
+          "mrr": 0.75,
+          "recall@1": 0.6666666666666666,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.721043883976336
+        },
+        "relationships_campaigns_for_group": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.416577219980734
+        },
+        "relationships_groups_for_campaign": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.26767721759408
+        }
+      }
+    }
+  },
+  "test": {
+    "bm25": {
+      "n": 2534,
+      "mrr": 0.781355534772867,
+      "recall@1": 0.6827150749802684,
+      "recall@5": 0.9001578531965272,
+      "recall@10": 0.941594317284925,
+      "recall@20": 0.968034727703236,
+      "avg_latency_ms": 0.800149802670077,
+      "by_source": {
+        "relationships_uses_software": {
+          "n": 854,
+          "mrr": 0.9918032786885246,
+          "recall@1": 0.9836065573770492,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.9720169789142745
+        },
+        "software": {
+          "n": 260,
+          "mrr": 0.7155611387534166,
+          "recall@1": 0.6269230769230769,
+          "recall@5": 0.8115384615384615,
+          "recall@10": 0.8730769230769231,
+          "recall@20": 0.9576923076923077,
+          "avg_latency_ms": 0.6113965384709166
+        },
+        "relationships_detects": {
+          "n": 254,
+          "mrr": 0.6957019702416877,
+          "recall@1": 0.562992125984252,
+          "recall@5": 0.8543307086614174,
+          "recall@10": 0.9173228346456693,
+          "recall@20": 0.9448818897637795,
+          "avg_latency_ms": 0.7962177165523382
+        },
+        "relationships_mitigations": {
+          "n": 222,
+          "mrr": 0.6256146626502664,
+          "recall@1": 0.44144144144144143,
+          "recall@5": 0.8378378378378378,
+          "recall@10": 0.9054054054054054,
+          "recall@20": 0.9369369369369369,
+          "avg_latency_ms": 0.7483243242130082
+        },
+        "techniques": {
+          "n": 214,
+          "mrr": 0.6432798267617501,
+          "recall@1": 0.5280373831775701,
+          "recall@5": 0.7897196261682243,
+          "recall@10": 0.9018691588785047,
+          "recall@20": 0.9485981308411215,
+          "avg_latency_ms": 0.6087546726546216
+        },
+        "relationships_detections_summaries": {
+          "n": 143,
+          "mrr": 0.6882270507270507,
+          "recall@1": 0.4965034965034965,
+          "recall@5": 0.9230769230769231,
+          "recall@10": 0.9790209790209791,
+          "recall@20": 0.993006993006993,
+          "avg_latency_ms": 0.8466986015467933
+        },
+        "relationships_mitigations_summaries": {
+          "n": 130,
+          "mrr": 0.4065352169198323,
+          "recall@1": 0.13076923076923078,
+          "recall@5": 0.7846153846153846,
+          "recall@10": 0.8923076923076924,
+          "recall@20": 0.9307692307692308,
+          "avg_latency_ms": 0.8278069231892005
+        },
+        "relationships_techniques_for_software": {
+          "n": 67,
+          "mrr": 0.663872382296323,
+          "recall@1": 0.5373134328358209,
+          "recall@5": 0.8059701492537313,
+          "recall@10": 0.8656716417910447,
+          "recall@20": 0.9253731343283582,
+          "avg_latency_ms": 0.6462597019306676
+        },
+        "techniques_tactics": {
+          "n": 63,
+          "mrr": 0.5293971460638127,
+          "recall@1": 0.1746031746031746,
+          "recall@5": 0.9365079365079365,
+          "recall@10": 0.9841269841269841,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.7487523810899196
+        },
+        "groups": {
+          "n": 56,
+          "mrr": 0.943452380952381,
+          "recall@1": 0.9107142857142857,
+          "recall@5": 0.9821428571428571,
+          "recall@10": 0.9821428571428571,
+          "recall@20": 0.9821428571428571,
+          "avg_latency_ms": 0.6075285711761224
+        },
+        "relationships_groups_for_software": {
+          "n": 50,
+          "mrr": 0.9666666666666667,
+          "recall@1": 0.94,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.6015519999345997
+        },
+        "relationships_software_for_technique": {
+          "n": 43,
+          "mrr": 0.6833780560524747,
+          "recall@1": 0.5348837209302325,
+          "recall@5": 0.8372093023255814,
+          "recall@10": 0.8604651162790697,
+          "recall@20": 0.9302325581395349,
+          "avg_latency_ms": 0.737818604626904
+        },
+        "techniques_parent": {
+          "n": 43,
+          "mrr": 0.9534883720930233,
+          "recall@1": 0.9069767441860465,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.7438441857947361
+        },
+        "relationships_groups_for_technique": {
+          "n": 42,
+          "mrr": 0.4040385210028067,
+          "recall@1": 0.23809523809523808,
+          "recall@5": 0.6190476190476191,
+          "recall@10": 0.7142857142857143,
+          "recall@20": 0.8333333333333334,
+          "avg_latency_ms": 0.7606000000080149
+        },
+        "relationships_campaigns_for_technique": {
+          "n": 23,
+          "mrr": 0.8333333333333334,
+          "recall@1": 0.6956521739130435,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.7241478260371166
+        },
+        "relationships_techniques_for_group": {
+          "n": 15,
+          "mrr": 0.4388888888888889,
+          "recall@1": 0.3333333333333333,
+          "recall@5": 0.6,
+          "recall@10": 0.6,
+          "recall@20": 0.6666666666666666,
+          "avg_latency_ms": 0.7910333336136924
+        },
+        "relationships_software_for_group": {
+          "n": 13,
+          "mrr": 0.9102564102564104,
+          "recall@1": 0.8461538461538461,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.5873615376073688
+        },
+        "campaigns": {
+          "n": 11,
+          "mrr": 0.9272727272727272,
+          "recall@1": 0.9090909090909091,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.4609727273584047
+        },
+        "techniques_sub": {
+          "n": 10,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.9119400005147327
+        },
+        "relationships_campaigns_for_software": {
+          "n": 9,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.43878888835832996
+        },
+        "tactics": {
+          "n": 5,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.49278000005870126
+        },
+        "relationships_software_for_campaign": {
+          "n": 3,
+          "mrr": 0.5,
+          "recall@1": 0.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.6273333334926671
+        },
+        "relationships_techniques_for_campaign": {
+          "n": 2,
+          "mrr": 0.375,
+          "recall@1": 0.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.5089500009489711
+        },
+        "relationships_campaigns_for_group": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.36580000232788734
+        },
+        "relationships_groups_for_campaign": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 0.9282999999413732
+        }
+      }
+    },
+    "dense": {
+      "n": 2534,
+      "mrr": 0.8376681624636222,
+      "recall@1": 0.7841357537490135,
+      "recall@5": 0.9064719810576164,
+      "recall@10": 0.9333070244672454,
+      "recall@20": 0.9609313338595107,
+      "avg_latency_ms": 9.915247395422035,
+      "by_source": {
+        "relationships_uses_software": {
+          "n": 854,
+          "mrr": 0.975,
+          "recall@1": 0.9578454332552693,
+          "recall@5": 0.9964871194379391,
+          "recall@10": 0.9964871194379391,
+          "recall@20": 0.9988290398126464,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "software": {
+          "n": 260,
+          "mrr": 0.8843076079275174,
+          "recall@1": 0.8423076923076923,
+          "recall@5": 0.9384615384615385,
+          "recall@10": 0.9653846153846154,
+          "recall@20": 0.9961538461538462,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_detects": {
+          "n": 254,
+          "mrr": 0.6089351623730356,
+          "recall@1": 0.468503937007874,
+          "recall@5": 0.7913385826771654,
+          "recall@10": 0.8543307086614174,
+          "recall@20": 0.905511811023622,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_mitigations": {
+          "n": 222,
+          "mrr": 0.5924688230609283,
+          "recall@1": 0.4864864864864865,
+          "recall@5": 0.7342342342342343,
+          "recall@10": 0.7837837837837838,
+          "recall@20": 0.8378378378378378,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "techniques": {
+          "n": 214,
+          "mrr": 0.5887273605187222,
+          "recall@1": 0.514018691588785,
+          "recall@5": 0.6542056074766355,
+          "recall@10": 0.7523364485981309,
+          "recall@20": 0.8691588785046729,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_detections_summaries": {
+          "n": 143,
+          "mrr": 0.991841491841492,
+          "recall@1": 0.986013986013986,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_mitigations_summaries": {
+          "n": 130,
+          "mrr": 0.8016057019903173,
+          "recall@1": 0.7230769230769231,
+          "recall@5": 0.9076923076923077,
+          "recall@10": 0.9384615384615385,
+          "recall@20": 0.9846153846153847,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_techniques_for_software": {
+          "n": 67,
+          "mrr": 0.771721748400853,
+          "recall@1": 0.6865671641791045,
+          "recall@5": 0.8955223880597015,
+          "recall@10": 0.9104477611940298,
+          "recall@20": 0.9402985074626866,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "techniques_tactics": {
+          "n": 63,
+          "mrr": 0.7128375592661308,
+          "recall@1": 0.5873015873015873,
+          "recall@5": 0.9047619047619048,
+          "recall@10": 0.9523809523809523,
+          "recall@20": 0.9841269841269841,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "groups": {
+          "n": 56,
+          "mrr": 0.9593962585034014,
+          "recall@1": 0.9464285714285714,
+          "recall@5": 0.9821428571428571,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422037
+        },
+        "relationships_groups_for_software": {
+          "n": 50,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_software_for_technique": {
+          "n": 43,
+          "mrr": 0.9476744186046512,
+          "recall@1": 0.9069767441860465,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "techniques_parent": {
+          "n": 43,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_groups_for_technique": {
+          "n": 42,
+          "mrr": 0.9343537414965986,
+          "recall@1": 0.9047619047619048,
+          "recall@5": 0.9523809523809523,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_campaigns_for_technique": {
+          "n": 23,
+          "mrr": 0.9347826086956522,
+          "recall@1": 0.8695652173913043,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_techniques_for_group": {
+          "n": 15,
+          "mrr": 0.5724867724867725,
+          "recall@1": 0.4,
+          "recall@5": 0.8,
+          "recall@10": 0.9333333333333333,
+          "recall@20": 0.9333333333333333,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_software_for_group": {
+          "n": 13,
+          "mrr": 0.8294871794871794,
+          "recall@1": 0.7692307692307693,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "campaigns": {
+          "n": 11,
+          "mrr": 0.7227272727272728,
+          "recall@1": 0.6363636363636364,
+          "recall@5": 0.9090909090909091,
+          "recall@10": 0.9090909090909091,
+          "recall@20": 0.9090909090909091,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "techniques_sub": {
+          "n": 10,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_campaigns_for_software": {
+          "n": 9,
+          "mrr": 0.9444444444444444,
+          "recall@1": 0.8888888888888888,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "tactics": {
+          "n": 5,
+          "mrr": 0.8400000000000001,
+          "recall@1": 0.8,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_software_for_campaign": {
+          "n": 3,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_techniques_for_campaign": {
+          "n": 2,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_campaigns_for_group": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422035
+        },
+        "relationships_groups_for_campaign": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 9.915247395422035
+        }
+      }
+    },
+    "hybrid_weighted": {
+      "n": 2534,
+      "mrr": 0.8725214148581584,
+      "recall@1": 0.8196527229676401,
+      "recall@5": 0.9423835832675612,
+      "recall@10": 0.9711917916337806,
+      "recall@20": 0.9873717442778216,
+      "avg_latency_ms": 10.864370560314233,
+      "by_source": {
+        "relationships_uses_software": {
+          "n": 854,
+          "mrr": 0.991608118657299,
+          "recall@1": 0.9836065573770492,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 11.037505123732965
+        },
+        "software": {
+          "n": 260,
+          "mrr": 0.8870021111367266,
+          "recall@1": 0.8423076923076923,
+          "recall@5": 0.9423076923076923,
+          "recall@10": 0.9769230769230769,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.676383164652036
+        },
+        "relationships_detects": {
+          "n": 254,
+          "mrr": 0.7005793746935479,
+          "recall@1": 0.5590551181102362,
+          "recall@5": 0.8858267716535433,
+          "recall@10": 0.952755905511811,
+          "recall@20": 0.9763779527559056,
+          "avg_latency_ms": 10.862579285371277
+        },
+        "relationships_mitigations": {
+          "n": 222,
+          "mrr": 0.6856720146193831,
+          "recall@1": 0.5495495495495496,
+          "recall@5": 0.8828828828828829,
+          "recall@10": 0.9324324324324325,
+          "recall@20": 0.9684684684684685,
+          "avg_latency_ms": 10.807238385907237
+        },
+        "techniques": {
+          "n": 214,
+          "mrr": 0.677840653558768,
+          "recall@1": 0.6121495327102804,
+          "recall@5": 0.7476635514018691,
+          "recall@10": 0.8878504672897196,
+          "recall@20": 0.9532710280373832,
+          "avg_latency_ms": 10.67033804931592
+        },
+        "relationships_detections_summaries": {
+          "n": 143,
+          "mrr": 0.9723193473193472,
+          "recall@1": 0.958041958041958,
+          "recall@5": 0.993006993006993,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.908663479170105
+        },
+        "relationships_mitigations_summaries": {
+          "n": 130,
+          "mrr": 0.8001371705217859,
+          "recall@1": 0.6923076923076923,
+          "recall@5": 0.9538461538461539,
+          "recall@10": 0.9538461538461539,
+          "recall@20": 0.9692307692307692,
+          "avg_latency_ms": 10.898012780087457
+        },
+        "relationships_techniques_for_software": {
+          "n": 67,
+          "mrr": 0.8359635803665655,
+          "recall@1": 0.7910447761194029,
+          "recall@5": 0.8805970149253731,
+          "recall@10": 0.8955223880597015,
+          "recall@20": 0.9402985074626866,
+          "avg_latency_ms": 10.709865306143763
+        },
+        "techniques_tactics": {
+          "n": 63,
+          "mrr": 0.8010582010582011,
+          "recall@1": 0.6984126984126984,
+          "recall@5": 0.9841269841269841,
+          "recall@10": 0.9841269841269841,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.81188707820282
+        },
+        "groups": {
+          "n": 56,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.672000966652194
+        },
+        "relationships_groups_for_software": {
+          "n": 50,
+          "mrr": 0.99,
+          "recall@1": 0.98,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.661043395395815
+        },
+        "relationships_software_for_technique": {
+          "n": 43,
+          "mrr": 0.9001937984496124,
+          "recall@1": 0.8372093023255814,
+          "recall@5": 0.9767441860465116,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.811826464967702
+        },
+        "techniques_parent": {
+          "n": 43,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.789033441931505
+        },
+        "relationships_groups_for_technique": {
+          "n": 42,
+          "mrr": 0.861111111111111,
+          "recall@1": 0.7619047619047619,
+          "recall@5": 0.9761904761904762,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.841704537960476
+        },
+        "relationships_campaigns_for_technique": {
+          "n": 23,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.80353000430443
+        },
+        "relationships_techniques_for_group": {
+          "n": 15,
+          "mrr": 0.5846198830409357,
+          "recall@1": 0.4666666666666667,
+          "recall@5": 0.8,
+          "recall@10": 0.8666666666666667,
+          "recall@20": 0.9333333333333333,
+          "avg_latency_ms": 10.867227395715927
+        },
+        "relationships_software_for_group": {
+          "n": 13,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.633424317491164
+        },
+        "campaigns": {
+          "n": 11,
+          "mrr": 0.9191919191919191,
+          "recall@1": 0.9090909090909091,
+          "recall@5": 0.9090909090909091,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.487638305011842
+        },
+        "techniques_sub": {
+          "n": 10,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.993227395685814
+        },
+        "relationships_campaigns_for_software": {
+          "n": 9,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.473036284048353
+        },
+        "tactics": {
+          "n": 5,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.535467395986622
+        },
+        "relationships_software_for_campaign": {
+          "n": 3,
+          "mrr": 0.8333333333333334,
+          "recall@1": 0.6666666666666666,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.667714063137185
+        },
+        "relationships_techniques_for_campaign": {
+          "n": 2,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.557947396175429
+        },
+        "relationships_campaigns_for_group": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.401147395479917
+        },
+        "relationships_groups_for_campaign": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.933147397319978
+        }
+      }
+    },
+    "hybrid_rrf": {
+      "n": 2534,
+      "mrr": 0.8555245717376496,
+      "recall@1": 0.7955801104972375,
+      "recall@5": 0.9329123914759274,
+      "recall@10": 0.9707971586424625,
+      "recall@20": 0.9877663772691397,
+      "avg_latency_ms": 10.802050276212123,
+      "by_source": {
+        "relationships_uses_software": {
+          "n": 854,
+          "mrr": 0.9853629976580797,
+          "recall@1": 0.9718969555035128,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.976060861460184
+        },
+        "software": {
+          "n": 260,
+          "mrr": 0.8484138011111695,
+          "recall@1": 0.7807692307692308,
+          "recall@5": 0.9384615384615385,
+          "recall@10": 0.9807692307692307,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.61203008776262
+        },
+        "relationships_detects": {
+          "n": 254,
+          "mrr": 0.6745359572623352,
+          "recall@1": 0.5236220472440944,
+          "recall@5": 0.8582677165354331,
+          "recall@10": 0.9448818897637795,
+          "recall@20": 0.9763779527559056,
+          "avg_latency_ms": 10.797258812619107
+        },
+        "relationships_mitigations": {
+          "n": 222,
+          "mrr": 0.6735409895239617,
+          "recall@1": 0.545045045045045,
+          "recall@5": 0.8468468468468469,
+          "recall@10": 0.9279279279279279,
+          "recall@20": 0.9774774774774775,
+          "avg_latency_ms": 10.750633881750794
+        },
+        "techniques": {
+          "n": 214,
+          "mrr": 0.6660976479757041,
+          "recall@1": 0.5887850467289719,
+          "recall@5": 0.7429906542056075,
+          "recall@10": 0.883177570093458,
+          "recall@20": 0.9485981308411215,
+          "avg_latency_ms": 10.609250666089165
+        },
+        "relationships_detections_summaries": {
+          "n": 143,
+          "mrr": 0.9227439227439228,
+          "recall@1": 0.8811188811188811,
+          "recall@5": 0.986013986013986,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.84535298985619
+        },
+        "relationships_mitigations_summaries": {
+          "n": 130,
+          "mrr": 0.7932692307692307,
+          "recall@1": 0.6923076923076923,
+          "recall@5": 0.9461538461538461,
+          "recall@10": 0.9615384615384616,
+          "recall@20": 0.9692307692307692,
+          "avg_latency_ms": 10.832492780148637
+        },
+        "relationships_techniques_for_software": {
+          "n": 67,
+          "mrr": 0.8112514351320321,
+          "recall@1": 0.7611940298507462,
+          "recall@5": 0.8507462686567164,
+          "recall@10": 0.9104477611940298,
+          "recall@20": 0.9402985074626866,
+          "avg_latency_ms": 10.643074261724621
+        },
+        "techniques_tactics": {
+          "n": 63,
+          "mrr": 0.7788989669942051,
+          "recall@1": 0.6507936507936508,
+          "recall@5": 0.9682539682539683,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.746385490831656
+        },
+        "groups": {
+          "n": 56,
+          "mrr": 0.9910714285714286,
+          "recall@1": 0.9821428571428571,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.607143823861353
+        },
+        "relationships_groups_for_software": {
+          "n": 50,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.599333395386772
+        },
+        "relationships_software_for_technique": {
+          "n": 43,
+          "mrr": 0.8943798449612403,
+          "recall@1": 0.8604651162790697,
+          "recall@5": 0.9767441860465116,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.743677627716833
+        },
+        "techniques_parent": {
+          "n": 43,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.73492879047304
+        },
+        "relationships_groups_for_technique": {
+          "n": 42,
+          "mrr": 0.7559523809523809,
+          "recall@1": 0.6428571428571429,
+          "recall@5": 0.9523809523809523,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.768006919550695
+        },
+        "relationships_campaigns_for_technique": {
+          "n": 23,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.73398652606838
+        },
+        "relationships_techniques_for_group": {
+          "n": 15,
+          "mrr": 0.5398901098901099,
+          "recall@1": 0.4,
+          "recall@5": 0.7333333333333333,
+          "recall@10": 0.8,
+          "recall@20": 0.9333333333333333,
+          "avg_latency_ms": 10.807540729312883
+        },
+        "relationships_software_for_group": {
+          "n": 13,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.57702431759508
+        },
+        "campaigns": {
+          "n": 11,
+          "mrr": 0.9181818181818181,
+          "recall@1": 0.9090909090909091,
+          "recall@5": 0.9090909090909091,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.439583758436335
+        },
+        "techniques_sub": {
+          "n": 10,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.931147396642906
+        },
+        "relationships_campaigns_for_software": {
+          "n": 9,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.424569617789533
+        },
+        "tactics": {
+          "n": 5,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.50846739484971
+        },
+        "relationships_software_for_campaign": {
+          "n": 3,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.621114061185738
+        },
+        "relationships_techniques_for_campaign": {
+          "n": 2,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.509797396973433
+        },
+        "relationships_campaigns_for_group": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.33264739775607
+        },
+        "relationships_groups_for_campaign": {
+          "n": 1,
+          "mrr": 1.0,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@20": 1.0,
+          "avg_latency_ms": 10.94454739681371
+        }
+      }
+    }
+  }
+}

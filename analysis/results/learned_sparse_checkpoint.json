@@ -1,0 +1,104 @@
+{
+  "n": 40,
+  "overall": {
+    "mrr": 0.8019047619047619,
+    "recall@1": 0.7,
+    "recall@5": 0.9,
+    "recall@10": 0.95,
+    "avg_latency_ms": 8656.301093101501,
+    "total_eval_time_sec": 346.25486493110657
+  },
+  "by_source": {
+    "techniques": {
+      "n": 4,
+      "mrr": 0.75,
+      "recall@1": 0.75,
+      "recall@5": 0.75,
+      "recall@10": 0.75
+    },
+    "software": {
+      "n": 5,
+      "mrr": 0.7,
+      "recall@1": 0.6,
+      "recall@5": 0.8,
+      "recall@10": 0.8
+    },
+    "relationships_detections_summaries": {
+      "n": 3,
+      "mrr": 0.8333333333333334,
+      "recall@1": 0.6666666666666666,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_uses_software": {
+      "n": 12,
+      "mrr": 0.875,
+      "recall@1": 0.75,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_mitigations": {
+      "n": 2,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_software_for_technique": {
+      "n": 1,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_detects": {
+      "n": 4,
+      "mrr": 0.875,
+      "recall@1": 0.75,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_techniques_for_group": {
+      "n": 1,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_software_for_group": {
+      "n": 1,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_techniques_for_software": {
+      "n": 1,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "techniques_tactics": {
+      "n": 3,
+      "mrr": 0.19206349206349205,
+      "recall@1": 0.0,
+      "recall@5": 0.3333333333333333,
+      "recall@10": 1.0
+    },
+    "relationships_software_for_campaign": {
+      "n": 1,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "groups": {
+      "n": 2,
+      "mrr": 0.75,
+      "recall@1": 0.5,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    }
+  }
+}

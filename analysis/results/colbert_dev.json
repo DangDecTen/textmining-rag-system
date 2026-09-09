@@ -1,0 +1,146 @@
+{
+  "n": 200,
+  "overall": {
+    "mrr": 0.8935198412698412,
+    "recall@1": 0.86,
+    "recall@5": 0.945,
+    "recall@10": 0.965,
+    "avg_latency_ms": 4336.4231169223785,
+    "total_eval_time_sec": 867.2902870178223
+  },
+  "by_source": {
+    "techniques": {
+      "n": 18,
+      "mrr": 0.7657407407407407,
+      "recall@1": 0.6666666666666666,
+      "recall@5": 0.9444444444444444,
+      "recall@10": 0.9444444444444444
+    },
+    "software": {
+      "n": 17,
+      "mrr": 0.9264705882352942,
+      "recall@1": 0.8823529411764706,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_detections_summaries": {
+      "n": 13,
+      "mrr": 0.8910256410256411,
+      "recall@1": 0.8461538461538461,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_uses_software": {
+      "n": 69,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_mitigations": {
+      "n": 18,
+      "mrr": 0.9074074074074073,
+      "recall@1": 0.8333333333333334,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_software_for_technique": {
+      "n": 4,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_detects": {
+      "n": 22,
+      "mrr": 0.7891414141414141,
+      "recall@1": 0.7272727272727273,
+      "recall@5": 0.8636363636363636,
+      "recall@10": 0.9545454545454546
+    },
+    "relationships_techniques_for_group": {
+      "n": 1,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_software_for_group": {
+      "n": 2,
+      "mrr": 0.5833333333333334,
+      "recall@1": 0.5,
+      "recall@5": 0.5,
+      "recall@10": 1.0
+    },
+    "relationships_techniques_for_software": {
+      "n": 7,
+      "mrr": 0.4489795918367347,
+      "recall@1": 0.42857142857142855,
+      "recall@5": 0.42857142857142855,
+      "recall@10": 0.5714285714285714
+    },
+    "techniques_tactics": {
+      "n": 10,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_software_for_campaign": {
+      "n": 1,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "groups": {
+      "n": 3,
+      "mrr": 0.75,
+      "recall@1": 0.6666666666666666,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_mitigations_summaries": {
+      "n": 8,
+      "mrr": 0.75,
+      "recall@1": 0.75,
+      "recall@5": 0.75,
+      "recall@10": 0.75
+    },
+    "relationships_groups_for_technique": {
+      "n": 2,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_campaigns_for_technique": {
+      "n": 1,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "techniques_parent": {
+      "n": 2,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_techniques_for_campaign": {
+      "n": 1,
+      "mrr": 0.3333333333333333,
+      "recall@1": 0.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    },
+    "relationships_groups_for_software": {
+      "n": 1,
+      "mrr": 1.0,
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0
+    }
+  }
+}

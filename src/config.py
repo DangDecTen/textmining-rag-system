@@ -51,7 +51,7 @@ class Settings(BaseSettings):
 
     # --- Generation ---
     default_generator: str = "llama"
-    llama_model_name: str = "llama-3.3-70b-versatile"
+    llama_model_name: str = "qwen/qwen3.6-27b"
     qwen_model_name: str = "Qwen/Qwen2.5-1.5B-Instruct"
     max_context_tokens: int = 1500
     max_new_tokens: int = 128
@@ -66,8 +66,19 @@ class Settings(BaseSettings):
     # only helps if it has more to choose from than the final count.
     rerank_candidate_k: int = 20
 
+    # --- ColBERT Late-Interaction ---
+    colbert_model_name: str = "colbert-ir/colbertv2.0"
+    colbert_candidate_k: int = 50
+
+    # --- Learned Sparse Retrieval (BGE-M3) ---
+    learned_sparse_model_name: str = "BAAI/bge-m3"
+    learned_sparse_candidate_k: int = 25
+
     def index_dir_for(self, retriever_name: str) -> str:
-        return {"bm25": self.bm25_index_dir, "dense": self.dense_index_dir}[retriever_name.lower()]
+        name = retriever_name.lower()
+        if name == "bm25":
+            return self.bm25_index_dir
+        return self.dense_index_dir
 
 
 settings = Settings()

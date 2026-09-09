@@ -27,7 +27,10 @@ from src.pipeline import Pipeline
 import src.retrieval.bm25_retriever  # noqa: F401
 import src.retrieval.dense_retriever  # noqa: F401
 import src.retrieval.hybrid_retriever  # noqa: F401
+import src.retrieval.colbert_retriever  # noqa: F401
+import src.retrieval.learned_sparse_retriever  # noqa: F401
 import src.reranking.cross_encoder_reranker  # noqa: F401
+import src.reranking.colbert_reranker  # noqa: F401
 import src.generation.llama_generator  # noqa: F401
 import src.generation.qwen_generator  # noqa: F401
 
@@ -85,6 +88,22 @@ def get_retriever(name: str | None = None) -> Retriever:
             rrf_k=settings.hybrid_rrf_k,
             use_rrf=settings.hybrid_use_rrf,
         )
+    elif name == "colbert":
+        return build_retriever(
+            name,
+            base_retriever=get_retriever("hybrid"),
+            model_name=settings.colbert_model_name,
+            candidate_k=settings.colbert_candidate_k,
+            corpus_lookup=corpus_lookup,
+        )
+    elif name in ("learned_sparse", "bge_m3_sparse"):
+        return build_retriever(
+            "learned_sparse",
+            base_retriever=get_retriever("hybrid"),
+            model_name=settings.learned_sparse_model_name,
+            candidate_k=settings.learned_sparse_candidate_k,
+            corpus_lookup=corpus_lookup,
+        )
     else:
         raise ValueError(f"Unknown retriever '{name}'. Available: {available_retrievers()}")
 
@@ -138,5 +157,10 @@ def get_reranker(name: str | None = None) -> Reranker:
             name,
             model_name=settings.cross_encoder_model_name,
             batch_size=settings.cross_encoder_batch_size,
+        )
+    if name == "colbert":
+        return build_reranker(
+            name,
+            model_name=settings.colbert_model_name,
         )
     raise ValueError(f"Unknown reranker '{name}'. Available: {available_rerankers()}")

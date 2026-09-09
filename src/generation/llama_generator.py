@@ -35,7 +35,7 @@ class LlamaGenerator(Generator):
         self.model_name = model_name
         self.max_new_tokens = max_new_tokens
 
-        model_id = "meta-llama/Llama-3.3-70B-Instruct"
+        model_id = "unsloth/Llama-3.3-70B-Instruct"
         self.tokenizer = AutoTokenizer.from_pretrained(model_id) # Groq model use tokenizer from original model
         self.context_builder = ContextBuilder(self.tokenizer, max_context_tokens=max_context_tokens)
 
@@ -54,13 +54,14 @@ class LlamaGenerator(Generator):
 
 
         response = self.client.chat.completions.create(
-                model=self.model_name,
-                messages=messages,
-                temperature=0.2,
-                max_completion_tokens=self.max_new_tokens,
-                response_format={"type": "json_object"}
+            model=self.model_name,
+            messages=messages,
+            temperature=0.2,
+            max_completion_tokens=512,
         )
-        raw_output = response.choices[0].message.content
+        raw_output = response.choices[0].message.content or ""
+        if "</think>" in raw_output:
+            raw_output = raw_output.split("</think>")[-1].strip()
         completion_tokens = len(self.tokenizer.encode(raw_output))
         answer, found = parse_structured_output(raw_output)
 
