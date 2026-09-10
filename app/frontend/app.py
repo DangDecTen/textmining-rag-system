@@ -8,16 +8,17 @@ backend.
 Run (in a separate terminal from the API):
     python -m streamlit run app/frontend/app.py
 """
+import os
 import requests
 import streamlit as st
 
-API_URL = "http://localhost:8000"
+
+API_URL = os.getenv("API_URL", "http://localhost:8000",)
 
 st.set_page_config(page_title="MITRE ATT&CK Assistant", page_icon="🛡️", layout="wide")
 
-
 @st.cache_data(ttl=60)
-def get_available_options() -> tuple[list[str], list[str]]:
+def get_available_options() -> tuple[list[str], list[str], list[str]]:
     """Asks the API what's registered (src/retrieval/registry.py,
     src/generation/registry.py) instead of hardcoding the list here. Add a
     new retriever/generator with @register_retriever / @register_generator
@@ -26,28 +27,30 @@ def get_available_options() -> tuple[list[str], list[str]]:
         resp = requests.get(f"{API_URL}/", timeout=5)
         resp.raise_for_status()
         data = resp.json()
-        return data.get("available_retrievers", ["bm25"]), data.get("available_generators", ["llama"])
+        return data.get("available_retrievers", ["bm25"]), data.get("available_generators", ["llama"]), data.get("available_prompts", ["baseline"])
     except requests.RequestException:
-        return ["bm25", "dense"], ["llama", "qwen"]
+        return ["bm25", "dense"], ["llama", "qwen"], ["baseline"]
 
 
-retrievers, generators = get_available_options()
+retrievers, generators, prompts = get_available_options()
 
 with st.sidebar:
-    st.title("⚙️ Settings")
-    retriever_type = st.selectbox("Retriever", retrievers)
-    generator_type = st.selectbox("Generator", generators)
-    top_k = st.slider("Top K Chunks", min_value=1, max_value=20, value=5)
+    st.title("⚙️ Configuration")
+    retriever_type = st.selectbox("Retriever", retrievers, help="Retrieval method used to find relevant ATT&CK documents.")
+    generator_type = st.selectbox("Generator", generators, help="LLM used to generate the final answer.")
+    prompt_type = st.selectbox("Prompt", prompts, help="Prompt strategy used to instruct the generator.")
     st.divider()
     st.caption(f"API: {API_URL}")
 
 st.title("🛡️ MITRE ATT&CK Assistant")
-
+st.markdown("Ask a question about the MITRE ATT&CK knowledge base and get a grounded answer with supporting sources.")
 # --------- Chat history ---------
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-
+# ---------------------------------------------------------------------------
+# Rendering helpers
+# ---------------------------------------------------------------------------
 def render_citations(citations: list[dict]) -> None:
     if not citations:
         return
@@ -65,19 +68,57 @@ def render_citations(citations: list[dict]) -> None:
 def render_retrieved_context(retrieved_context: list[dict]) -> None:
     if not retrieved_context:
         return
-    with st.expander("🔍 Retrieved chunks (debug)"):
+    with st.expander(f"🔍 Retrieved chunks ({len(retrieved_context)})", expanded=False):
         for r in retrieved_context:
             doc = r.get("document") or {}
             with st.expander(f"{r.get('doc_id', 'unknown')} | Score: {r.get('score', 0):.3f}"):
                 st.write(doc.get("text", "(document text unavailable)"))
 
+def render_metrics(data: dict) -> None:
+    """Render compact metadata about the query."""
+    col1, col2, col3, col4 = st.columns(4)
+
+    col1.metric(
+        "Retriever",
+        data.get("retriever", "—"),
+    )
+
+    col2.metric(
+        "Generator",
+        data.get("generator", "—"),
+    )
+
+    col3.metric(
+        "Retrieved",
+        len(data.get("retrieved_context", [])),
+    )
+
+    latency = data.get("latency_ms")
+
+    if latency is not None:
+        col4.metric(
+            "Latency",
+            f"{latency / 1000:.2f}s",
+        )
+    else:
+        col4.metric("Latency", "—")
 
 # Render history
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
         if msg["role"] == "assistant":
+            metadata = msg.get("metadata")
+            if metadata:
+                with st.caption(
+                    f"{metadata.get('retriever', '—')} · "
+                    f"{metadata.get('generator', '—')} · "
+                    f"{metadata.get('prompt', '—')}"
+                ):
+                    pass
+
             render_citations(msg.get("citations", []))
+            render_retrieved_context(msg.get("retrieved_context", []))
 
 # --------- User input ---------
 question = st.chat_input("Ask a cybersecurity question...")
@@ -89,20 +130,21 @@ if question:
 
     with st.chat_message("assistant"):
         status = st.status("Processing query...", expanded=True)
-        status.write("🔍 Retrieving relevant ATT&CK chunks...")
+        status.write(f"🔍 Retrieving  with **{retriever_type}**...")
         try:
             response = requests.post(
                 f"{API_URL}/query",
                 json={
                     "query": question,
-                    "k": top_k,
+                    #"k": top_k,
                     "retriever": retriever_type,
                     "generator": generator_type,
+                    "prompt": prompt_type,
                 },
                 timeout=120,
             )
             response.raise_for_status()
-            status.write("✍️ Generating answer...")
+            status.write(f"✍️ Generating answer with **{generator_type}** using **{prompt_type}** prompt...")
             data = response.json()
             answer = data["answer"]
             abstained = data["abstained"]
@@ -120,22 +162,78 @@ if question:
             st.stop()
 
         # --------- Answer ---------
+        if abstained:
+            st.warning(
+                "The system could not find enough information "
+                "in the retrieved context to answer this question."
+            )
         st.markdown(answer)
 
-        if not abstained and retrieved_context:
-            col1, col2, col3 = st.columns(3)
-            col1.metric("Retriever", retriever_type)
-            col2.metric("Chunks Retrieved", len(retrieved_context))
-            col3.metric("Top Score", f"{retrieved_context[0]['score']:.3f}")
+    #     if not abstained and retrieved_context:
+    #         col1, col2, col3 = st.columns(3)
+    #         col1.metric("Retriever", retriever_type)
+    #         col2.metric("Chunks Retrieved", len(retrieved_context))
+    #         col3.metric("Top Score", f"{retrieved_context[0]['score']:.3f}")
+
+    #     render_citations(citations)
+    #     render_retrieved_context(retrieved_context)
+
+        st.divider()
+
+        render_metrics(data)
+
+        # Show the exact configuration used.
+        with st.expander("⚙️ Query configuration"):
+            st.write(
+                {
+                    "Retriever": data.get(
+                        "retriever",
+                        retriever_type,
+                    ),
+                    "Generator": data.get(
+                        "generator",
+                        generator_type,
+                    ),
+                    "Prompt": data.get(
+                        "prompt",
+                        prompt_type,
+                    ),
+                }
+            )
+
+        # ---------------------------------------------------------------
+        # Sources / debug
+        # ---------------------------------------------------------------
 
         render_citations(citations)
-        render_retrieved_context(retrieved_context)
 
-    # --------- Save to history ---------
+        render_retrieved_context(
+            retrieved_context
+        )
+
+    # ---------------------------------------------------------------
+    # Save assistant message
+    # ---------------------------------------------------------------
+
     st.session_state.messages.append(
         {
             "role": "assistant",
             "content": answer,
             "citations": citations,
+            "retrieved_context": retrieved_context,
+            "metadata": {
+                "retriever": data.get(
+                    "retriever",
+                    retriever_type,
+                ),
+                "generator": data.get(
+                    "generator",
+                    generator_type,
+                ),
+                "prompt": data.get(
+                    "prompt",
+                    prompt_type,
+                ),
+            },
         }
     )

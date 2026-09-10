@@ -26,6 +26,8 @@ from pydantic import BaseModel, Field
 from src.config import settings
 from src.data_models.data_models import Citation, RetrievalResult
 from src.factory import available_generators, available_retrievers, get_pipeline, get_retriever
+from app.backend.app_factory import get_app_pipeline
+from app.backend.app_prompts import available_prompts, PROMPTS
 
 app = FastAPI(title="Textmining RAG System", version="1.0.0")
 
@@ -35,6 +37,7 @@ class QueryRequest(BaseModel):
     k: int = Field(default=settings.default_top_k, ge=1, le=50)
     retriever: str = Field(default=settings.default_retriever)
     generator: str = Field(default=settings.default_generator)
+    prompt: str = Field(default="baseline")
 
 
 class RetrieveResponse(BaseModel):
@@ -48,6 +51,7 @@ class QueryResponse(BaseModel):
     query: str
     retriever: str
     generator: str
+    prompt: str
     answer: str
     abstained: bool
     citations: list[Citation]
@@ -63,7 +67,12 @@ def root() -> dict:
         "message": "Textmining RAG System API",
         "available_retrievers": available_retrievers(),
         "available_generators": available_generators(),
-        "defaults": {"retriever": settings.default_retriever, "generator": settings.default_generator},
+        "available_prompts": list(PROMPTS.keys()),
+        "defaults": {
+            "retriever": settings.default_retriever, 
+            "generator": settings.default_generator,
+            "prompt": "baseline"
+        }
     }
 
 
@@ -100,7 +109,8 @@ def retrieve(request: QueryRequest) -> RetrieveResponse:
 @app.post("/query", response_model=QueryResponse)
 def query(request: QueryRequest) -> QueryResponse:
     try:
-        pipeline = get_pipeline(retriever_name=request.retriever, generator_name=request.generator)
+        #pipeline = get_pipeline(retriever_name=request.retriever, generator_name=request.generator)
+        pipeline = get_app_pipeline(retriever_name=request.retriever, generator_name=request.generator, prompt_mode=request.prompt)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e)) from e
     except FileNotFoundError as e:
@@ -115,6 +125,7 @@ def query(request: QueryRequest) -> QueryResponse:
         query=request.query,
         retriever=request.retriever,
         generator=request.generator,
+        prompt=request.prompt,
         answer=answer.text,
         abstained=answer.abstained,
         citations=answer.citations,
