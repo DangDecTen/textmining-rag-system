@@ -100,14 +100,28 @@ class GroqGenerator(Generator):
             self.tokenizer.encode(prompt_text)
         )
 
-        response = self.client.chat.completions.create(
-            model=self.model_name,
-            messages=messages,
-            temperature=0.2,
-            #max_completion_tokens=self.max_new_tokens,
-            max_completion_tokens=512,
-            response_format={"type": "json_object"}
-        )
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model_name,
+                messages=messages,
+                temperature=0.2,
+                #max_completion_tokens=self.max_new_tokens,
+                max_completion_tokens=512,
+            )
+        except Exception as e:
+            print("\n========== GROQ ERROR ==========")
+            print("Model:", self.model_name)
+            print("SYSTEM PROMPT:")
+            print(messages[0]["content"])
+            print("\nUSER MESSAGE:")
+            print(messages[1]["content"])
+            print("Error:", repr(e))
+
+            if hasattr(e, "body"):
+                print("Error body:", e.body)
+
+            print("================================\n")
+            raise
 
         raw_output = response.choices[0].message.content or ""
 

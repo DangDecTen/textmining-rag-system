@@ -20,10 +20,10 @@ Instructions:
 - If the context does not contain enough information, set found=false and answer with "I do not have enough information from the provided context."
 - Keep the answer concise, technical, and precise.
 
-Return ONLY valid JSON matching the following format:
+Return ONLY valid JSON matching the following format. The "found" field must be a JSON boolean (true or false):
 {
     "answer": "<answer text>",
-    "found": true | false
+    "found": true
 }
 """
 
@@ -55,11 +55,11 @@ PROMPTS: dict[str, str] = {
     - Only cite chunk IDs that support the answer.
     - Do not invent references.
 
-    Return ONLY valid JSON in the following format:
+    Return ONLY valid JSON in the following format. The "found" field must be a JSON boolean (true or false):
 
     {
         "answer": "<answer>",
-        "found": true | false,
+        "found": true,
         "references": [
             "<chunk_id>"
         ]
@@ -83,11 +83,11 @@ PROMPTS: dict[str, str] = {
     "I do not have enough information from the provided context."
 
     Before producing the final answer, verify that every statement is supported by the cited references.
-    Return ONLY valid JSON in the following format:
+    Return ONLY valid JSON in the following format. The "found" field must be a JSON boolean (true or false):
 
     {
         "answer": "<answer>",
-        "found": true | false,
+        "found": true,
         "references": [
             "<chunk_id>"
         ]
@@ -109,11 +109,11 @@ PROMPTS: dict[str, str] = {
     - If context is insufficient, set found=false and state exactly: "I do not have enough information from the provided context."
     - Keep your answer technically precise and clear.
 
-    Return ONLY valid JSON in the following format:
+    Return ONLY valid JSON in the following format. The "found" field must be a JSON boolean (true or false):
     {
         "reasoning": "<step-by-step verification of evidence>",
         "answer": "<final factual answer>",
-        "found": true | false,
+        "found": true,
         "references": ["<chunk_id>"]
     }
     """,
@@ -143,10 +143,10 @@ PROMPTS: dict[str, str] = {
     - Do not add outside knowledge or unverified claims.
     - If context is insufficient, set found=false and return answer: "I do not have enough information from the provided context."
 
-    Return ONLY valid JSON in the following format:
+    Return ONLY valid JSON in the following format. The "found" field must be a JSON boolean (true or false):
     {
         "answer": "<answer>",
-        "found": true | false,
+        "found": true,
         "references": ["<chunk_id>"]
     }
     """,
@@ -162,10 +162,10 @@ PROMPTS: dict[str, str] = {
     - Rely ONLY on the context.
     - If insufficient, set found=false and return: "I do not have enough information from the provided context."
 
-    Return ONLY valid JSON:
+    Return ONLY valid JSON. The "found" field must be a JSON boolean (true or false):
     {
         "answer": "<answer>",
-        "found": true | false,
+        "found": true,
         "references": ["<chunk_id>"]
     }
     """,
@@ -182,10 +182,10 @@ PROMPTS: dict[str, str] = {
     - Do not invent outside information.
     - If top passages do not answer the query, set found=false and return: "I do not have enough information from the provided context."
 
-    Return ONLY valid JSON:
+    Return ONLY valid JSON. The "found" field must be a JSON boolean (true or false):
     {
         "answer": "<answer>",
-        "found": true | false,
+        "found": true,
         "references": ["<chunk_id>"]
     }
     """,
