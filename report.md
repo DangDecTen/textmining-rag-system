@@ -17,7 +17,7 @@ Ho Chi Minh City – September 2026
 ## Table of Contents
 
 1. [Introduction](#1-introduction)
-2. [Related Work](#2-background)
+2. [Background](#2-background)
    - 2.1. [Knowledge Base & Benchmark Dataset](#21-knowledge-base--benchmark-dataset)
    - 2.2. [Information Retrieval & RAG](#22-information-retrieval--rag)
    - 2.3. [Question Answering Systems](#23-question-answering-systems)
