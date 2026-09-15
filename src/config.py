@@ -27,6 +27,13 @@ class Settings(BaseSettings):
     corpus_path: str = "data/processed/corpus.jsonl"
     qa_path_template: str = "data/processed/qa_{split}.jsonl"
 
+    # --- Small dev/test splits (for fast iteration under limited compute) ---
+    # Fraction of the full dev/test split kept in the small split.
+    small_split_fraction: float = 0.1
+    # Floor on rows kept per `source` group, so a rare category in the full
+    # dev/test split isn't silently dropped entirely from the small split.
+    small_split_min_per_group: int = 1
+
     # --- Indexes ---
     bm25_index_dir: str = "data/index/bm25_k1_b25"
     dense_index_dir: str = "data/index/dense_bge_small"

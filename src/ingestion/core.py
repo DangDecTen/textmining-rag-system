@@ -150,3 +150,43 @@ def stratified_split(
 
     train_df, dev_df, test_df = _materialize(train_idx), _materialize(dev_idx), _materialize(test_idx)
     return SplitResult(train_df, dev_df, test_df, fallback_sources=thin_classes)
+
+
+def subsample_stratified(
+    df: pd.DataFrame,
+    stratify_col: str = SOURCE_COLUMN,
+    frac: float = 0.1,
+    min_per_group: int = 1,
+    random_state: int = 42,
+) -> pd.DataFrame:
+    """Draw a stratified subset of `df` (e.g. a "small dev"/"small test" split
+    for fast iteration under limited compute).
+
+    The result is a strict subset of `df` (rows are drawn from `df`, not
+    resampled from anywhere else), so anything measured on the small split is
+    directly comparable/nested within the full split.
+
+    Each `stratify_col` group contributes `round(n_group * frac)` rows,
+    floored at `min(min_per_group, n_group)` so a group present in `df` isn't
+    silently dropped entirely just because it's small relative to `frac`
+    (mirrors the `thin_class_threshold` handling in `stratified_split`).
+    """
+    assert 0 < frac <= 1.0
+
+    rng = np.random.RandomState(random_state)
+    keep_idx = []
+
+    for _, group in df.groupby(stratify_col):
+        idx = group.index.to_numpy().copy()
+        rng.shuffle(idx)
+        n = len(idx)
+        n_keep = round(n * frac)
+        n_keep = max(n_keep, min(min_per_group, n))
+        n_keep = min(n_keep, n)
+        keep_idx.extend(idx[:n_keep])
+
+    return (
+        df.loc[keep_idx]
+        .sample(frac=1, random_state=random_state)
+        .reset_index(drop=True)
+    )

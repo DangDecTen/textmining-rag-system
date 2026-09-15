@@ -15,7 +15,7 @@ from pathlib import Path
 import pandas as pd
 
 from src.data_models.data_models import Document, QAExample
-from src.ingestion.core import build_corpus, build_qa_examples, stratified_split
+from src.ingestion.core import build_corpus, build_qa_examples, stratified_split, subsample_stratified
 from src.config import settings
 
 
@@ -55,7 +55,12 @@ def _write_jsonl(records: list, path: Path) -> None:
             f.write(json.dumps(obj) + "\n")
 
 
-def run(input_path: str, output_dir: str) -> None:
+def run(
+    input_path: str,
+    output_dir: str,
+    small_split_fraction: float = settings.small_split_fraction,
+    small_split_min_per_group: int = settings.small_split_min_per_group,
+) -> None:
     output_dir_p = Path(output_dir)
     output_dir_p.mkdir(parents=True, exist_ok=True)
 
@@ -76,7 +81,21 @@ def run(input_path: str, output_dir: str) -> None:
     documents = [_row_to_document(row) for row in corpus_df.to_dict("records")]
     _write_jsonl(documents, output_dir_p / "corpus.jsonl")
 
-    for split_name, split_df in [("train", split.train), ("dev", split.dev), ("test", split.test)]:
+    small_dev = subsample_stratified(
+        split.dev, frac=small_split_fraction, min_per_group=small_split_min_per_group,
+    )
+    small_test = subsample_stratified(
+        split.test, frac=small_split_fraction, min_per_group=small_split_min_per_group,
+    )
+
+    splits_to_write = [
+        ("train", split.train),
+        ("dev", split.dev),
+        ("test", split.test),
+        ("dev_small", small_dev),
+        ("test_small", small_test),
+    ]
+    for split_name, split_df in splits_to_write:
         examples = [_row_to_qa_example(row) for row in split_df.to_dict("records")]
         _write_jsonl(examples, output_dir_p / f"qa_{split_name}.jsonl")
 
@@ -87,6 +106,8 @@ def run(input_path: str, output_dir: str) -> None:
     print(f"Rel D/Q:        {1}     (sparse retrieval)")
     print(f"QA pairs:               {len(qa_df)}")
     print(f"    train/dev/test:     {len(split.train)} / {len(split.dev)} / {len(split.test)}")
+    print(f"    dev_small/test_small ({small_split_fraction:.0%} of dev/test): "
+          f"{len(small_dev)} / {len(small_test)}")
     if split.fallback_sources:
         print(f"    thin sources (<10 rows): {split.fallback_sources}")
     if len(dup_report_df):
@@ -99,5 +120,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", default=settings.dataset)
     parser.add_argument("--output-dir", default=settings.processed_data_dir)
+    parser.add_argument(
+        "--small-split-fraction", type=float, default=settings.small_split_fraction,
+        help="Fraction of dev/test kept in dev_small/test_small (default: from settings).",
+    )
+    parser.add_argument(
+        "--small-split-min-per-group", type=int, default=settings.small_split_min_per_group,
+        help="Minimum rows kept per source group in dev_small/test_small.",
+    )
     args = parser.parse_args()
-    run(args.input, args.output_dir)
+    run(args.input, args.output_dir, args.small_split_fraction, args.small_split_min_per_group)
