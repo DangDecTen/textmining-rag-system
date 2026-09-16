@@ -58,7 +58,7 @@ class Settings(BaseSettings):
 
     # --- Generation ---
     default_generator: str = "hf"
-    hf_model_name: str = "Qwen/Qwen3-4B"
+    hf_model_name: str = "Qwen/Qwen3-0.6B"
     max_new_tokens: int = 300
     prompt_mode: str = "baseline"
 

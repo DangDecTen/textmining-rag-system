@@ -13,8 +13,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from src.config import settings
 from src.data_models.data_models import RetrievalResult, GenerationResult
 from src.generation.base import Generator
-from src.generation.output_parser import parse_structured_output
-from src.generation.prompt import build_prompt, PromptMode
+from src.generation.prompt_hf import build_prompt, PromptMode
 from src.generation.registry import register_generator
 
 
