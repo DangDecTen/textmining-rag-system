@@ -85,6 +85,11 @@ class Settings(BaseSettings):
     eval_default_split: str = "dev_small"
     bertscore_model_name: str = "roberta-large"
     bertscore_batch_size: int = 32
+    # Default to CPU: BERTScore runs after the generator has already loaded
+    # onto the GPU (see factory.get_generator's lru_cache), so sharing the
+    # GPU risks CUDA OOM on smaller GPUs. CPU is slower but safe; override
+    # to "cuda" if you have headroom, or free the generator first.
+    bertscore_device: str = "cuda"
 
     def index_dir_for(self, retriever_name: str) -> str:
         name = retriever_name.lower()

@@ -92,6 +92,7 @@ def _add_text_metrics(rows: list[dict]) -> None:
         references,
         model_type=settings.bertscore_model_name,
         batch_size=settings.bertscore_batch_size,
+        device=settings.bertscore_device,
     )
     for row, bs in zip(rows, bert_scores):
         row.update(bs)
@@ -157,6 +158,92 @@ def _print_report(report: dict) -> None:
         print(f"  {_fmt(summary)}")
 
 
+# Columns shown in the markdown table, in order: (header, key, format spec).
+# "row" for the key means the row label itself (source name / "**Overall**")
+# rather than a value pulled out of the summary dict.
+_MD_COLUMNS = [
+    ("n", "n", "d"),
+    ("Recall@k", "recall_at_k", ".3f"),
+    ("MRR@k", "mrr_at_k", ".3f"),
+    ("BLEU", "bleu", ".2f"),
+    ("Corpus BLEU", "corpus_bleu", ".2f"),
+    ("ROUGE-1", "rouge1", ".3f"),
+    ("ROUGE-2", "rouge2", ".3f"),
+    ("ROUGE-L", "rougeL", ".3f"),
+    ("BERTScore-P", "bertscore_precision", ".3f"),
+    ("BERTScore-R", "bertscore_recall", ".3f"),
+    ("BERTScore-F1", "bertscore_f1", ".3f"),
+    ("Abstain rate", "abstention_rate", ".3f"),
+    ("Latency (ms)", "latency_ms", ".1f"),
+]
+
+
+def _md_row(label: str, summary: dict) -> str:
+    if summary.get("n", 0) == 0:
+        cells = ["0"] + ["--"] * (len(_MD_COLUMNS) - 1)
+    else:
+        cells = [format(summary[key], fmt) for _, key, fmt in _MD_COLUMNS]
+    return "| " + label + " | " + " | ".join(cells) + " |"
+
+
+def build_markdown_report(report: dict, meta: dict) -> str:
+    """Render `report` (from build_report) as a markdown document: a run-info
+    header, one table row for the overall result, and one table row per
+    `source` group. Same numbers as `_print_report`/the JSON summary --
+    this is purely a presentation layer over `build_report`'s output, so the
+    three views (console, JSON, markdown) never disagree with each other.
+    """
+    header_cells = ["Split"] + [h for h, _, _ in _MD_COLUMNS]
+    lines = [
+        f"# Generation eval: {meta['split']}",
+        "",
+        f"- Retriever: `{meta['retriever']}`",
+        f"- Generator: `{meta['generator']}`",
+        f"- Rerank enabled: `{meta['rerank_enabled']}`",
+        f"- top_k: `{meta['top_k']}`",
+        "",
+        "## Overall",
+        "",
+        "| " + " | ".join(header_cells) + " |",
+        "|" + "---|" * len(header_cells),
+        _md_row("**Overall**", report["overall"]),
+        "",
+        "## By source",
+        "",
+        "| " + " | ".join(header_cells) + " |",
+        "|" + "---|" * len(header_cells),
+    ]
+    for source, summary in report["by_source"].items():
+        lines.append(_md_row(f"`{source}`", summary))
+    lines.append("")
+    return "\n".join(lines)
+
+
+def _free_generator_gpu_memory() -> None:
+    """Drop the cached generator (and retriever/reranker, if GPU-resident)
+    before running BERTScore, so the two phases don't have to share GPU
+    memory. get_generator/get_retriever/get_reranker are lru_cache'd in
+    factory.py precisely so a query loop doesn't reload them per call --
+    but that also means they're still holding GPU memory after generation
+    is done and we're on to scoring, which is exactly when a second model
+    (BERTScore's roberta-large) shows up wanting its own memory.
+    """
+    import gc
+
+    from src import factory
+
+    for cached in (factory.get_generator, factory.get_retriever, factory.get_reranker):
+        cached.cache_clear()
+    gc.collect()
+    try:
+        import torch
+
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+    except ImportError:
+        pass
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--split", default=settings.eval_default_split,
@@ -187,6 +274,9 @@ def main() -> None:
     print("Running pipeline over examples...")
     rows = _run_pipeline(pipeline, examples, top_k=args.top_k)
 
+    del pipeline  # drop the last live reference before freeing the cache below
+    _free_generator_gpu_memory()
+
     _add_text_metrics(rows)
 
     report = build_report(rows)
@@ -197,22 +287,26 @@ def main() -> None:
     timestamp = time.strftime("%Y%m%d-%H%M%S")
     run_name = f"{args.split}_{args.retriever}_{args.generator}_{timestamp}"
 
+    meta = {
+        "split": args.split, "retriever": args.retriever, "generator": args.generator,
+        "top_k": args.top_k, "rerank_enabled": settings.rerank_enabled,
+    }
+
     rows_path = output_dir / f"{run_name}.jsonl"
     summary_path = output_dir / f"{run_name}_summary.json"
+    markdown_path = output_dir / f"{run_name}_summary.md"
     _write_jsonl(rows, rows_path)
     with open(summary_path, "w") as f:
-        json.dump(
-            {
-                "split": args.split, "retriever": args.retriever, "generator": args.generator,
-                "top_k": args.top_k, "rerank_enabled": settings.rerank_enabled,
-                **report,
-            },
-            f,
-            indent=2,
-        )
+        json.dump({**meta, **report}, f, indent=2)
+
+    markdown_report = build_markdown_report(report, meta)
+    with open(markdown_path, "w") as f:
+        f.write(markdown_report)
 
     print(f"\nWrote {len(rows)} rows to {rows_path}")
     print(f"Wrote summary to {summary_path}")
+    print(f"Wrote markdown report to {markdown_path}\n")
+    print(markdown_report)
 
 
 if __name__ == "__main__":
