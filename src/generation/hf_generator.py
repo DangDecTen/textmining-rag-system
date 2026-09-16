@@ -83,7 +83,7 @@ class HFGenerator(Generator):
             content = content.split("</think>")[-1].strip()
 
         # If no answer found
-        if len(content) < 10 and "False" in content:
+        if "False!" in content:
             content = ""
             found = False
 

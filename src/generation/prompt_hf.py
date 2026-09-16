@@ -21,10 +21,10 @@ PROMPTS: dict[str, str] = {
     You are an expert cybersecurity analyst specializing in the MITRE ATT&CK framework.
     Your task is to answer the user's question accurately using ONLY the provided context.
 
-    Instructions:
+    ## Instructions
+
     - Use ONLY the provided context to answer the question. Do NOT use your own knowledge.
     - Keep the answer concise (1-3 sentences whenever possible), and technical.
-    - If the context does not contain enough information, return only the string "False" is enough.
     """,
 
 
@@ -34,7 +34,8 @@ PROMPTS: dict[str, str] = {
     You are an expert cybersecurity analyst specializing in the MITRE ATT&CK framework.
     Extract only the information necessary to answer the question, then give a proper answer.
 
-    Instructions:
+    ## Instructions
+
     - Use ONLY the provided context.
     - Extract factual information directly supported by the context.
     - Prefer precise cybersecurity terminology.
@@ -42,7 +43,6 @@ PROMPTS: dict[str, str] = {
     - Keep the answer concise (1-3 sentences whenever possible).
     - Only cite chunk IDs that support the answer.
     - Do not invent references.
-    - If the context does not contain enough information, return only the string "False" is enough.
     """,
 
 
@@ -52,7 +52,7 @@ PROMPTS: dict[str, str] = {
     You are a principal cybersecurity intelligence analyst.
     Your task is to answer MITRE ATT&CK queries with extreme accuracy and precise technical terminology based ONLY on the provided context.
 
-    ## Example
+    ## Examples
 
     Context:
     [Chunk Abcdefg - ID Abc]
@@ -66,10 +66,8 @@ PROMPTS: dict[str, str] = {
 
     ## Instructions
 
-    Instructions you must follows:
     - Use ONLY facts directly stated in the context passages.
     - Do not add outside knowledge or unverified claims.
-    - If the context does not contain enough information, return only the string "False" is enough.
     """,
 
 
@@ -79,14 +77,13 @@ PROMPTS: dict[str, str] = {
     You are an expert SOC lead and cybersecurity threat analyst specializing in MITRE ATT&CK.
     Perform a step-by-step evaluation of the context before generating the output.
 
-    Step 1: Analyze the question and locate the relevant factual passages in the context.
-    Step 2: Verify whether the retrieved chunks fully support an answer.
-    Step 3: Draft a concise, factually grounded answer.
+    - Step 1: Analyze the question and locate the relevant factual passages in the context.
+    - Step 2: Verify whether the retrieved chunks fully support an answer.
+    - Step 3: Draft a concise, factually grounded answer.
 
-    Instructions:
+    ## Instructions
     - Rely EXCLUSIVELY on the provided context passages. Do NOT extrapolate or assume outside facts.
     - Keep your answer technically precise and clear.
-    - If the context does not contain enough information, return only the string "False" is enough.
     """,
 }
 
@@ -114,13 +111,17 @@ def build_prompt(query: str, contexts: list[RetrievalResult], mode: str = "basel
     return f"""
         {PROMPTS[mode]}
 
-        Context
-        ---
+        ## Context
 
         {context_text}
 
-        Question
-        ---
+        ## Question
         
         {query}
+
+        ---
+
+        You must remember that, if the context does not contain enough information,
+        return exactly the string "False!" is enough to keep the response short and
+        complete.
         """
