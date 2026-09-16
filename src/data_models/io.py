@@ -15,7 +15,10 @@ def load_corpus_lookup(path: str | None = None) -> dict[str, Document]:
     return corpus
 
 
-def load_qa_examples(split: Literal["train", "dev", "test"], path_template: str | None = None) -> list[QAExample]:
+def load_qa_examples(
+    split: Literal["train", "dev", "test", "dev_small", "test_small"],
+    path_template: str | None = None,
+) -> list[QAExample]:
     """path_template defaults to settings.qa_path_template (see src/config.py)."""
     path = (path_template or settings.qa_path_template).format(split=split)
     with open(path) as f:

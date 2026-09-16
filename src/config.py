@@ -80,6 +80,12 @@ class Settings(BaseSettings):
     learned_sparse_model_name: str = "BAAI/bge-m3"
     learned_sparse_candidate_k: int = 25
 
+    # --- Generation evaluation ---
+    eval_results_dir: str = "evaluation/generation/results"
+    eval_default_split: str = "dev_small"
+    bertscore_model_name: str = "roberta-large"
+    bertscore_batch_size: int = 32
+
     def index_dir_for(self, retriever_name: str) -> str:
         name = retriever_name.lower()
         if name == "bm25":

@@ -9,8 +9,6 @@ PromptMode = Literal[
     "structured",
     "few_shot",
     "cot",
-    "concise_extract",
-    "rerank_aware",
 ]
 
 

@@ -20,6 +20,9 @@ dependencies = [
     "uvicorn[standard]",
     "streamlit",
     "requests",
+    "sacrebleu",
+    "rouge-score",
+    "bert-score",
 ]
 
 [project.optional-dependencies]

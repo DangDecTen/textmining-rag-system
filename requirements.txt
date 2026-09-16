@@ -22,3 +22,8 @@ fastapi
 uvicorn[standard]
 streamlit
 requests
+
+# Generation evaluation
+sacrebleu
+rouge-score
+bert-score
