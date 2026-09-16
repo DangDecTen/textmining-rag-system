@@ -31,8 +31,7 @@ import src.retrieval.colbert_retriever  # noqa: F401
 import src.retrieval.learned_sparse_retriever  # noqa: F401
 import src.reranking.cross_encoder_reranker  # noqa: F401
 import src.reranking.colbert_reranker  # noqa: F401
-import src.generation.llama_generator  # noqa: F401
-import src.generation.qwen_generator  # noqa: F401
+import src.generation.hf_generator  # noqa: F401
 
 from src.retrieval.registry import build_retriever, available_retrievers
 from src.generation.registry import build_generator, available_generators
@@ -112,21 +111,13 @@ def get_retriever(name: str | None = None) -> Retriever:
 
 @lru_cache(maxsize=8)
 def get_generator(name: str | None = None) -> Generator:
-    """Load (and cache) a generator by name, e.g. 'llama' or 'qwen'."""
+    """Load (and cache) a generator by name, e.g. 'hf'."""
     name = (name or settings.default_generator).lower()
 
-    if name == "llama":
+    if name == "hf":
         return build_generator(
             name,
-            model_name=settings.llama_model_name,
-            max_context_tokens=settings.max_context_tokens,
-            max_new_tokens=settings.max_new_tokens,
-        )
-    if name == "qwen":
-        return build_generator(
-            name,
-            model_name=settings.qwen_model_name,
-            max_context_tokens=settings.max_context_tokens,
+            model_name=settings.hf_model_name,
             max_new_tokens=settings.max_new_tokens,
         )
     raise ValueError(f"Unknown generator '{name}'. Available: {available_generators()}")

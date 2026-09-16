@@ -40,7 +40,7 @@ class Settings(BaseSettings):
 
     # --- Retrieval ---
     default_retriever: str = "bm25"
-    default_top_k: int = 10
+    default_top_k: int = 3
 
     # BM25 hyperparameters
     bm25_method: str = "lucene"
@@ -57,11 +57,9 @@ class Settings(BaseSettings):
     hybrid_use_rrf: bool = False
 
     # --- Generation ---
-    default_generator: str = "llama"
-    llama_model_name: str = "qwen/qwen3.6-27b"
-    qwen_model_name: str = "Qwen/Qwen2.5-1.5B-Instruct"
-    max_context_tokens: int = 1500
-    max_new_tokens: int = 128
+    default_generator: str = "hf"
+    hf_model_name: str = "Qwen/Qwen3-4B"
+    max_new_tokens: int = 300
 
     # --- Reranking ---
     rerank_enabled: bool = True
@@ -71,7 +69,7 @@ class Settings(BaseSettings):
     # How many candidates the retriever is asked for before reranking cuts
     # down to the requested top_k. Wider than top_k on purpose -- reranking
     # only helps if it has more to choose from than the final count.
-    rerank_candidate_k: int = 20
+    rerank_candidate_k: int = 25
 
     # --- ColBERT Late-Interaction ---
     colbert_model_name: str = "colbert-ir/colbertv2.0"

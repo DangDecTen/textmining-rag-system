@@ -2,6 +2,8 @@ from __future__ import annotations
 from typing import Literal
 from src.data_models.data_models import RetrievalResult
 
+
+
 PromptMode = Literal[
     "baseline",
     "structured",
@@ -12,33 +14,31 @@ PromptMode = Literal[
     "rerank_aware",
 ]
 
-SYSTEM_PROMPT = """You are an expert cybersecurity analyst specializing in the MITRE ATT&CK framework.
-Your task is to answer the user's question accurately using ONLY the provided context.
-
-Instructions:
-- Use ONLY the provided context. Do NOT use outside knowledge.
-- If the context does not contain enough information, set found=false and answer with "I do not have enough information from the provided context."
-- Keep the answer concise, technical, and precise.
-
-Return ONLY valid JSON matching the following format. The "found" field must be a JSON boolean (true or false):
-{
-    "answer": "<answer text>",
-    "found": true
-}
-"""
-
-
-def build_user_message(question: str, context_block: str) -> str:
-    return f"""Context:
-{context_block}
-
-Question:
-{question}
-"""
 
 
 PROMPTS: dict[str, str] = {
-    "baseline": SYSTEM_PROMPT,
+    "baseline":
+    """
+    You are an expert cybersecurity analyst specializing in the MITRE ATT&CK framework.
+    Your task is to answer the user's question accurately using ONLY the provided context.
+
+    Instructions:
+    - Use ONLY the provided context to answer the question. Do NOT use your own knowledge.
+    - Keep the answer concise (1-3 sentences whenever possible), and technical.
+    - If the context does not contain enough information, set found=false and answer exactly:
+    "I do not have enough information from the provided context."
+    
+    Return ONLY valid JSON object. Do not include markdown formatting or explanation outside JSON.
+    The "found" field must be a JSON boolean (true or false):
+    {
+        "answer": "<answer>",
+        "found": true,
+        "references": ["<chunk_id>"]
+    }
+    """,
+
+
+
     "structured": 
     """
     You are an expert cybersecurity analyst specializing in the MITRE ATT&CK framework.
@@ -212,20 +212,16 @@ def build_prompt(query: str, contexts: list[RetrievalResult], mode: str = "basel
 
     context_text = "\n\n".join(context_blocks)
 
-    return f"""{PROMPTS[mode]}
+    return f"""
+        {PROMPTS[mode]}
 
-========================
-Context
-========================
+        Context
+        ---
 
-{context_text}
+        {context_text}
 
-========================
-Question
-========================
-
-{query}
-
-Return ONLY the JSON object.
-Do not include markdown formatting or explanation outside JSON.
-"""
+        Question
+        ---
+        
+        {query}
+        """
