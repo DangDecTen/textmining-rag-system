@@ -25,16 +25,7 @@ PROMPTS: dict[str, str] = {
     Instructions:
     - Use ONLY the provided context to answer the question. Do NOT use your own knowledge.
     - Keep the answer concise (1-3 sentences whenever possible), and technical.
-    - If the context does not contain enough information, set found=false and answer exactly:
-    "I do not have enough information from the provided context."
-    
-    Return ONLY valid JSON object. Do not include markdown formatting or explanation outside JSON.
-    The "found" field must be a JSON boolean (true or false):
-    {
-        "answer": "<answer>",
-        "found": true,
-        "references": ["<chunk_id>"]
-    }
+    - If the context does not contain enough information, return only the string "False" is enough.
     """,
 
 

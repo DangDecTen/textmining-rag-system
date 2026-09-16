@@ -60,6 +60,7 @@ class Settings(BaseSettings):
     default_generator: str = "hf"
     hf_model_name: str = "Qwen/Qwen3-4B"
     max_new_tokens: int = 300
+    prompt_mode: str = "baseline"
 
     # --- Reranking ---
     rerank_enabled: bool = True

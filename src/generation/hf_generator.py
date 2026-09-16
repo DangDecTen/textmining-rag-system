@@ -48,7 +48,7 @@ class HFGenerator(Generator):
         self,
         question: str,
         contexts: list[RetrievalResult],
-        prompt_mode: PromptMode = "baseline",
+        prompt_mode: PromptMode = settings.prompt_mode,
     ) -> GenerationResult:
         start = time.time()
 
@@ -76,25 +76,26 @@ class HFGenerator(Generator):
         )
         output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist() 
 
-        # parsing thinking content
-        try:
-            # rindex finding 151668 (</think>)
-            index = len(output_ids) - output_ids[::-1].index(151668)
-        except ValueError:
-            index = 0
+        content = self.tokenizer.decode(output_ids, skip_special_tokens=True).strip("\n")
+        found = True
 
-        thinking_content = self.tokenizer.decode(output_ids[:index], skip_special_tokens=True).strip("\n")
-        content = self.tokenizer.decode(output_ids[index:], skip_special_tokens=True).strip("\n")
-        answer, found = parse_structured_output(content)
+        # Remove thinking blocks if present
+        if "</think>" in content:
+            content = content.split("</think>")[-1].strip()
+
+        # If no answer found
+        if len(content) < 10 and "False" in content:
+            content = ""
+            found = False
 
         latency_ms = (time.time() - start) * 1000
         
         return GenerationResult(
-            answer=answer,
+            answer=content,
             found=found,
             prompt=prompt,
             retrieval_results=contexts,
             latency_ms=latency_ms,
             prompt_tokens=len(model_inputs.input_ids[0]),
-            completion_tokens=len(output_ids[index:]),
+            completion_tokens=len(output_ids),
         )
