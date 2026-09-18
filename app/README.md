@@ -18,7 +18,7 @@ scaled, or swapped out independently of the UI.
 python -m uvicorn app.backend.api:app --reload
 
 # terminal 2
-python -m streamlit run app/frontend/app.py
+python -m streamlit run app/frontend/streamlit_app.py
 ```
 
 By default the frontend expects the API at `http://localhost:8000`

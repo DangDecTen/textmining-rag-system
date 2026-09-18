@@ -9,6 +9,7 @@ Run (in a separate terminal from the API):
     python -m streamlit run app/frontend/streamlit_app.py
 """
 import os
+from pathlib import Path
 import requests
 import streamlit as st
 from app.backend.app_prompts import prompt_label
@@ -17,6 +18,17 @@ from app.backend.app_prompts import prompt_label
 API_URL = os.getenv("API_URL", "http://localhost:8000",)
 
 st.set_page_config(page_title="MITRE ATT&CK Assistant", page_icon="🛡️", layout="wide")
+
+def load_css():
+    css_path = Path(__file__).parent / "styles.css"
+
+    with open(css_path, "r", encoding="utf-8") as f:
+        st.markdown(
+            f"<style>{f.read()}</style>",
+            unsafe_allow_html=True,
+        )
+
+load_css()
 
 RESPONSE_MODES: dict[str, dict[str, str]] = {
     "quick": {
@@ -165,7 +177,10 @@ def render_source(citation):
     source = citation.get("source") or "source"
 
     st.markdown(
-        f"[🔗 Open {source} source ↗]({url})"
+        f'<a class="source-link" href="{url}" target="_blank">'
+        f"↗ Open {source} source"
+        f"</a>",
+        unsafe_allow_html=True,
     )
 
 
@@ -178,6 +193,7 @@ def render_evidence_card(retrieval, citation, index):
     )
 
     score = retrieval.get("score")
+    
 
     subject_name = (
         document.get("subject_name")
@@ -233,9 +249,14 @@ def render_evidence_card(retrieval, citation, index):
         with score_col:
 
             if score is not None:
-                st.metric(
-                    "Relevance",
-                    f"{score:.3f}",
+                st.markdown(
+                    f"""
+                    <div class="relevance-score">
+                        <div class="relevance-score-label">Relevance</div>
+                        <div class="relevance-score-value">{score:.3f}</div>
+                    </div>
+                    """,
+                        unsafe_allow_html=True,
                 )
 
         with st.expander("📄 Retrieved passage", expanded=False):
@@ -324,11 +345,17 @@ def render_evidence(retrieved_context, citations, expanded=False):
 
     if expanded:
 
-        st.markdown("### 📚 Evidence used for this answer")
+        st.markdown(
+            '<div class="evidence-heading">📚 Evidence used for this answer</div>',
+            unsafe_allow_html=True,
+        )
 
-        st.caption(
+        st.markdown(
+            f'<div class="evidence-subtitle">'
             f"{count} "
             f"{'retrieved passage' if count == 1 else 'retrieved passages'}"
+            f'</div>',
+            unsafe_allow_html=True,
         )
 
         _render_evidence_contents(
@@ -444,9 +471,7 @@ with st.sidebar:
 
     st.markdown("## 🛡️ ATT&CK Assistant")
 
-    st.caption(
-        "Grounded cybersecurity answers with inspectable evidence."
-    )
+    st.caption("Grounded cybersecurity answers with inspectable evidence.")
 
     st.divider()
 
@@ -490,8 +515,18 @@ with st.sidebar:
         selected_mode
     )
 
-    st.caption(
-        get_mode_description(selected_mode)
+    st.markdown(
+        f"""
+        <div class="mode-description">
+            <div class="mode-description-title">
+                {get_mode_label(selected_mode)}
+            </div>
+            <div class="mode-description-text">
+                {get_mode_description(selected_mode)}
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 
     st.caption(
@@ -585,9 +620,13 @@ with st.sidebar:
     st.divider()
 
     st.markdown("### System")
-
-    st.success("API configured")
-
+    st.markdown(
+        '<div class="api-status">'
+        '<span class="api-status-dot"></span>'
+        '<span>API configured</span>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
     st.caption(API_URL)
 
 
@@ -596,7 +635,6 @@ with st.sidebar:
 # =============================================================================
 
 st.markdown("# 🛡️ MITRE ATT&CK Assistant")
-
 st.markdown(
     "Ask a cybersecurity question and explore the evidence behind the answer."
 )
@@ -659,8 +697,13 @@ mode_col1, mode_col2 = st.columns(
 
 with mode_col1:
 
-    st.info(
-        get_mode_label(active_mode)
+    st.markdown(
+        f"""
+        <div class="current-mode-badge">
+            {get_mode_label(active_mode)}
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 
 with mode_col2:
@@ -687,7 +730,6 @@ for message in st.session_state.messages:
         st.markdown(
             message["content"]
         )
-
         if message["role"] != "assistant":
             continue
 
