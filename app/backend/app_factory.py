@@ -8,7 +8,6 @@ Retrievers and rerankers continue to come from the shared src.factory.
 from __future__ import annotations
 
 from functools import lru_cache
-from src.data_models.io import load_corpus_lookup
 from src.config import settings
 from src.factory import (
     get_reranker,
@@ -32,7 +31,6 @@ def get_app_generator(name: str, prompt_mode: str = "baseline") -> GroqGenerator
     return GroqGenerator(
         model_name=get_app_generator_model(name),
         prompt_mode=prompt_mode,
-        max_context_tokens=settings.max_context_tokens,
         max_new_tokens=settings.max_new_tokens,
     )
 

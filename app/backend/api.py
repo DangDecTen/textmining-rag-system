@@ -26,6 +26,11 @@ from pydantic import BaseModel, Field
 from src.config import settings
 from src.data_models.data_models import Citation, RetrievalResult
 from src.factory import available_generators, available_retrievers, get_pipeline, get_retriever
+
+from app.backend.app_config import (
+    APP_DEFAULT_GENERATOR,
+    APP_GENERATOR_MODELS,
+)
 from app.backend.app_factory import get_app_pipeline
 from app.backend.app_prompts import available_prompts, PROMPTS
 
@@ -36,7 +41,7 @@ class QueryRequest(BaseModel):
     query: str = Field(min_length=1)
     k: int = Field(default=settings.default_top_k, ge=1, le=50)
     retriever: str = Field(default=settings.default_retriever)
-    generator: str = Field(default=settings.default_generator)
+    generator: str = Field(default=APP_DEFAULT_GENERATOR)
     prompt: str = Field(default="baseline")
 
 
@@ -66,11 +71,12 @@ def root() -> dict:
     return {
         "message": "Textmining RAG System API",
         "available_retrievers": available_retrievers(),
-        "available_generators": available_generators(),
+        #"available_generators": available_generators(),
+        "available_generators": list(APP_GENERATOR_MODELS.keys()),
         "available_prompts": list(PROMPTS.keys()),
         "defaults": {
             "retriever": settings.default_retriever, 
-            "generator": settings.default_generator,
+            "generator": APP_DEFAULT_GENERATOR,
             "prompt": "baseline"
         }
     }

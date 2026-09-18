@@ -32,19 +32,19 @@ if not GROQ_API_KEY:
 #
 # Keep these separate from LLAMA_MODEL_NAME / QWEN_MODEL_NAME in src.config.py.
 APP_GENERATOR_MODELS: dict[str, str] = {
-    "llama": os.getenv(
-        "APP_LLAMA_MODEL",
+    "gpt": os.getenv(
+        "APP_GPT_MODEL",
         "openai/gpt-oss-120b",
     ),
     "qwen": os.getenv(
         "APP_QWEN_MODEL",
-        "qwen/qwen3.6-27b",
+        "qwen/qwen3.8-27b"
     ),
 }
 
 
 # Application defaults.
-APP_DEFAULT_GENERATOR = os.getenv("APP_DEFAULT_GENERATOR", "llama")
+APP_DEFAULT_GENERATOR = os.getenv("APP_DEFAULT_GENERATOR", "gpt")
 
 
 def get_app_generator_model(name: str) -> str:

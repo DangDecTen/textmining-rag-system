@@ -17,52 +17,40 @@ from __future__ import annotations
 
 import os
 import time
+import json
 
 from groq import Groq
-from transformers import AutoTokenizer
 
 from src.data_models.data_models import GenerationResult, RetrievalResult
 from src.generation.base import Generator
-from src.generation.context_builder import ContextBuilder
-from src.generation.output_parser import parse_structured_output
-from src.generation.prompt import SYSTEM_PROMPT, PROMPTS, build_user_message
+from src.generation.prompt import build_prompt, PromptMode, PROMPTS
+from src.generation.registry import register_generator
 from app.backend.app_config import GROQ_API_KEY
 
 
+@register_generator("groq")
 class GroqGenerator(Generator):
     """Generator that sends selectable prompt strategy to a Groq-hosted model."""
 
     def __init__(
         self,
         model_name: str,
-        prompt_mode: str = "baseline",
-        max_context_tokens: int = 1500,
-        max_new_tokens: int = 128,
+        prompt_mode: PromptMode = "baseline",
+        max_new_tokens: int = 350,
     ):
         if prompt_mode not in PROMPTS:
             raise ValueError(
                 f"Unknown prompt mode '{prompt_mode}'. "
-                f"Available: {sorted(PROMPTS)}"
+                f"Available: {list(PROMPTS.keys())}"
             )
+        if not GROQ_API_KEY:
+            raise ValueError("GROQ_API_KEY is not configured.")
 
         self.client = Groq(api_key=GROQ_API_KEY)
         self.model_name = model_name
         self.prompt_mode = prompt_mode
         self.max_new_tokens = max_new_tokens
-        
-        # For now, use a lightweight tokenizer appropriate for the selected
-        # Groq model. This keeps the app from downloading multi-GB models.
-        if "qwen" in model_name.lower():
-            tokenizer_name = "Qwen/Qwen2.5-1.5B-Instruct"
-        else:
-            tokenizer_name = "unsloth/Llama-3.3-70B-Instruct"
 
-        self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
-
-        self.context_builder = ContextBuilder(
-            self.tokenizer,
-            max_context_tokens=max_context_tokens,
-        )
 
     def generate(
         self,
@@ -71,78 +59,72 @@ class GroqGenerator(Generator):
     ) -> GenerationResult:
         start = time.time()
 
-        context_block = self.context_builder.build(contexts)
-
-        # Use the selected app prompt instead of the shared SYSTEM_PROMPT.
-        system_prompt = PROMPTS[self.prompt_mode]
+        prompt = build_prompt(
+            query=question,
+            contexts=contexts,
+            mode=self.prompt_mode,
+        )
 
         messages = [
             {
-                "role": "system",
-                "content": system_prompt,
-            },
-            {
                 "role": "user",
-                "content": build_user_message(
-                    question,
-                    context_block,
-                ),
-            },
+                "content": prompt,
+            }
         ]
 
-        prompt_text = self.tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True,
+        
+        response = self.client.chat.completions.create(
+            model=self.model_name,
+            messages=messages,
+            temperature=0.2,
+            max_completion_tokens=self.max_new_tokens,
         )
 
-        prompt_tokens = len(
-            self.tokenizer.encode(prompt_text)
-        )
 
-        try:
-            response = self.client.chat.completions.create(
-                model=self.model_name,
-                messages=messages,
-                temperature=0.2,
-                #max_completion_tokens=self.max_new_tokens,
-                max_completion_tokens=512,
-            )
-        except Exception as e:
-            print("\n========== GROQ ERROR ==========")
-            print("Model:", self.model_name)
-            print("SYSTEM PROMPT:")
-            print(messages[0]["content"])
-            print("\nUSER MESSAGE:")
-            print(messages[1]["content"])
-            print("Error:", repr(e))
-
-            if hasattr(e, "body"):
-                print("Error body:", e.body)
-
-            print("================================\n")
-            raise
-
-        raw_output = response.choices[0].message.content or ""
+        content = response.choices[0].message.content or ""
+        content = content.strip()
 
         # Some reasoning-capable models may include a thinking section.
-        if "</think>" in raw_output:
-            raw_output = raw_output.split("</think>")[-1].strip()
+        if "</think>" in content:
+            content = content.split("</think>")[-1].strip()
 
-        answer, found = parse_structured_output(raw_output)
+        try:
+            result = json.loads(content)
+
+        except json.JSONDecodeError:
+            # The model violated the JSON-only requirement.
+            # Return the raw response as the answer rather than crashing the whole request.
+            result = {
+                "answer": content,
+                "found": False,
+                "references": [],
+            }
+
+        answer = result.get("answer", "")
+        found = result.get("found", False)
+        references = result.get("references", [])
+
+        # Ensure expected types.
+        if not isinstance(answer, str):
+            answer = str(answer)
+        if not isinstance(found, bool):
+            found = bool(found)
+        if not isinstance(references, list):
+            references = []
+        references = [str(ref) for ref in references]
 
         latency_ms = (time.time() - start) * 1000
 
         # Prefer provider-reported token counts when available.
         usage = getattr(response, "usage", None)
 
-        response_prompt_tokens = (
+        prompt_tokens = (
             getattr(usage, "prompt_tokens", None)
             if usage is not None
             else None
         )
 
-        response_completion_tokens = (
+        completion_tokens = (
             getattr(usage, "completion_tokens", None)
             if usage is not None
             else None
@@ -151,17 +133,9 @@ class GroqGenerator(Generator):
         return GenerationResult(
             answer=answer,
             found=found,
-            prompt=prompt_text,
+            prompt=prompt,
             retrieval_results=contexts,
             latency_ms=latency_ms,
-            prompt_tokens=(
-                response_prompt_tokens
-                if response_prompt_tokens is not None
-                else prompt_tokens
-            ),
-            completion_tokens=(
-                response_completion_tokens
-                if response_completion_tokens is not None
-                else len(self.tokenizer.encode(raw_output))
-            ),
+            prompt_tokens=prompt_tokens,
+            completion_tokens=completion_tokens
         )
